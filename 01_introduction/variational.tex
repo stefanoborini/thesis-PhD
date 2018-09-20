@@ -1,0 +1,53 @@
+\section{Variational principle}
+\label{sec:variational}
+
+Let $\ham$ be the true Hamiltonian, and $\tilde{\Psi}$ an arbitrary
+approximated wavefunction of the true wavefunction $\Psi_0$ for the ground
+state of a non-degenerate case. The energy $\epsilon$ associated to this
+function is given by the equation
+\beq
+\label{eqn:variational_1}
+\epsilon = \frac{\braket{\tilde{\Psi}}{\ham}{\tilde{\Psi}}}{\integral{\tilde{\Psi}}{\tilde{\Psi}}}
+\eeq
+Under the variational theorem, the energy $E_0$ (eigenvalue of the true ground
+state $\Psi_0$) is a lower bound for the energy $\epsilon$ associated to the
+approximated wavefunction $\tilde{\Psi}$.
+\beq
+\epsilon \ge E_0 \quad \forall \tilde{\Psi} \quad \mbox{,} \quad \epsilon = E_0 \Leftrightarrow
+\tilde{\Psi} = \Psi_{0}
+\eeq
+Proof of this theorem can be found in quantum chemistry books (for example
+Ref.~\citen{szabo-mqc,mcweeny-momqm}). The theorem guarantees that given
+a generic function $\tilde{\Psi}$, the energy evaluated by means of
+Eqn. \ref{eqn:variational_1} will be greater, or at best
+equal than the true ground state energy, with the equality holding if the function $\tilde{\Psi}$
+is the exact function for the electronic state. It is possible to
+parametrize $\tilde{\Psi}$ through a set of parameters, and to optimize them
+by minimizing the difference between $\epsilon$ and the true energy $E_0$.
+
+Given the linear expansion of $\tilde{\Psi}$ as a linear combination
+of a set of functions $\Phi_i$
+\beq
+\tilde{\Psi} = \sumidx{i}c_i\Phi_i
+\eeq
+the minimization condition to satisfy is
+\beq
+\dpartfrac{\epsilon}{c_i} = 0 \quad \forall i
+\eeq
+supposing real $c_i$ coefficients being part of a $\mathbf{c}$ array we
+obtain
+\beqa
+\epsilon &=& \frac{\sumidx{i,j} c_i c_j \braket{\Phi_i}{\ham}{\Phi_j}}{\sumidx{i,j} c_i c_j \integral{\Phi_i}{\Phi_j}} \nonumber \\
+&=& \frac{ \mathbf{c}^{+} \mathbf{H} \mathbf{c}}{\mathbf{c}^{+} \mathbf{S} \mathbf{c}}
+\eeqa
+Performing a differentiation of the energy with respect to the $\mathbf{c}$
+vector we obtain the final minimization condition
+\beq
+\label{eqn:variational_3}
+\mathbf{H}\mathbf{c} = \epsilon \mathbf{S} \mathbf{c}
+\eeq
+The $\mathbf{c}$ vector represents the linear combination of the $\Phi_i$
+set producing the lowest possible value for the associated energy. An
+extension of the variational theorem also asserts that each
+solution $\epsilon_i$ obtained from Eqn. \ref{eqn:variational_3} satisfies the
+same rule for the energy $E_i$ (MacDonald's theorem). 

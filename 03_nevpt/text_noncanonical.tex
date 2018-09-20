@@ -1,0 +1,159 @@
+\section{Non Canonical NEVPT}
+
+All the cases so far examined of NEVPT were performed assuming canonical
+orbitals, since the situation is greatly simplified using these orbitals.
+Let us consider the inactive part of the Dyall's Hamiltonian in generalized form
+\beqa
+\ham^D_i &=& \sumidx{ij} f_{ij} E_{ij} + \sumidx{rs} f_{rs} E_{rs}
+\eeqa
+where the $f_{xy}$ elements are relative to the Fock matrix on a CASSCF
+wavefunction $\Psi_0$
+%\beq
+%f_{xy} = \half \sum_{\sigma=\alpha,\beta}
+%\braket{\Psi_0}{\anticomm{\constr{y\sigma}}{\comm{\destr{x\sigma}}{\ham}}
+%}{\Psi_0}
+%\eeq
+\beq
+f_{xy} = - \braket{\Psi_0}{\constr{x} \comm{\ham}{\destr{y}}}{\Psi_0} +
+\braket{\Psi_0}{\destr{x} \comm{\ham}{\constr{y}}}{\Psi_0}
+\eeq
+Diagonalization of $\ham^D$ is simplified if we assume that
+canonical orbitals are used and the inactive part is cast as the
+well-known diagonal case
+\beqa
+\ham^D_i &=& \sumidx{i} \epsilon_{i} E_{ii} + \sumidx{r} \epsilon_{r} E_{rr}
+\eeqa
+The simplification arises by the fact that the perturber energies are
+defined by a simple quantity. For example, we recall the case for the S$^0$
+class where the energy of the perturber $E_{ri} E_{sj} \Psi_m^{(0)}$ is
+$E_m^{(0)} + \epsilon_r + \epsilon_s - \epsilon_i -\epsilon_j$. This
+obviously cannot be obtained quickly if non-canonical orbitals are used.
+
+A solution resides in a different evolution of the first-order perturbation
+equation:
+\beq
+\left( \ham^{(0)} - E_m^{(0)} \right) \Psi_m^{(1)} = \left( E_m^{(1)} - \hat{V} \right) \Psi_m^{(0)}
+\eeq
+Instead of expressing the $\Psi_m^{(1)}$ as a linear combination of the
+zero-order wavefunctions
+\beq
+\Psi_m^{(1)} = \sumidx{k}c_k \Psi_k^{(0)}
+\eeq
+we develop using generic functions $\Phi_l$
+\beq
+\Psi_m^{(1)} = \sumidx{l}c_l \Phi_l
+\eeq
+A system of linear equations must be solved
+\beq
+\sum_l c_l \left[ \braket{\Phi_k}{\ham_0}{\Phi_l} - E_m^{(0)}
+\integral{\Phi_k}{\Phi_l} \right] = - \braket{\Phi_k}{\hat{V}}{\Psi_m^{(0)}}
+\eeq
+\beq
+E_m^{(2)} = \braket{\Psi_m^{(0)}}{\hat{V}}{\Psi_m^{(1)}} = \sum_l c_l
+\braket{\Psi_m^{(0)}}{\hat{V}}{\Phi_l}
+\eeq
+using the internally contracted $E_{wx} E_{yz} \Psi_m^{(0)}$ as $\Phi_l$.
+
+%Once deployed the linear system of equations, it can be cast in the form
+%\beq
+%\left(\mathbf{1} - \mathbf{A} \right) \mathbf{x} = \mathbf{x}_0
+%\eeq
+%FIXME : spiegare i simboli
+%and solved iteratively by building a set of vectors $\mathbf{x}_0$,
+%$\mathbf{x}_1$, $\ldots$, $\mathbf{x}_k$ given by
+%\beq
+%\mathbf{x}_{n+1} = \mathbf{A} \mathbf{x}_{n} - \sum_{l=0,n}
+%\frac{\braket{\mathbf{x}_{l}}{A}{\mathbf{x}_{n}}}{\integral{\mathbf{x}_{l}}{\mathbf{x}_{l}}}
+%\mathbf{x}_{l}
+%\eeq
+%It is now possible to optimize the $\alpha_k$ coefficients of the vector
+%$\mathbf{x} = \sum_k \alpha_k \mathbf{x}_{k}$ by minimizing the square norm
+%of the error vector
+%\beq
+%\integral{\left(\mathbf{1} - \mathbf{A} \right) \mathbf{x} -
+%\mathbf{x}_0}{\left(\mathbf{1} - \mathbf{A} \right) \mathbf{x} -
+%\mathbf{x}_0}
+%\eeq
+
+\section{NEVPT and Localization}
+
+A first successful integration of localization and NEVPT2 has been deployed
+to show the feasibility of this approach.
+An acetone molecule and two water molecules coordinating the CO oxygen have
+been optimized at 6-311G*/MP2 level. The molecular system has C$_{2v}$
+geometrical symmetry, and the CH$_3$ groups have been rotated to feature
+on-plane hydrogens far from one another. The symmetry has been considered
+only during geometry optimization, while for the rest of the evaluation the
+C$_1$ symmetry group has been used to work with non-symmetric localized
+orbitals.
+
+A minimal atomic basis set ANO-1 with $2s1p$ contraction for heavy atoms, and
+$1s$ for hydrogen has been used. From this basis, a set of localized orbitals
+is obtained with the procedure presented in Sec.
+\ref{sec:toulouse_method}. These orbitals are optimized by means of a
+Super-CI based optimization chain, converging to a localized CASSCF
+solution. An active space comprising six electrons in five
+active orbitals ($\sigma$, $\sigma^{*}$, $\pi$, $\pi^{*}$ of the acetone
+carbonyl group, and the $n_y$ lone pair of the carbonyl oxygen) has been
+defined. The active orbitals are visible in Fig. \ref{fig:h2o-active}
+
+\input{03_nevpt/fig_h2o-active}
+
+These orbitals are used in a Single-State NEVPT2 and a Non-Canonical
+procedure, leading to the perturbative results presented in the left side
+of Tab.~\ref{tbl:noncanonical}.  
+
+\input{03_nevpt/tbl_noncanonical}
+\vspace{4mm}
+
+As can be seen, a non-negligible difference is present
+between the obtained values.  Standard single-state NEVPT2 supposes the
+non-diagonal elements of the Fock matrix as zero.  The \texttt{dypcNC}
+program provides the highest non-diagonal element of the core and virtual
+Fock matrixes
+
+{
+\footnotesize
+\begin{verbatim}
+ Maximum of off-diagonal core Fock matrix is   0.238695436106739
+ Maximum of off-diagonal virtual Fock matrix is   8.252258688390988E-002
+\end{verbatim}
+}
+which can be appreciated as non zero. This results in an error of the single
+state treatment. 
+
+The Non-Canonical evaluation keeps into account the non
+diagonality of the Fock matrix, producing the correct value.
+The correctness of this result is confirmed by canonizing the optimized
+orbitals right before the perturbative evaluation. In this case, the
+localization is lost, but the \texttt{dypcNC} confirms the diagonality of
+the Fock matrix
+
+{
+\footnotesize
+\begin{verbatim}
+ Maximum of off-diagonal core Fock matrix is   6.924101073191773E-008
+ Maximum of off-diagonal virtual Fock matrix is   4.398960914047209E-008
+\end{verbatim}
+}
+and the obtained results (right side of Tab. \ref{tbl:noncanonical})
+confirm the value obtained with the first evaluation.
+
+A plot of the different nature of the orbitals used in the evaluation can be
+seen in Fig. \ref{fig:h2o-orb}. The upper part of the figure shows an
+extract of the localized set of non canonical orbitals, while the lower part plots
+an extract of the orbitals after canonization. The delocalization of the
+orbitals is clearly appreciable. 
+
+\input{03_nevpt/fig_h2o-orb}
+
+Evaluating the energy difference provides consistency of the results.  For
+the reported test, no high difference in the relative energies can be found,
+as can be seen in Tab. \ref{tbl:noncanonical_energy}.
+
+\input{03_nevpt/tbl_noncanonical_energy}
+
+This must be further investigated, given the small basis set used. However,
+the target of this investigation was to demonstrate the consistency of the
+NC-NEVPT results.
+

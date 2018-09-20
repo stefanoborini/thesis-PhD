@@ -1,0 +1,13 @@
+Ce travail a regardé deux techniques pour l'étude ab initio des molécules: La
+technique de localisation utilise une procedure d'optimisation qui preserve la
+localité d'un groupe d'orbitales de guess localisées. L'extension de cette
+technique, Freeze-and-Cut, permet la réduction du coût computationnel après
+élimination de la partie du système pas intéressée au phénomène étudié.  La
+théorie perturbative "n-Electron Valence state Perturbation Theory" (NEVPT).
+est une théorie perturbative multiréférence propre et efficiente qui peut être
+appliquée à des fonction d'onde CAS. Une collaboration avec le CINECA a
+été aussi effectuée dans le cadre d'un projet international, pour l'integration
+des différentes méthodologies ab initio dans une réseau d'ordinateurs. Deux
+problèmes sont centrals: développer une bibliotheque pour lire le format XML
+avec Fortran et un format binaire commun pour le stockage de donnees.  Les
+bibliothèques F90xml et Q5Cost ont été développées pour résoudre ces problèmes.

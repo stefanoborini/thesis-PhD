@@ -1,0 +1,1174 @@
+\section{Evaluation: carbonyl valence excited states}
+
+\begin{center}
+\textit{This section is based on the articles Refs. \citen{jcp-122-114304-2005} and
+\citen{jms_theo-718-55-2005}} \\
+\end{center}
+{\ }\\
+
+% {{{
+% {{{
+Small carbonyl molecules formaldehyde, acetaldehyde and acetone attracted
+both experimental and theoretical chemists since long time, due to their
+particular properties and roles. 
+
+For instance the behavior of the carbonyl is important in order to describe
+photochemical reactions such as Norrish type-I reactions in aliphatic
+ketones and especially acetone\cite{cpc-2-273-2001,noyes-prk,pps-3-6-2004},
+where the cleavage of one of the $\alpha$ CC bonds is related to an
+excitation to the $S_1$ \npi\  state.  A similar kind of reaction is the
+formaldehyde decomposition in \mbox{H$_2$ + CO} or \mbox{H +
+HCO}\cite{arpc-34-525-1983}, mainly interesting for high-atmosphere
+chemistry and astronomy.  
+
+From the computational point of view, the small size of these systems
+has allowed for a long time the application of high-level theoretical
+approaches.  For these reasons, a consistent number of evaluations are
+available in bibliography, defining an interesting testcase for
+comparisons and discussions.
+
+Despite these accurate insights, doubts still exist on some
+photochemical features of such small molecules. For example, the absence
+of a $\pi \rightarrow \pi^{*}$ transition from the experimental spectrum is
+still unsolved. The first hypothesis for its absence \cite{robin-hespm}, was
+that it should lie over the first ionization limit of 10.88 eV
+\cite{ijmsip-1-285-1968,jacs-94-1451-1972} but it was discarded thanks to
+refinements in theoretical evaluations, producing a value for this
+transition in the 9.5-9.8 eV range, well below 10.88 eV.
+
+A more probable explanation calls for a combined action of mixing between
+valence states and Rydberg states (electronically excited states where the
+promoted electron is described by a spatially diffuse orbital), and a very
+long progression due to geometrical distortion of the excited state.  The
+first effect reduces the absorption due to intensity borrowing from the $\pi
+\rightarrow \pi^{*}$ to Rydberg states. The second
+effect produces Franck-Condon factors with a very long and broad
+progression, mainly due to the change in bond length and strength after the
+excitation.  The double-bond nature changes to single-bond in the excited
+state, and the resulting Potential Energy Surface along the CO stretching
+coordinate is broad and with a longer CO distance with respect to the ground
+state minimum. The molecule in the excited state is also highly bent along
+the out-of-plane coordinate, further increasing the effect.  
+
+As a final result, the $\pi \rightarrow \pi^{*}$ probably expresses itself in
+the experimental spectrum as a broad and low-intensity band, hardly
+detectable in a spectral region dominated by $n \rightarrow \mbox{Ryd}$
+bands. Most of the research performed on these molecules during this thesis
+was finalized to gather a deeper insight into these problems.
+
+From a historical point of view, the most largely evaluated electronic transition
+for simple carbonyl molecules is the $n_y \rightarrow \pi^{*}$ from the
+oxygen lone pair. This transition is computationally very accessible, and
+experimentally detectable.  For two of the three molecules under
+investigation, formaldehyde and acetone, the C$_{2v}$ symmetry group forbids
+this excitation, but the transition is observed due to the intensity
+borrowing performed by other states interacting via vibronic coupling. For
+acetaldehyde, the symmetry group is C$_s$ and the transition is
+allowed by symmetry, but the local symmetry of the carbonyl determines the
+selection rule and reduces the intensity\cite{jcp-87-3796-1987}.
+
+Among the properties of excited states, the equilibrium geometrical
+structures and the vibrational frequencies are also of particular interest,
+since they help in the interpretation of the photochemical behavior of the
+molecules and of their electronic spectra.  Within the harmonic
+approximation, only the energy Hessian at the equilibrium geometry is
+required for the calculation of the vibrational frequencies.  The comparison
+of the theoretical frequencies so obtained with the measured ones however is
+not straightforward: the anharmonicity of the potential, which is not taken
+into account in the harmonic approximation, can have a sizable effect even
+on the first vibrational energy difference. In the particular cases when a
+series of vibrational levels for a given normal mode is experimentally
+known, the ``harmonic experimental frequencies'' can be computed (see for
+instance Refs. \citen{jcp-80-5968-1984} and \citen{jpc-99-13850-1995}).
+These quantities can be directly compared with the theoretically computed
+ones.
+
+% }}}
+\subsection*{Evaluation details}
+% {{{
+
+In this section we present various analyses performed on the valence excited
+states of formaldehyde, acetaldehyde, and acetone:
+\begin{itemize}
+\item single state NEVPT2 study of the vertical \snpi\  and \tnpi
+transitions
+\item a detailed single state NEVPT2 study of $n \rightarrow \pi^{*}$, $\pi
+\rightarrow \pi^{*}$  and $\sigma \rightarrow \pi^{*}$ adiabatic singlet and triplet
+states
+\item geometry optimization of ground and excited states at CASSCF level
+\item vibrational analysis for ground and excited states at CASSCF level to
+evaluate the Zero Point Energy correction
+\end{itemize}
+
+Particular care has been devoted to maintain the computational parameters as
+homogeneous as possible during the evaluation, in order to perform a
+systematic analysis for similarities and differences, evaluate trends and
+finally allowing a deep comparison between NEVPT2 and other theoretical
+methods. 
+
+Formaldehyde, acetaldehyde and acetone have been studied using an
+\mbox{ANO-1} basis set\cite{tca-77-291-1990}, contracted with the \mbox{C,O
+(14s9p4d)/[4s3p1d]}, \mbox{H (8s4p)/[2s1p]} scheme. No diffuse functions have been
+added in order to simplify the evaluation, removing Rydberg functions from
+the orbital scheme. 
+
+Rydberg states are expected to have a marginal influence at the equilibrium
+geometry of the ground and excited valence states \cite{tca-92-227-1995}.
+This is due to various factors: first, the $n \rightarrow \mbox{Ryd}$ excitations
+remove an electron from a non-bonding orbital, producing Potential Energy
+Surfaces nearly parallel to the Ground State surface. At the equilibrium
+geometries of the valence excited states (whose minima are very
+different in geometry from that of the Ground State) Rydberg states are
+expected to have very high energies, making valence/Rydberg mixing
+negligible. 
+
+Second, as clearly shown by Hachey {\it et al}
+\cite{jpc-99-8050-1995,jms-176-375-1996}, the perturbation of the Rydberg
+states originates from a series of avoided crossings along the CO stretching
+coordinate  where valence states are almost degenerate with the Rydberg ones. 
+The $n \rightarrow \pi^{*}$ vertical singlet excitation is expected
+around 4 eV, lower than the 8-9.5 range for the $n \rightarrow \mbox{Ryd}$
+states. Valence vertical excitations laying higher in energy could be more
+sensitive to Rydberg coupling in the Franck-Condon region, but the strong
+dependence of valence/Rydberg mixing with respect to the geometry makes
+Potential Surface alterations almost negligible when not explicitly looking
+for avoided crossing situations.
+
+We can therefore conclude that the electronic valence/Rydberg mixing is not
+very influent both at the GS equilibrium geometry and at the valence excited
+states equilibrium geometries, acting poorly on vertical energies, adiabatic
+energies, equilibrium geometries, and harmonic vibrational frequencies.
+
+The equilibrium geometry of the ground state (GS) and of the first three
+valence singlet [\snpi, \spipi \, and \sspi] and triplet [\tnpi, \tpipi \, and
+\tspi] excited states have been evaluated at CASSCF level using the \dalton
+program\cite{dalton-site}. At the time of the evaluation, the development
+version used for this study included an experimental direct merge of NEVPT2
+into the \dalton codebase. This study also confirms the effectiveness of
+this interface and its simplicity for the user.
+
+For all compounds, the molecular skeleton in the ground state (\mbox{H-CO-H}
+for formaldehyde, \mbox{C-CO-H} for acetaldehyde and \mbox{C-CO-C} for
+acetone) lies in the $yz$ plane, with the carbonyl group along the $z$
+axis. For acetaldehyde and acetone, the hydrogen atoms lying on the $yz$
+plane are at the maximum distance from the $z$ axis. 
+
+The symmetry group is C$_{2v}$ for formaldehyde and acetone, and C$_s$ for
+acetaldehyde.  For excited state equilibrium geometries, where the molecular
+skeleton is non-planar, the C$_s$ (formaldehyde and acetone) and C$_1$
+(acetaldehyde) symmetry groups have been used. The motion of the CO bond
+out of the CR$_2$ plane (wagging) is described by the out-of-plane bending
+angle $\theta$ between the CO axis and the CR$_2$ plane. 
+
+The active space is the same for all the states under investigation,
+consisting of the involved orbitals: $n_y$ oxygen lone-pair, $\sigma$,
+$\pi$ and $\pi^{*}$ CO orbitals, and $\sigma^{*}$ orbital to keep into
+account the expected elongation of the carbonyl. This results in a six
+electrons, five orbitals active space, hereafter called CAS(A).
+The term ``$\sigma$ CO orbital'' refers to the highest occupied
+molecular orbital with $\sigma$ symmetry with respect to the CO axis: at the
+equilibrium geometry of the excited states this orbital can be seen as a
+mixing of the $n_z$ lone pair of the oxygen atom and of the bonding
+$\sigma_{\mbox{\tiny CO}}$ orbital of the GS (with a larger component on the latter).
+
+In the case of formaldehyde and acetone, the $xz$ symmetry plane 
+simplifies the definition of the active space, and preserves the nature of
+this space during the symmetry break required for the geometry optimization
+of the excited states. This is not true for acetaldehyde: in the evaluation
+of GS and $\pi \rightarrow \pi^{*}$, the $n_y$ orbital is replaced by $n_z$,
+since the latter brings a larger correlative contribution and is therefore
+preferred for inclusion during the orbital optimization procedure. The
+problem does not occur on evaluating the $n_y \rightarrow \pi^{*}$ excited
+state, where the intrinsic electronic nature imposes the presence of the
+$n_y$ orbital inside the active space.
+
+As we saw in the previous chapter, a localized orbital approach is able to
+preserve the correct nature of the active space. With a delocalized approach
+this is not possible, and a different strategy is needed: to enlarge
+the active space including a higher number of orbitals until a consistent
+space is obtained. Adding a single doubly-occupied orbital turns out to add
+a $\sigma_{\mbox{\tiny CC}}$ to the active space, and not the $n_y$ orbital. A further
+increase finally includes the requested orbital in the active set and a
+consistent ten electrons in seven orbitals space (named CAS(B)) is
+obtained.
+
+Finally, for comparison against the results by Dallos et
+al.\cite{jcp-114-746-2001} an enriched active space has been defined for
+formaldehyde, containing all the valence orbitals and electrons
+[$(3-7)a_{1}$, $(1-2)b_1$ and $(1-3)b_2$] and defining a space made of 12
+electrons in ten orbitals (named CAS(C)). 
+
+As pointed out in Refs. \citen{mp-101-1937-2003} and
+\citen{cpl-371-49-2003}, for a given choice of the active space multiple
+different final solutions exist. The difference resides in the nature of
+the orbitals included inside the active space, and it hardly affects the
+equilibrium geometries obtained after a geometry optimization.  In order to
+produce a consistent behavior, during the optimization of the ground and
+excited states a proper nature of the active space has been kept.  It is
+important to note that this choice does not always match the minimum energy
+criterion.
+
+Both Strongly and Partially contracted NEVPT have been applied
+for the evaluation of the excitation energies, involving all electrons and
+orbitals in the perturbative treatment.  Vertical excitation energies have
+been evaluated computing the electronic energy of all states at the CASSCF
+equilibrium geometry for the ground state. For adiabatic excitation
+energies, the single state CASSCF equilibrium geometry for the appropriate
+excited state has been considered.
+
+The vibrational frequencies have been computed analytically using the
+harmonic approximation and are here reported without any scaling factor. The
+normal mode assignment has been done looking at the dominant contributions
+of the atom displacements.  From the knowledge of the harmonic frequencies,
+the Zero Point Energy (ZPE) has been obtained at CASSCF level, and kept into
+account in this form for both CASSCF and NEVPT evaluations.  This introduces
+the approximation that NEVPT acts on the states with a pure translation of
+the CASSCF energy surface, not altering the shape (which in turn acts on
+the Zero Point Energy).
+
+% }}}
+
+\subsection*{Results and discussion}
+\subsubsection*{Ground state}
+% {{{
+
+CASSCF optimized geometries for the ground state are reported in Tab.
+\ref{tbl:gs_geometries}. 
+\input{03_nevpt/tbl_gs_geometries.tex}
+\vspace{5mm}
+An overall agreement with the experimental data can be appreciated. For
+formaldehyde, the CAS(A) bond distances show a discrepancy with respect to
+the experiment of 0.012 $\AA$ (R$_{\mbox{\tiny CO}}$) and
+0.026 $\AA$ (R$_{\mbox{\tiny CH}}$). The error for the HCH angle is of $0.8^{\circ}$. The
+CAS(C) produces values in even better agreement, with the exception of the
+HCH angle value which is higher ($1.4^{\circ}$) than with CAS(A) but remains small.
+
+In the case of acetaldehyde and acetone, it is possible to note that the
+carbonyl group maintains the same structure found in formaldehyde, and both
+CASSCF values agree with the experimental data.
+% }}}
+\subsubsection*{General consideration on the excited states}
+% {{{
+An extended review of the experimental works on excited states of
+formaldehyde has been presented by Moule and Walsh\cite{cr-75-67-1975} and
+Clouthier and Ramsay\cite{arpc-34-31-1983}. Many theoretical works have been
+dedicated to formaldehyde, starting from the works of Whitten and
+Hackmeyer \cite{jcp-51-5584-1969} and of Buenker and Peyerimhoff
+\cite{jcp-53-1368-1970}. In 1982 a review of these pioneering theoretical
+works was published \cite{davidson-es}. More recently the EOM-CCSD
+\cite{cpl-241-26-1995,cpl-248-189-1996}, EOM-MBPT \cite{cpl-248-189-1996},
+TDDFT/B3LYP \cite{cpl-297-60-1998}, TDDFT/PBE0 \cite{jcp-111-2889-1999},
+OO-CCD \cite{jcp-113-6509-2000}, CASPT2 \cite{tca-92-227-1995}, MRD-CI
+\cite{jpc-99-8050-1995,jpc-99-16576-1995}, MRCISD+Q \cite{tca-106-369-2001},
+MRAQCC/LRT \cite{tca-106-369-2001}, \\ MRPT2 \cite{cpl-296-435-1998},
+MR-CI \cite{mp-100-1647-2002}, (SC)$^2$-MR-SDCI \cite{mp-101-483-2003},
+CCSD\cite{mp-101-483-2003}, and NEVPT2 \cite{tca-111-352-2004} have been
+applied to formaldehyde, mainly focusing on vertical transitions.
+
+Acetone has been less studied from the theoretical point of view. Most of
+the existent investigations concentrated on the \snpi\ state
+\cite{jms_theo-365-29-1996,jms_theo-401-29-1997,jcp-110-62-1999,jcp-111-205-1999,cpl-337-331-2001},
+or on the vertical transition energies
+\cite{tca-111-352-2004,cpl-241-26-1995,cpl-297-60-1998,jcp-104-1791-1996,jpca-106-4192-2002}.
+The S$_1$ and T$_1$ surfaces have been also investigated
+\cite{cpc-2-273-2001,cpl-284-19-1998,cpl-325-86-2000,cpc-3-57-2002} because
+of the already cited Norrish type-I reaction, which takes place on these surfaces.
+In this reaction, after the excitation to the S$_1$ state, the molecule
+dissociates leading to the cleavage of one of the $\alpha$-CC bonds. For the
+${}^1(\pi \rightarrow \pi^{*})$ state, only one determination of the
+equilibrium geometry exists \cite{cpc-3-57-2002}.  Concerning the $\sigma
+\rightarrow \pi^{*}$, no studies have been performed.
+
+Finally, for acetaldehyde the theoretical studies of the valence states are
+even more scarce than for acetone.  From the theoretical point of view,
+CIS-MP2 \cite{jpc-97-4293-1993}, UMP2  \cite{jpc-98-1519-1994,jms_theo-315-9-1994}, CIS(D) \cite{cpl-219-21-1994},
+EOM-CCSD \cite{cpl-241-26-1995}, P-EOM-MBPT \cite{cpl-248-189-1996}, TDDFT
+\cite{jcp-108-4060-1998,cpl-297-60-1998} studies have been recently published, but only in
+few cases the geometrical structure and the frequencies of the excited
+states have been investigated.  
+
+Despite the large number of theoretical works on these three molecules,
+various valence states have never been characterized and even for the states
+considered a study of all the molecules based on a common strategy appears
+to be missing. The use of different theoretical approaches, for which
+different approximation levels have been employed, makes it difficult to 
+compare the data reported in the literature.
+
+% }}}
+\subsubsection*{The vertical \npi\  states}
+% {{{
+The calculation of the \npi\  singlet and triplet vertical 
+energies are presented in Tabs. \ref{tbl:vertexc_form_npi},
+\ref{tbl:vertexc_aceta_npi} and \ref{tbl:vertexc_aceto_npi} for
+formaldehyde, acetaldehyde and acetone, respectively.  All the NEVPT2
+vertical excitation energies agree with the previously published high-level
+theoretical results. 
+
+In the case of the singlet state of formaldehyde a fairly large number of
+different theoretical works has been published, and experimental values
+exist. For this state the NEVPT2 results (4.00-4.08~eV) are very close to
+the best available theoretical data, which are in the range 3.90-4.10~eV and
+with one of the experimental values (4.07~eV).
+
+The valence triplet state has been less studied computationally, while
+experimental information exists.  The NEVPT2 computed values for this state
+agree well with the available data, the only relevant differences being with
+TDDFT/B3LYP\cite{cpl-297-60-1998} and RMS MRPT2/IVO\cite{cpl-296-435-1998}
+which, however, show too low and too high values, respectively.
+The tendency of TDDFT to give a too low transition energy for the \tnpi\
+state has been found also in a TDDFT/PBE0 study\cite{jcp-111-2889-1999}
+(3.18 and 3.20 eV with two basis sets).
+
+\input{03_nevpt/tbl_vertexc_form_npi.tex}
+
+The use of a larger active space (CAS(C)) does not introduce strong variations at CASSCF 
+level for both states: the \snpi\ state remains almost unchanged, while the
+\tnpi\ state shows a moderate variation.  This indicates that the electronic
+distribution for the latter states induces a small modification
+(polarization) of the $n_z$ and $\sigma_{\mbox{\tiny CH}}$ orbitals which is taken
+into account if these orbitals are added to the active space together with
+the $\sigma_{\mbox{\tiny CH}}^*$ orbitals.
+
+\input{03_nevpt/tbl_vertexc_aceta_npi.tex}
+\vspace{3mm}
+%As previously said, Rydberg states (not described within our basis set) are
+%expected to have a marginal influence on the vertical adiabatic valence excited
+%states.  However, they could play some role for the vertical excitation
+%energies.  A comparison of the results here reported with those presented
+%later in this thesis on small carbonyl compounds (only singlet states) using
+%a basis set well suited to describe the Rydberg states and an active space
+%equivalent to CAS(A) for the valence states, shows that the electronic
+%energies for such states at the ground state equilibrium geometry are
+%not strongly affected by the neglection of the Rydberg states.
+%
+%For all the valence singlets, the difference is less than one tenth
+%of eV.  
+
+For acetaldehyde (Tab. \ref{tbl:vertexc_aceta_npi}) the agreement of the NEVPT2 values with experimental data for
+the \snpi\ transition is excellent. For this transition a number of theoretical 
+determinations exists: apart from the CIS(D)\cite{cpl-219-21-1994}, CCSD\cite{cpl-219-21-1994} and
+EOM-CCSD\cite{cpl-241-26-1995} methods, which give results of the same quality as NEVPT2, the other
+methods give too low (TDDFT/BLYP\cite{jcp-108-4060-1998} and VOO-CCD\cite{jcp-113-6509-2000}) and too high 
+(CISMP2\cite{jpc-97-4293-1993}, TDDFT/B3LYP\cite{cpl-297-60-1998}, P-EOM-MBPT\cite{cpl-248-189-1996}
+and P-EOM-CCSD\cite{cpl-248-189-1996}) values. For the triplet \npi\ state also, 
+the NEVPT2 results are in good agreement with the experimental data, apart from the 
+value obtained in Ref. \citen{cpl-36-589-1975} (3.75 eV) which is quite far from the
+other determinations. In this case only two theoretical estimations are
+available: the CISMP2\cite{jpc-97-4293-1993} value, as occurs for other
+states, is too large, while the TDDFT/B3LYP\cite{cpl-297-60-1998} is
+slightly too low. 
+
+For the acetone molecule (Tab. \ref{tbl:vertexc_aceto_npi}) the \npi\
+singlet NEVPT2 results (both SC and PC) agree well with the experimental
+data and, with very few exceptions, with other theoretical results.  For the
+\tnpi\ state only three theoretical estimations have been published and all
+of them give an energy slightly lower (3.86-3.98 eV) than the experimental
+values (4.15-4.3), while NEVPT2 (4.11 and  4.14 eV) shows a better agreement
+with experiments.
+
+As to the comparison of the three molecules, one notes that the experimental
+study on acetone shows an increment, with respect to formaldehyde, of the
+excitation energy of the \snpi\ and \tnpi\ states of $\simeq$ 0.4-0.5 eV,
+acetaldehyde being between formaldehyde and acetone: these results are well
+reproduced  by NEVPT2 and probably indicate a destabilization of the $\pi^*$
+orbital due to the presence of the methyl group. 
+
+\input{03_nevpt/tbl_vertexc_aceto_npi.tex}
+
+% }}}
+
+\newpage
+\subsubsection*{Excited state equilibrium geometries}
+% {{{
+For the calculation of the adiabatic excitation energies, the equilibrium
+geometries for the \npi, \pipi\ and  \spi\ states have been computed at the
+CASSCF level. 
+
+% }}}
+
+\subsubsection*{The \npi\ states}
+% {{{
+The equilibrium geometries for the \npi\ triplet and singlet states are
+reported in Tabs. \ref{tbl:exc_geom_form_npi}, \ref{tbl:exc_geom_aceta_npi}
+and \ref{tbl:exc_geom_aceto_npi} for the formaldehyde, acetaldehyde and
+acetone respectively. 
+
+\input{03_nevpt/tbl_exc_geom_form_npi.tex}
+
+The \snpi\ state of formaldehyde is experimentally well
+characterized and many spectroscopical parameters are known
+\cite{jms-94-114-1982,jms-99-294-1983,jms-30-365-1969}.  As expected, the
+population of the $\pi^*$ antibonding orbital, weakening the CO bond,
+induces a lengthening of the C-O distance and a pyramidalization on the
+carbon atom.  The equilibrium geometry obtained with the CAS(A) and CAS(C)
+active spaces are in reasonable agreement with the experimental
+determinations: as for the bond lengths, R$_{\mbox{\tiny CO}}$ has an
+appreciable error (0.064  and 0.035 \AA\ for the two spaces respectively)
+while R$_{\mbox{\tiny CH}}$ is well described with CAS(C) and slightly too
+short with CAS(A). This behavior for  R$_{\mbox{\tiny CO}}$ was already
+found at CASSCF level in Refs.  \citen{jms-480-263-1999} and
+\citen{jcp-105-5927-1996} and is common to
+all the excited states of formaldehyde here considered: the CASSCF(CAS(A))
+description gives too large values, only partially improved with the CAS(C)
+active space. Dallos {\it et al} \cite{jcp-114-746-2001} found that
+increasing the basis set size, the R$_{\mbox{\tiny CO}}$ distance decreases and is
+therefore expected an improvement using a larger basis set. Also, one
+can expect that performing the geometry optimization including the dynamical
+correlation energy could further decrease the CO distance.
+The out--of--plane bending angle is found to be 37.5 and 37.7 degrees in the present work, 
+3.5 and 3.7 degrees higher than the experimental value. 
+
+For the \tnpi\ state similar considerations can be done. In this case there
+are fewer theoretical works in literature. The obtained results confirm
+that the \npi\ triplet state is more bent than the singlet
+\cite{cr-75-67-1975,jpc-97-4293-1993} and has a shorter CO bond length.
+
+%aceta
+
+\input{03_nevpt/tbl_exc_geom_aceta_npi.tex}
+
+
+In the case of acetaldehyde, the state is much less characterized
+experimentally: only the out--of--plane bending angle has been determined
+\cite{jcp-105-2547-1996,jpc-98-1519-1994}.  The values here
+obtained compare well with these results. The theoretical knowledge of the
+equilibrium structure of the two \npi\ states is less complete than for
+formaldehyde, being essentially based on single reference methods.  The
+comparison with the analogous states in formaldehyde shows that the CO and
+CH$_{\rm ald}$ bond lengths and the out-of-plane angle are very similar
+for the two molecules.
+
+%aceto
+\input{03_nevpt/tbl_exc_geom_aceto_npi.tex}
+
+For acetone no experimental data exist but some CASSCF geometry
+optimizations for both the \npi\ triplet and singlet have been published.
+For the singlet also P-EOM-MBPT2 \cite{jcp-110-62-1999} and DFT/BLYP
+\cite{jcp-108-4060-1998} studies have been performed. The results here
+obtained agree with these calculations, the main difference being for the
+\snpi\ state where the DFT/BLYP \cite{jcp-108-4060-1998} and the CASSCF
+(Ref. \citen{jcp-111-205-1999}) results give a shorter CO bond length, a
+longer CC bond length and a smaller $\angle$CCC angle. 
+
+Concerning the comparison with the other molecules, one can note that all
+the geometrical parameters show modest variations changing the carbonyl
+substituents (considering CAS(A) for formaldehyde). The only exception is
+the CO bond length in acetone which is slightly larger than in formaldehyde
+and acetaldehyde for both states.
+
+The present results show that the excitation process, apart from the
+lengthening of the CO bond and the pyramidalization, leads to a
+moderate increase of the $\angle$RCR$^\prime$ (R, R$^\prime$=H, CH$_3$) and
+to a modest shortening of the CH$_{\rm ald}$ bond length while the CC bond
+length does not change significantly. 
+% }}}
+
+\subsubsection*{The \pipi\ and \spi\ states}
+% {{{
+
+The CASSCF equilibrium geometry for the \pipi\ and \spi\ states of formaldehyde, acetaldehyde and acetone
+are reported in Tabs. \ref{tbl:exc_geom_form_other},
+\ref{tbl:exc_geom_aceta_other} and \ref{tbl:exc_geom_aceto_other},
+respectively.
+
+\input{03_nevpt/tbl_exc_geom_form_other.tex}
+
+The equilibrium geometry of the \spipi\ state of formaldehyde has been
+subject of debate. The Walsh rules \cite{jcs-1953-2306-1953} indicate that
+all the \npi, \pipi\  and \spi\  states should have bent equilibrium geometry,
+as actually has been experimentally and theoretically demonstrated for the
+\npi\ state (see Tab.~\ref{tbl:exc_geom_form_npi}).  For the \pipi\ state
+no experimental data exist regarding the equilibrium geometry.  Excited
+state SCF (SCFX) \cite{jcp-87-7076-1987}, two configuration SCF (TCSCF)
+\cite{jcp-87-7076-1987}, CI of singles (CIS)
+\cite{jpc-96-135-1992,jpc-97-4293-1993}, multireference singles and doubles
+CI (MRD-CI) \cite{jpc-99-8050-1995,cpl-256-179-1996} and CASPT2
+\cite{tca-92-227-1995} calculations have found that the equilibrium geometry
+for the \spipi\ state is planar.  In a recent work \cite{jcp-114-746-2001}
+Dallos {\it et al}, performing full geometry optimization using high-level
+MR methods, showed that this state has a pyramidal equilibrium geometry and that
+the structure optimized under planar constraints is a saddle point, rather
+than a minimum, therefore confirming the predictions of the Walsh rules. 
+Dallos {\it et al} also found that the \spipi\ and \sspi\ energy
+surfaces exhibit a conical intersection and that the \spipi\ state at its
+equilibrium geometry has a strong component on the $n^2$ GS electronic
+configuration (this is the origin of the predissociated character of all VUV
+absorption bands), and a large component of the \sspi\ state.  A pyramidal
+minimum in the 2 $^1$A$^\prime$  energy surface with a mixed \pipi\ and
+\spi\ character was also found by other authors
+\cite{jpc-99-8050-1995,tca-92-227-1995}.
+
+In the present calculations, two minima have been found on the $S_2$
+potential energy surface of formaldehyde: they are reported
+in Tab. \ref{tbl:exc_geom_form_other} and indicated with the notation I and
+II.  In other cases, multiple solutions have been found which differ only
+for the nature of the active orbitals with occupation number close to two or
+zero and describe therefore the same geometrical minimum, giving almost the
+same equilibrium geometry.  On the contrary, in this case the two solutions
+are related to different geometrical structures. 
+
+Structure I confirms the results of Dallos {\it et al}: the molecule has a
+pyramidal structure with an out-of-plane bending angle of 45-48 degrees
+and the wavefunction has a \pipi\ and \spi\ mixed character. This mixing
+makes the label here used, \pipi, less meaningful than for the other states
+and this state would be better termed $S_2$.  The CASSCF R$_{\mbox{\tiny CO}}$ bond
+distance for the I minimum with both the CAS(A) and CAS(C) active spaces is
+slightly too long with respect to the MR-CISD \cite{jcp-114-746-2001} ones,
+while the R$_{\rm CH}$ is slightly too large with CAS(C) and is well
+described with CAS(A).  The $\angle$HCH angle is always lower  than in the
+MR-CISD calculations.
+
+The second minimum (II) has a peculiar structure: the R$_{\mbox{\tiny CO}}$ distance
+is shorter than for the I structure (with CAS(C) it is close to the value
+found for the GS), the R$_{\mbox{\tiny CH}}$ bond length is the longest found for all
+the states here studied and the $\angle$HCH angle is the smallest. The
+molecule is strongly bent with an out-of-plane angle of 76.5 degrees
+(CAS(A)) and 66.8 degrees (CAS(C)).  This structure, which has never been
+characterized, can be interesting because its energy is close to the energy
+of the I structure, with CAS(C) giving a lower energy. 
+The II geometry can be a good candidate as a key structure in
+photochemical dynamical processes but it can be reasonably excluded as a
+relevant structure in the interpretation of the absorption spectrum.  Its
+actual importance can be established only by a complete scanning of the GS,
+$S_1$ and $S_2$ potential energy surfaces, a study which is beyond the scope
+of this thesis.  Given its probably marginal interest in the description of
+the absorption spectrum, it will not be further discussed here.  
+
+The triplet \pipi\ state has also a pyramidal equilibrium geometry with a
+shorter R$_{\mbox{\tiny CO}}$ bond length and a less bent structure than the singlet
+state.  The geometrical parameters agree with previous published results,
+apart from the already discussed characteristic of the R$_{\mbox{\tiny CO}}$ bond
+distance which turns out to be slightly too long with respect to the
+experimental value.  In this case no mixing is noted with the \spi\   
+configuration and the electronic configuration \pipi\  provides a good
+representation.
+
+The \spi\  singlet and triplet states of formaldehyde have received much less
+attention than the \npi\  and \pipi\  states.  In this work no minimum has
+been found on the $S_3$ energy surface, thus confirming the results of
+Dallos {\it et al} \cite{jcp-114-746-2001}.  Also in this case, the triplet
+is exempt from the \pipi/\spi\ mixing.  It has a pyramidal structure with a
+larger out-of-plane bending angle than the \tpipi\ state.
+
+% aceta e aceto
+\input{03_nevpt/tbl_exc_geom_aceta_other.tex}
+
+In the case of acetaldehyde and acetone, for the \pipi\ states only two
+theoretical determinations of the equilibrium geometry have been published:
+the first regards the \spipi\ state of acetaldehyde \cite{jpc-97-4293-1993}
+while the second regards the \spipi\ state of acetone \cite{cpc-3-57-2002}.
+The \tpipi\ and the \spi\ states have not been studied. No experimental data
+exist in these cases.
+
+The results here obtained show that, as in formaldehyde, the second singlet
+excited state has a mixed \pipi\ and \spi\ nature in both molecules and it
+is called hereafter $S_2$.  In acetaldehyde the CASSCF approach gives for
+this state a geometrical structure quite similar to the CIS one
+\cite{jpc-97-4293-1993}, apart from the CO bond length for which CIS is
+known to give too short values.
+
+\input{03_nevpt/tbl_exc_geom_aceto_other.tex}
+
+The equilibrium geometry here obtained for acetone is very close to the one
+published in Ref. \citen{cpc-3-57-2002} and confirms that the molecule is
+bent with an out-of-plane angle similar to the one found for formaldehyde.
+The CO bond length is remarkably longer and the $\angle$CCC angle is larger
+than in formaldehyde.  In both triplets no mixing has been found between the
+\pipi\ and \spi\ electronic configurations.  The structure of the \tspi\
+state for acetaldehyde and acetone is here reported for the first time.
+
+As for the $S_3$ state, our calculations confirm the results on acetone of
+Diau {\it et al} \cite{cpc-3-57-2002}, who have found that no stationary
+point exists on the $S_3$ surface, any attempt to find it always leads to
+the  $S_2$ minimum.
+
+The comparison of the three molecules reveals that the the \tpipi\ state has
+a geometrical structure similar for all molecules, only the out--of--plane
+bending angle showing a moderate variation.  This behavior was also found
+for the \npi\ states. On the contrary, the $S_2$ and \tspi\ states present
+different structures when changing the carbonyl substituents.  In the case
+of the $S_2$ state the CO bond length and the $\angle$RCR$^\prime$ (R,
+R$^\prime$=H, CH$_3$) angle increase when the hydrogen atoms are substituted
+with the methyl group, while the CC and CH$_{\rm ald}$ bond lengths remain
+almost unchanged. The pyramidalization angle does not have a clear trend,
+being large for formaldehyde, small for acetaldehyde and intermediate for
+acetone.  For the \tspi\ state the behavior is less clear: one can again
+note that the CC and CH$_{\rm ald}$ bond lengths show small variations and
+that the $\angle$RCR$^\prime$ and pyramidalization angles are very close for
+formaldehyde and acetaldehyde. 
+
+In all cases the excitation process leads to a CO bond lengthening larger
+than for the \npi\ states: this can be easily understood noting that in the
+\pipi\ and \spi\ states the electron is promoted from a bonding to an
+antibonding orbital.
+% }}}
+
+\subsubsection*{Adiabatic excitation energies}
+% {{{
+The adiabatic excitation energies 
+for the states here considered are reported in Tabs. \ref{tbl:adiab_form},
+\ref{tbl:adiab_aceta} and \ref{tbl:adiab_aceto}.  In order to account for
+the vibrational contribution of the $0\leftarrow0$ adiabatic transition, the
+Zero Point Energy has been estimated in the harmonic approximation at the
+CASSCF level, computing the harmonic vibrational frequencies of all the
+states here considered. Corrected values are in parentheses.
+
+\input{03_nevpt/tbl_adiab_form}
+
+As a general consideration, it is possible to note that the inclusion of the
+correlation energy {\it via} the NEVPT2 approach leads in general to a
+lowering of the excitation energy.  This lowering is of the order of some
+tenths of eV, not exceeding 0.6-0.7 eV apart from the particular case of the
+$S_2$ state of formaldehyde with CAS(A) ($\simeq$ 2 eV, reduced to $\simeq$
+0.6 eV with CAS(C)).  This shows that the zero-order description appears to
+be qualitatively correct, but correlation effects must be taken into account
+for a quantitative estimation of the excitation energies.
+
+Moreover, in all the cases here studied both Strongly and Partially
+Contracted NEVPT2 variants give almost the same results, the difference
+being always of the order of some hundredths of eV.  The agreement between
+the SC and PC variants of NEVPT2 is another indication of the good quality
+of the zero-order wavefunctions. 
+
+For formaldehyde the \snpi\ NEVPT2 values range in the narrow interval 
+3.52-3.57 eV (3.46-3.48 with ZPE) in very good agreement with the
+experimental determination (3.50 eV) and previously published high quality 
+theoretical estimations. 
+Analogous considerations can be done for the \tnpi\ state, where the NEVPT2
+values (3.17-3.21 eV, 3.08-3.11 eV with ZPE) agree with the experimental
+value (3.12 eV) and with the MRD-CI\cite{jpc-99-16576-1995} and
+CCSD(T)\cite{jcp-108-5281-1998} results (3.22 and 3.17 eV, respectively),
+while the CIS\cite{jpc-97-4293-1993} determination (3.63 eV) is too high.
+
+For the $S_2$ state, at the I minimum (the one involved in the excitation
+process) NEVPT2 gives an adiabatic excitation energy in the range 7.62-7.67
+eV (7.52-7.59 eV with ZPE), only slightly higher than the high-level
+MR-AQCC\cite{jcp-114-746-2001}, MR-CISD+Q\cite{jcp-114-746-2001} and CASPT2
+values\cite{tca-92-227-1995} (7.45, 7.56 and 7.43 eV respectively).  For
+this state no experimental measurements have been published.  The value here
+found for the excitation energy of the $S_2$ adiabatic transition, close to
+the adiabatic \snts\ transition\cite{jcsft-90-683-1994} (7.08 eV), confirms
+its role as a perturber state for this transition.
+
+The \tpipi\ state is interesting because experimental determinations of the
+adiabatic excitation energy exist. For this state considerations have been
+published\cite{cp-70-291-1982} regarding the hypothesis that the lowest
+observed peak (4.83 eV) could not be assigned to the $0\leftarrow0$ 
+vibrational transition, but rather to  the $1\leftarrow0$ one (the
+vibrational levels regard the $\nu_2$ CO stretch normal coordinate).
+On the basis of computed Franck-Condon factors, Bruna {\it et
+al}\cite{jpc-99-16576-1995} showed that the $0\leftarrow0$ and
+$1\leftarrow0$ transitions are predicted to be so weak that probably they
+have not been detected experimentally and propose to assign the 4.83 eV
+observed peak to the $2\leftarrow0$ transition. 
+Using their predicted difference between the $\nu_2=2$ and $\nu_2=0$  CO
+stretch levels (0.27 eV), the $0\leftarrow0$ transition can be estimated at
+4.56 eV. The NEVPT2 results in this case range in a slightly wider interval
+(4.38-4.49 eV, 4.31-4.42 eV with ZPE) than previously and confirm that the
+observed peak cannot be assigned to the $0\leftarrow0$ transition. Given the
+high level of accuracy found for the NEVPT2 results for the  \snpi\ and
+\tnpi\ states, one can suppose the 4.56 eV  estimation of Bruna {\it et
+al}\cite{jpc-99-16576-1995} to be too high and that the 4.83 eV observed
+peak could be assigned to the  $\nu_2$ $3\leftarrow0$ transition. With this
+hypothesis and the estimation of 0.39 eV for the difference between the
+$\nu_2=3$ and $\nu_2=0$  CO stretch levels\cite{jpc-99-16576-1995}, the new
+assignment for the $0\leftarrow0$ transition is 4.44 eV.
+
+%As concerns the second minimum on the $S_2$ surface, $S_2$ (II),
+%the large modification in the excitation energy found passing from the CAS(A) to the CAS(C) active
+%space and the sizable lowering brought by the perturbation,
+%show that CAS(A) is inadequate to describe the electronic structure at the $S_2$ minimum.
+%On the other hand, the moderate lowering of the excitation energy due to the perturbation 
+%treatment with CAS(C) indicates that these results are of good quality. 
+%With this space $S_2$ (II) is lower in energy than the first minimum, 
+%$S_2$ (I), both at the NEVPT2 and CASSCF level.  At this geometry the GS is
+%very close to the $S_2$ surface ($\simeq$ 0.7 eV higher at NEVPT2 level).
+
+The \tspi\ transition has not been observed experimentally.  The NEVPT2
+values (7.17-7.28 eV, 7.07-7.21 eV with ZPE) agree with the theoretical
+work\cite{jpc-99-16576-1995} concerning this state.
+
+For acetaldehyde the theoretical knowledge of the valence excited states is
+modest. All the available studies are of single reference type and the
+NEVPT2 results of this work are the first obtained with a multireference
+approach. For the \npi\ states, where experimental data exist, the agreement
+of the NEVPT2 excitation energies with experiment is good and they show a
+sizable improvement with respect to the other theoretical estimations (the
+CIS-MP2\cite{jpc-97-4293-1993} and UMP2\cite{jpc-97-4293-1993} values are
+too high while the TDDFT\cite{jcp-108-4060-1998} one is too low). 
+
+\input{03_nevpt/tbl_adiab_aceta}
+
+For the $S_2$ state no experimental assignment and only one theoretical
+study have been published. The NEVPT2 values (7.13-7.16 eV, 7.02-7.05 with
+ZPE) are much lower than the CIS-MP2\cite{jpc-97-4293-1993} one (8.30 eV).
+This again confirms the tendency of the CIS-MP2 method to give too high
+excitation energies. Finally for the \pipi\ and \spi\ triplets only an
+experimental measurement exists for the \tpipi\ state and those here
+presented are the first theoretical values.  For this state the disagreement
+of NEVPT2 with experiment ($\simeq$ 0.6-0.7 eV) is slightly larger than in
+formaldehyde and could have the same origin, i.e., the observed peak should
+be assigned to a $n\leftarrow0$ vibrational transition (with $n> 0$).
+
+In the case of the acetone molecule, for the \npi\ singlet and triplet states
+the NEVPT2 results are in a better agreement with the experimental data than
+the other available theoretical estimations (apart from the
+MRCI\cite{jcp-111-205-1999}).
+
+It must be noted that in all the calculations for the excited states of
+acetone, the geometry optimization has been performed in the C$_s$ symmetry
+group: this allows the molecular skeleton to pyramidalize, but imposes a
+constraint for the rotation of the methyl groups. Nevertheless the optimized
+geometries have been confirmed to be true minima (possibly not the global
+minimum) by a vibrational analysis. One can however reasonably suppose that
+the possible global minima arising from a rotation of the methyl group
+should have energy properties very similar to those here reported.  
+
+\input{03_nevpt/tbl_adiab_aceto}
+
+The $S_2$ state is found to be 6.61-6.63 eV above the ground state, in
+partial disagreement with the CASPT2 value\cite{jcp-104-1791-1996} which
+however has been obtained performing a restricted optimization (the
+molecular skeleton is planar and the methyl groups have the GS geometry).
+
+For the \pipi\ and \spi\ triplets the results here reported are, to the best
+of our knowledge, the first theoretical estimations.  The disagreement
+between the NEVPT2 and the experimental values for the \tpipi\ state
+(0.7-0.9 eV) could be explained, as previously described in the case of
+formaldehyde and acetaldehyde, supposing that the experimental value,
+assigned to the $0\leftarrow 0$ vibrational transition, is actually due to a
+transition to higher vibrational levels in the excited state, the first
+vibrational levels having too low Franck-Condon factors. In the case of
+formaldehyde and acetaldehyde the difference between the experimental and
+the NEVPT2 values was smaller (0.4-0.5 and 0.6-0.7 eV).  This point can be
+clarified only with a calculation of the Franck-Condon factors. 
+
+It is worth noting that if the NEVPT2 description is correct, an interesting
+feature distinguishes acetone from formaldehyde and acetaldehyde: in acetone
+the \tpipi\ state at its equilibrium geometry is very close in energy to the
+\snpi\ state in the Franck-Condon region. This feature could play a role in
+the Norrish type-I reaction, which is known to proceed {\it via} an
+intersystem crossing\cite{pps-3-6-2004} from the \snpi\ state to the triplet
+manifold. In formaldehyde the minimum of \tpipi\ was predicted to be
+$\simeq$ 0.4 eV above the vertical excitation of the \snpi\ state, thus
+excluding its participation in the photophysical processes taking place
+after the \snpi\ excitation.  In the case of acetaldehyde the difference is
+less pronounced than in formaldehyde, but the \tpipi\ minimum remains higher
+than the \snpi\ at the vertical excitation geometry.
+
+%Let us now compare the results for the three molecules.
+%Firstly one notes that the lowering of the excitation energies passing from the 
+%vertical to the adiabatic transition is particularly pronounced for the \spipi\ state
+%(more than  2 eV) and for the \tpipi\ and \tspi\ states (of the order of 1.2-1.5  eV), while it is
+%quite small for the \snpi\ and \tnpi\ states (0.4-0.5 eV).
+%
+%%ACETO
+%In acetone the lowering is slightly larger than in formaldehyde. 
+%This shows that the methyl groups have a 
+%larger stabilization effect at the relaxed structure than the hydrogen atoms. 
+%This effect is opposite
+%to the destabilization effect that the methyl groups have on the $\pi^*$ orbital 
+%(see the discussion on the vertical excitation energies).
+%The balancing of these two effects is different for the various
+%states: indeed the energy minima in acetone are higher than in formaldehyde for the 
+%\npi\ states ($\simeq$ 0.2 and 0.3 eV for the singlet and triplet respectively),
+%lower for the \spipi\ state ($\simeq$ 1 eV) while they are
+%almost equal for the other states (differences of the order or smaller than 0.1 eV).
+%The stabilization effect of the methyl groups on the $S_2$ state (which has ionic nature) of acetone,
+%was also found by Merchan {\it et al}\cite{jcp-104-1791-1996}.
+%
+%
+%%
+%%  ACETALDEIDE
+%%
+%
+%In acetaldehyde the behavior, passing from the vertical to adiabatic transition energies,
+%is intermediate between formaldehyde and acetaldehyde.
+%We stress again that in the case of the \spipi\ state the lowering is remarkably
+%large: 2.0-2.2 eV in formaldehyde, 2.4-2.6 eV in acetaldehyde and 2.6-2.8 eV in acetone.
+
+
+%Sistemare
+Finally, one notes that the inclusion of the ZPE in the calculation of the
+adiabatic excitation energies makes in general the computed values closer to
+the experimental data. The use of the harmonic approximation at the CASSCF
+level is found to be a reasonable approximation in the present applications.
+% }}}
+
+\subsubsection*{Harmonic vibrational frequencies}
+
+\subsubsection*{Ground state}
+% {{{
+The harmonic vibrational frequencies for the ground state are 
+reported in Tabs. \ref{tbl:vibra_form}, \ref{tbl:vibra_aceta} and 
+\ref{tbl:vibra_aceto} for the three molecules, respectively, together
+with the most meaningful published values.
+
+For the ground state of the three molecules here considered the experimental
+fundamental and harmonic vibrational frequencies have been published and the
+assignment of the normal modes is known without ambiguity. 
+
+The comparison of the results here obtained with these data allows some
+general considerations to be drawn.  It is well known that for HF
+calculations the computed harmonic frequencies are consistently too high and
+they must be scaled by a factor less than one for comparisons with
+experimental harmonic frequencies, due to the lack of electronic correlation
+(static and dynamic) of the HF wavefunction. 
+
+In the CASSCF wavefunction part of the static electronic correlation is in
+principle taken into account, so a closer agreement with experiment could be
+expected.  Actually this is true for the normal modes involving bonds for
+which the valence bonding and antibonding orbitals are included in the
+active space. In the calculations here reported, this is always true only
+for the CO stretching. In the particular case of formaldehyde with CAS(C),
+where all the valence bonding and antibonding orbitals are active, the above
+consideration holds true for all bonds. For instance the CH bonds in
+formaldehyde with CAS(A) are treated in a ``single reference'' (similar to
+HF) manner therefore neglecting the $\sigma/\sigma^*$ correlation.
+
+\input{03_nevpt/tbl_vibra_form}
+
+For formaldehyde (Tab. \ref{tbl:vibra_form}) the CAS(A) frequencies are in
+acceptable agreement with the experimental harmonic ones, apart from
+the symmetric and asymmetric stretchings of the CH bonds for which too high
+($\simeq$ 200 cm$^{-1}$) values are found.  The use of a larger active space
+has the effect to improve the agreement with experimental data, in
+particular lowering the two CH stretchings, but whereas the asymmetric
+stretching is now very close to experiment, the symmetric one shows a
+considerable error ($\simeq$ 150 cm$^{-1}$). The source for such an error
+can be located in the incompleteness of the basis set or in the limited
+account of the correlation effects brought by the CASSCF wavefunction.  In
+order to clarify this point, larger basis sets (ANO with more orbitals and
+cc-pVQZ) have been used: the results show quite modest variations with
+respect to those obtained with the C,O ($14s9p4d$)/[$4s3p1d$], H
+($8s4p$)/[$2s1p$] contraction of the ANO basis sets. The completeness of the
+basis set is therefore excluded as the source of the discrepancy on the
+symmetric CH stretching frequency, which can be reasonably ascribed to the
+lack of dynamical correlation in the CAS(C) wavefunction.  This result is
+confirmed by the comparison with other theoretical data: indeed all methods
+take into account the dynamic correlation and their agreement with
+experiment is higher than in the present case.
+
+%aceta
+\input{03_nevpt/tbl_vibra_aceta}
+
+For acetaldehyde and acetone similar considerations can be done. The CASSCF
+frequencies are all too high with respect to the experimental harmonic
+frequencies with the exception of the CO stretching, for which a good
+agreement is found: comparing the CAS(A) results for acetone and those
+obtained at the HF level \cite{jms-550-281-2000} is possible to note that
+the two methods give very close results, apart from the CO stretching. As
+expected, the difference between theory and experiment is even larger if
+theoretical harmonic and experimental fundamental frequencies are compared,
+due to the anharmonicity of the potential energy surfaces.  
+
+\input{03_nevpt/tbl_vibra_aceto}
+
+On the contrary, if correlation effects on the energy potential are
+considered (albeit partially as in the CASSCF method) the theoretical
+estimation is of good quality, as indicated in the present calculation by
+the CO stretching: in acetaldehyde the CAS(B) value (1777 cm$^{-1}$)
+compares well with the experimental one (1774 cm$^{-1}$), while in acetone
+the agreement is only slightly worse (1785 cm$^{-1}$ with CAS(A), 1760
+cm$^{-1}$ experimental) but much better than that given by the HF method
+(1975 cm$^{-1}$). 
+
+The DFT method, taking partially into account the correlation effect all
+over the molecule, gives results \cite{jcp-111-205-1999,jms-550-281-2000} in
+closer agreement with experiment when compared with both CASSCF and HF for
+all the normal coordinates, apart from the CO stretching for which CASSCF
+gives good results. 
+% }}}
+
+\subsection*{The \npi, \pipi\ and \spi\ states}
+% {{{
+The vibrational frequencies computed in this work for the excited states,
+together with the experimental and some relevant theoretical data are
+reported in Tabs.~\ref{tbl:vibra_exc_form}, \ref{tbl:vibra_exc_aceta} and
+\ref{tbl:vibra_exc_aceto}.
+
+For the excited states experimental information on the vibrational
+frequencies is reduced in number and the theoretical approach can be of
+great help for the interpretation and assignment of the vibrational
+structure of spectra.  In the case of acetaldehyde and acetone the few
+published experimental data are not reported in respective tables but they
+are commented in the text for the sake of clarity. 
+
+For excited states, especially in the case of acetaldehyde and acetone, the
+assignment of a description label to the normal modes is not an easy task
+(and in some cases meaningless): the molecules have a lower symmetry than
+the GS and a distorted geometry with elongated bonds, therefore the
+identification of a normal mode with a group motion can be difficult. 
+In the following the labels used for the ground state have been maintained,
+but they must be intended in general only as an approximate description of
+the nuclear motion.
+
+For formaldehyde, the effect of the \npi\ excitation is to lower the CO
+stretching, the CH$_2$ rocking and the out-of-plane bending while the CH
+stretchings show modest variations (the symmetric stretching is slightly
+increased). This behavior is common to both the singlet and the triplet
+state, and the agreement with the experimental value is good. Moreover let us
+note that the singlet and triplet states have very similar theoretical
+harmonic frequencies.
+
+For the CH$_2$ scissoring mode in the singlet state, particular care must be
+exerted in analyzing the experimental data. As described by Dallos {\it et
+al} \cite{jcp-114-746-2001}, the original value of 887 cm$^{-1}$ obtained
+analyzing hot bands \cite{jms-30-365-1969}, has been modified to 1290
+cm$^{-1}$ by Hardwick and Till \cite{jcp-70-2340-1979} using a tentative
+assignment of a cold band and to 1429 cm$^{-1}$ by van Dijk {\it et al}
+\cite{jcp-69-2453-1979} on the basis of theoretical transition intensities.
+The problem of the experimental assignment of the frequency of such normal
+mode is therefore still open. 
+
+The comparison of theoretical and experimental data is made even more
+complex if one considers that the theoretically computed  values are harmonic
+frequencies, while experimentally the fundamental frequencies are measured.
+The CAS(A) value cannot be considered a good estimation given the large
+change shown when CAS(C) is used.  
+
+The CAS(C) value here obtained (1356 cm$^{-1}$) is between
+the two experimental values, but considering that the anharmonicity of the
+potential usually gives fundamental frequencies lower than the harmonic
+ones, the CAS(C) result is in a better agreement with the 1290 cm$^{-1}$
+value.  The same consideration has been provided by Dallos {\it et al}
+\cite{jcp-114-746-2001}.
+\input{03_nevpt/tbl_vibra_exc_form}
+For the \pipi\ and \spi\ triplet and $S_2$ states only one frequency has
+been experimentally measured (CO stretching for the \tpipi\ state).  The
+\tspi\ state has never been studied theoretically and for the \tpipi\ state
+only one CIS \cite{jpc-97-4293-1993} calculation has been published.  The
+results obtained with CAS(A) and CAS(C) are reported for such states in Tab.
+\ref{tbl:vibra_exc_form}.  The following comments are based on the CAS(C) values.
+One promptly notes the sizable lowering of the CO stretching in the $S_2$
+(690 cm$^{-1}$) and \tspi\ (756 cm$^{-1}$) with respect to the \npi\ states
+(1128 cm$^{-1}$ for singlet, 1194 cm$^{-1}$ for triplet) and with respect to
+the GS (1788 cm$^{-1}$).  The lowering is less pronounced for the \tpipi\
+state (1022 cm$^{-1}$).
+
+%while for the  $S_2$ (II) structure (1431 cm$^{-1}$)
+%the CO stretching frequency is higher than  in the \npi\ states, but lower
+%than in GS.  This behavior is expected if one considers that 
+%for the \pipi\ and \spi\ states there is a hole in a bonding orbital, while
+%in the \npi\ state the hole is in a non-bonding orbital.  
+%The behaviour of
+%the $S_2$ (II) state is not easily classifiable, due to its strongly bent
+%structure.  Given its probably marginal interest in the description of the
+%absorption spectrum, it will not be further discussed here.  
+
+A common characteristic of all the states reported in Tab.
+\ref{tbl:vibra_exc_form} is the quite high value for the CH stretchings,
+%particularly manifest for the $S_2$ (II) state (3107 cm$^{-1}$ for the asym
+%stretch, 3988 cm$^{-1}$ for the sym one) where a sizeable difference with
+%respect to the GS (3031 cm$^{-1}$ asym stretch, 2795 cm$^{-1}$ sym one) is
+%found. 
+Another interesting feature of the data reported in Tab.
+\ref{tbl:vibra_exc_form} is the value of the out-of-plane bending
+frequency for the $S_2$ singlet (1113 cm$^{-1}$): it is closer to the ground
+state value (1214 cm$^{-1}$) than to the \npi\ one (771 cm$^{-1}$ for
+singlet, 842 cm$^{-1}$ for triplet) while for the \pipi\ and \spi\ triplets
+the opposite occurs. The particular behavior of this singlet could be a
+manifestation of the avoided crossing of the \pipi\ and \spi\ surfaces which
+leads to the mixing of the two electronic configurations.  Finally in all
+states the CH$_2$ scissoring has a frequency similar to the one found for
+the \npi\ states, only the \tpipi\ state showing a difference larger than
+100 cm$^{-1}$.
+
+%aceta
+\input{03_nevpt/tbl_vibra_exc_aceta}
+
+For the acetaldehyde molecule, the previously published calculations of the
+excited state harmonic frequencies regard only the \snpi, \tnpi\ and $S_2$
+states and are all performed with single reference based methods.  For these
+states, those here reported are the first example of multireference values,
+while for the \tpipi\ and \tspi\ states this work presents the first
+theoretical study.  First of all, one notes that the occurrence of
+quasi-degeneracy of the vibrational levels (and therefore their mixing)
+appears in various cases: a similar result was also obtained by Hadad {\it
+et al} \cite{jpc-97-4293-1993}.  The aldehydic CH stretching is the highest
+for all states, with an increase, with respect to the GS, in the range of
+100-200 cm$^{-1}$. In two cases (\tnpi\ and $S_2$) this mode becomes quasi
+degenerate with one of the CH$_3$ stretchings, leading to a mixing of the
+two modes.  The CH$_3$ stretchings show very modest variations with respect
+to the GS: the only exception is given by the $S_2$ state, where the lowest
+frequency is $\simeq$ 120 cm$^{-1}$ lower than in the GS.
+
+In the \npi\ states, the CO stretching is strongly mixed with other modes
+(CH$_3$ rocking and CC stretching): the resulting frequencies are in the
+range 950-1200 cm$^{-1}$.  For the other states, the frequency associated
+to such mode is very low (601, 890 and 764 cm$^{-1}$ for the $S_2$, \tpipi\
+and \tspi\ states, respectively) with respect to the GS value (1777
+cm$^{-1}$).  The CH ``in plane'' bend (1487 cm$^{-1}$ in the GS) is lowered
+by $\simeq$ 100 cm$^{-1}$ in the \npi\ states, by $\simeq$ 160 cm$^{-1}$ in
+the $S_2$ state and by $\simeq$ 60 and 200 cm$^{-1}$ in the \tpipi\ and
+\tnpi\ states, while for the ``out-of-plane'' bending (1203 cm$^{-1}$) the
+lowering is much larger (frequencies in the range 669-711 cm$^{-1}$ are
+found according to the state). As for the various CH$_3$ bending and rocking
+modes, one notes that they do not show sizable variations, with the
+exception of the lowest CH$_3$ bending for the $S_2$ state (where a lowering
+of almost 60 cm$^{-1}$ is found) and from the lowest CH$_3$ rocking which
+shows an increase in all states (from 837 cm$^{-1}$ to 1036-1098 cm$^{-1}$)
+apart from $S_2$ (where the increase is only of $\simeq$ 50 cm$^{-1}$).  The
+CC stretching also shows an increase of the vibrational frequency passing
+from the GS (955 cm$^{-1}$) to the excited states: the increase is in a
+close range (170-220 cm$^{-1}$) for all states apart from the $S_2$ one for
+which it is 108 cm$^{-1}$. It is important to note that, for the \npi\
+states, the lowest CH$_3$ rocking and the CC stretching are badly defined
+due to the large mixing with other modes, and therefore the above
+considerations have to be regarded as only indicative.  Finally, for the
+CH$_3$ torsion, for all the states there is a modest increase from 167
+cm$^{-1}$ in the GS to 200-220 cm$^{-1}$, apart again the case of the $S_2$
+state (292 cm$^{-1}$).
+
+From the experimental point of view, some information is available for the
+\npi\ states.  For the singlet, one of the CH$_3$ deformations has been
+assigned \cite{cp-93-425-1985} to 1254 cm$^{-1}$, the CO stretching to 1119
+\cite{jacs-103-3313-1981} and 1173 \cite{cp-93-425-1985} cm$^{-1}$, the CO
+out-of-plane bend to 374 \cite{jcp-81-1632-1984} and 482
+\cite{cp-93-425-1985} cm$^{-1}$ and finally the CH$_3$ torsion to 202
+\cite{jpc-97-7194-1993}, 187 \cite{jacs-103-3313-1981} and 186
+\cite{jcp-78-2219-1983} cm$^{-1}$. The comparison of these data with the
+results of this work leads to the following considerations:
+\begin{itemize}
+\item for the CH$_3$ deformation the CAS(B) value is 1521 cm$^{-1}$, with a
+difference of 267 cm$^{-1}$ with the experimental one. In the GS the
+difference was smaller (100-150 cm$^{-1}$) for the three values indicated
+in Ref. \citen{cp-93-425-1985} in the  analogous modes (1433, 1352 and 1114
+cm$^{-1}$)
+\item the experimental CO stretching seems to be far from the
+present assignment.  It is worth noticing again that in the calculation on
+this state and on the \npi\ triplet, the CO stretching has a component over
+four different normal modes. Three of them are closer to the experimental
+values
+\item for the out--of--plane CO bending the comparison is difficult: it is
+well known that along this normal coordinate the system shows a double
+minimum potential and the vibrational wavefunction is delocalized in both
+minima. The values here reported, obtained using the harmonic approximation
+in one minimum, appear to be consistent with the experimental assignment
+\item for the CH$_3$ torsion the agreement is good
+\end{itemize}
+
+For the triplet \npi\ state four vibrational frequencies have been measured
+experimentally \cite{cjc-70-931-1992}: 905, 518, 364, and 179 cm$^{-1}$.
+These values agree well with the present 1098, 711, 397 and 200 cm$^{-1}$,
+remembering that experimental fundamental and theoretical harmonic
+frequencies are compared.
+
+%aceto
+As for the acetone molecule, let us note that in the calculations of the
+excited states, the geometry optimization has been performed in the $C_{\rm
+s}$ symmetry group: this allows the molecular skeleton to pyramidalize, but
+imposes a constraint for the rotation of the methyl groups. Nevertheless the
+optimized geometries have been confirmed to be true minima (possibly not the
+global minimum) by a vibrational analysis. Let us note that while for the
+\snpi, \tnpi\ and $S_2$ states CASSCF calculations have been published, for
+the \tpipi\ and \tspi\ states the one here reported is the first theoretical
+study.
+
+Some general considerations can be drawn for all the states.  First of all,
+as in acetaldehyde, in some cases difficulties have been found in the
+assignment of the vibrational modes.  In one case the mixing of two modes of
+the GS was strong, due to the large coupling among them.  The CH stretching
+and the CH$_3$ bending modes show higher frequencies than in the ground
+state, while the CH$_3$ bending frequencies do not show sizeable variations.
+The asymmetric and symmetric CC stretchings remain almost unchanged.  The
+CH$_3$ torsions have higher frequencies for all states, especially for the
+$S_2$ singlet, probably due to a sterical effect originated by the
+pyramidalization of the carbonyl carbon atom.  In all the excited states the
+CCC bend has a slightly lower frequency than in the GS.  
+
+As far as the CO bending modes are concerned, remarkably lower frequencies
+are found for all states apart from \snpi\ for the ``out-of-plane''
+($A^{\prime\prime}$) mode.  This behavior is particularly pronounced for the
+$S_2$  state where a lowering of more than 200 cm$^{-1}$ is found for the
+``out-of-plane''  bend. On the other hand, for the ``in-plane''
+($A^{\prime}$) bend the lowering is larger than 150 cm$^{-1}$ for several
+states.
+
+\input{03_nevpt/tbl_vibra_exc_aceto}
+
+The most interesting mode is however the CO stretching for which a marked
+lowering is expected given the nature of the excited states. The lowering
+with respect to the GS (1785 cm$^{-1}$) is of the order of 400-600
+cm$^{-1}$ according to  the state and is in general less pronounced than in
+formaldehyde and acetaldehyde, particularly for the $S_2$, \tpipi\ and
+\tspi\ states where in both molecules frequencies lower than 1000 cm$^{-1}$
+have been found (for instance in formaldehyde the reported values were 717,
+998 and 807 with CAS(A) for the three states respectively).  In acetone this
+frequency ranges from 1234 cm$^{-1}$ in the \tspi\ state to 1352 cm$^{-1}$
+in the \tnpi\ one. Some disagreement with previously published results is
+observed: the values obtained by Sakurai and Kato
+\cite{jms_theo-461-145-1999} for the two \npi\ states (1053 and 1077
+cm$^{-1}$) are lower by almost 300 cm$^{-1}$ with respect to those here
+computed.  Note that the value obtained by Liao {\it et al}
+\cite{jcp-111-205-1999} for the \snpi\ state (1226 cm$^{-1}$) is scaled by a
+factor 0.93 (1318 cm$^{-1}$ before scaling) and therefore is in excellent
+agreement with our result (1337 cm$^{-1}$).
+
+In the case of the \snpi\ state, refined analysis of the vibrational
+structure of the spectra have allowed the determination of some vibrational
+frequencies.  In 1985 Baba {\it et al} \cite{cp-93-425-1985} gave a
+detailed vibronic analysis of the fluorescence excitation spectrum in a
+supersonic nozzle beam assigning the following frequencies: CO stretching,
+1121 cm$^{-1}$; CO out-of-plane bending, 373 and 578 cm$^{-1}$ for the 1+
+and 1- levels, respectively; CCC stretching, 757 (sym) and 1294 (asym)
+cm$^{-1}$; CH$_3$ rocking or deformation, 955 cm$^{-1}$ (tentative
+assignment).  In 1992 Zuckermann {\it et al} \cite{cp-163-193-1992}
+performed a high resolution (0.01 cm$^{-1}$) laser-induced fluorescence
+study giving the following assignment: CH$_3$ torsions, 156 and 172
+cm$^{-1}$; CCC bending, 373 cm$^{-1}$; CO out-of-plane bending, 333
+cm$^{-1}$; CO in-plane bending, 177 or 465 cm$^{-1}$ with two different
+assignment strategies.
+
+The comparison of these values with the ones obtained in this work shows
+that the CCC symmetric and asymmetric stretching and the CO out-of-plane
+modes agree with the assignment of Baba {\it et al} \cite{cp-93-425-1985}.
+Moreover the tentative assignment for the 955 cm$^{-1}$ frequencies is
+confirmed (CH$_3$ rocking). The CASSCF CO stretching is notably higher than
+the experimental values ($\simeq$ 200 cm$^{-1}$), indicating that the CASSCF
+potential energy surface is not well described along the CO stretch and/or
+large anharmonic effects can be expected for this mode. With respect to the
+results of Zuckermann {\it et al} \cite{cp-163-193-1992}, while the CH$_3$
+torsions are in good agreement, the assignment of the CCC bending and of the
+CO out-of-plane bending are probably reversed and for the CO in-plane
+bending the ``second possibility'' discussed in Ref. \citen{cp-163-193-1992}
+(465 cm$^{-1}$) better agrees with the value here obtained (530 cm$^{-1}$).
+Gwaltney and Bartlett \cite{jcp-110-62-1999} support the same conclusion on
+the basis of P-EOM-MBPT(2) calculations.
+% }}}
+
+\section*{Conclusions}
+% {{{
+This section reported a CASSCF/NEVPT2 evaluation for the adiabatic
+excitation energies for six valence states (three triplets and three
+singlets) of three carbonyl molecules (formaldehyde, acetaldehyde and
+acetone), together with a CASSCF study of the equilibrium geometrical
+parameters and of the harmonic vibrational frequencies. Particular attention
+has been paid to deploy a common strategy for the different states and
+molecules, in order to allow a comparison of the results and to identify, if
+possible, trend behaviors. 
+
+The results show that the introduction of the dynamical correlation through
+the NEVPT2 theory leads to an improvement of the excitation energies with
+respect to the CASSCF values. The NEVPT2 values are in general in good
+agreement with the available experimental data.
+
+As far as the equilibrium geometries are concerned, the results obtained
+compare well with the available experimental and high-level theoretical
+data, and allow some controversial assignments to be clarified. For some
+states the results here presented are the first theoretical
+characterizations.  
+
+The main contributions of this part of the thesis can be summarized as follows:
+\begin{itemize}
+\item the first theoretical description of the harmonic frequencies of the \tspi\ state of formaldehyde
+\item the first theoretical description of the geometrical structure and of the harmonic frequencies 
+for the \tpipi\ and \tspi\ states of acetaldehyde and acetone
+\item the first multireference study of the vibrational frequencies of the \tpipi\ state of formaldehyde and of
+the \npi\ states (singlet and triplet) of acetaldehyde
+\item the first example of a common approach to all the valence states of three small carbonyl molecules,
+thus allowing a meaningful comparison of the results
+\end{itemize}
+% }}}
+% }}}
+

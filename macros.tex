@@ -1,0 +1,132 @@
+% sommatorie 
+\newcommand{\sumoneinf}[1]{\sum_{#1 = 1}^{+\infty}}
+\newcommand{\sumonen}[1]{\sum_{#1 = 1}^{n}}
+\newcommand{\sumonenprime}[1]{\sumonen{#1} \! {}^{\prime}}
+\newcommand{\sumalpha}{\sum_{\alpha = 1}^{N}}
+\newcommand{\sumidx}[1]{\sum_{#1}}
+\newcommand{\sumidxprm}[1]{\sum_{#1} \! {}^{\prime}}
+
+% alcune macro utili
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\beqas}{\begin{eqnarray*}}
+\newcommand{\eeqas}{\end{eqnarray*}}
+
+% hamiltoniani ed altri operatori
+\newcommand{\ham}{\hat{\mathcal{H}}}
+\newcommand{\hamel}{\hat{\mathcal{H}}_{el}}
+\newcommand{\hamtot}{\hat{\mathcal{H}}_{tot}}
+\newcommand{\fock}{\hat{\mathcal{F}}}
+
+% energia totale
+\newcommand{\etot}{E_{tot}}
+
+% psi (varie)
+\newcommand{\psia}{\psi_a}
+\newcommand{\psii}{\psi_i}
+\newcommand{\psij}{\psi_j}
+\newcommand{\psik}{\psi_k}
+\newcommand{\psil}{\psi_l}
+\newcommand{\psin}{\psi_n}
+\newcommand{\psim}{\psi_m}
+\newcommand{\psitilde}{\tilde{\psi}}
+\newcommand{\psitot}{\psi_{tot}}
+\newcommand{\psiixq}{\psii \left(x,\! Q\right)}
+\newcommand{\psiixqp}{\psii \left(x;\! Q\right)}
+\newcommand{\psitotxq}{\psitot \left(x,\! Q\right)}
+\newcommand{\psitotxqp}{\psitot \left(x;\! Q\right)}
+
+% costanti frequenti
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\hfrac}{\frac{\hbar^2}{2}}
+\newcommand{\hfracm}{\frac{\hbar^2}{2 m} }
+
+% derivate
+\newcommand{\dpart}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\ddpart}[1]{\frac{\partial^2}{\partial #1^2}}
+\newcommand{\dpartfrac}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ddpartfrac}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\nablavect}[1]{\overrightarrow{\nabla} \!\! _#1}
+\newcommand{\nablaquad}[1]{\nabla^2 \! \! \! _#1}
+
+% braket
+
+\newcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\vacuum}{\left| \mbox{vac} \right\rangle}
+\newcommand{\braket}[3]{\left\langle #1 \left| #2 \right| #3 \right\rangle}
+\newcommand{\integral}[2]{\left\langle #1 \! \!  \right.\left| #2 \right\rangle}
+\newcommand{\integralmodif}[2]{\left\langle #1 \!  \left| #2
+\right. \right\rangle}
+\newcommand{\interact}[2]{\left\langle #1 \left| \right| #2 \right\rangle}
+\newcommand{\commut}[2]{\left[ #1,  #2 \right]}
+
+% altri
+
+\newcommand{\adiab}{\hat{\Lambda}_{ki}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\comm}[2]{\left[ #1, #2 \right]}
+\newcommand{\anticomm}[2]{\left[ #1, #2 \right]_{+}}
+
+% orbitali e analoghi
+
+\newcommand{\pistar}{\pi^{*}}
+\newcommand{\detsl}[1]{\left\Vert #1 \right\Vert}
+
+% simboli ricorrenti
+\newcommand{\constr}[1]{a_{#1}^{+}}
+\newcommand{\destr}[1]{a_{#1}}
+\newcommand{\proj}[1]{\hat{\mathcal{P}}_{#1}}
+\newcommand{\perturb}{\hat{\mathcal{V}}}
+\newcommand{\resolvent}{\frac{\mathcal{Q}_0}{a}}
+
+% varie sigle
+\newcommand{\dalton}{\texttt{DALTON}\ }
+\newcommand{\molcas}{\texttt{MOLCAS}\ }
+\newcommand{\columbus}{\texttt{Columbus}\ }
+
+% eccitazioni
+\newcommand{\npi}{$n\!\!\rightarrow\!\!\pi^*$}
+\newcommand{\snpi}{$^1\!\left(n\!\rightarrow\!\!\pi^*\right)$}
+\newcommand{\snts}{$^1\!\left(n\!\rightarrow\!\!  3s\right)$}
+\newcommand{\tnpi}{$^3\!\left(n\!\rightarrow\!\!\pi^*\right)$}
+\newcommand{\pipi}{$\pi\!\!\rightarrow\!\!\pi^*$}
+\newcommand{\spipi}{$^1\!\left(\pi\!\rightarrow\!\!\pi^*\right)$}
+\newcommand{\tpipi}{$^3\!\left(\pi\!\rightarrow\!\!\pi^*\right)$}
+\newcommand{\spi}{$\sigma\!\!\rightarrow\!\!\pi^*$}
+\newcommand{\sspi}{$^1\!\left(\sigma\!\rightarrow\!\!\pi^*\right)$}
+\newcommand{\tspi}{$^3\!\left(\sigma\!\rightarrow\!\!\pi^*\right)$}
+
+
+\newcommand{\cit}[1]{\csname b@#1\endcsname}
+\newcommand{\bbra}[1]{\left<#1\right|}
+\newcommand{\kket}[1]{\left|#1\right>}
+\newcommand{\bracket}[3]{\left<#1\left|#2\right|#3\right>}
+\newcommand{\scal}[2]{\left<#1\left|\right.#2\right>}
+\newcommand{\elm}[3]{\left< #1 \left| #2 \right| #3 \right>}
+\newcommand{\hami}{\hat{\cal H}}
+\newcommand{\ungap}{\!}
+\newcommand{\nto}[1]{$n \rightarrow #1\!$}
+\newcommand{\nyto}[1]{$\!n_y\!\!\rightarrow\!\! #1$}
+\newcommand{\pipis}{$\!\pi\!\!\rightarrow\!\! \pi^*$}
+\newcommand{\sipis}{$\!\sigma\!\!\rightarrow\!\! \pi^*$}
+\newcommand{\psimz}{\Psi_m^{(0)}}
+\newcommand{\pertu}{\Psi_{l,\mu}^{(k)}}
+\newcommand{\pertus}{S_l^{(k)}}
+\newcommand{\pertusp}[2]{S_{#1}^{({#2})}}
+\newcommand{\pertup}[2]{\Psi_{#1}^{({#2})}}
+\newcommand{\pertusb}{\bar{S}_l^{(k)}}
+\newcommand{\psilmk}{\Psi_{l,\mu}^{(k)}}
+\newcommand{\pertue}[2]{E_{#1}^{({#2})}}
+\newcommand{\elmk}{E_{l,\mu}^{(k)}}
+\newcommand{\E}[1]{E_{#1}}
+\newcommand{\crea}[1]{a_{#1}^{+}}
+\newcommand{\dist}[1]{a_{#1}^{\phantom{+}}}
+\newcommand{\heff}[1]{h_{#1}^{\mathrm{eff}}}
+\newcommand{\emp}[1]{E_m^{(#1)}}
+
+
+
+

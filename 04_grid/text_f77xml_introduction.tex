@@ -1,0 +1,198 @@
+\section{F77/F90xml library}
+
+The Extensible Markup Language (XML) file format plays a central role in the
+modern internet infrastructure. XML is derived by the more general format
+Standard Generalized Markup Language (SGML), and is visually very similar to
+HTML (the file format for web pages) although HTML itself is not a XML
+document. 
+
+The official definition provided by the W3 Consortium\cite{w3c-site} states
+that the ``\textit{Extensible Markup Language (XML) is a simple, very flexible text
+format derived from SGML (ISO 8879).  Originally designed to meet the
+challenges of large-scale electronic publishing, XML is also playing an
+increasingly important role in the exchange of a wide variety of data on the
+Web and elsewhere}''.
+
+The main advantages of this format are:
+\begin{itemize}
+\item internet standard, as accepted by the W3 Consortium
+\item platform independent
+\item clean and terse human readable textual format
+\item very practical and extensible
+\item can be checked for syntactical and semantical correctness
+\item allows the description of data and their meaning
+\item can be commented inline
+\item already existent libraries for accessing the document
+\end{itemize}
+
+An example of an XML document is given below
+
+\begin{verbatim}
+<?xml version="1.0"?>
+<book ISBN="0140390839">
+ <!-- a comment -->
+ <author>Mark Twain</author>
+ <title>Tom Sawyer</title>
+ <chapter>
+  <title>First Chapter</title>
+  This is the content of the first chapter.
+ </chapter>
+ <emptypage />
+ <chapter>
+  <title>Second Chapter</title>
+  This is the content of the second chapter.
+ </chapter>
+</book>
+\end{verbatim}
+
+An XML document holds \textit{markup} and \textit{content}. The most common type of markup is
+the \textit{Element}, delimited by angle brackets and normally present in pairs of
+begin tag (for example ``\texttt{author}'') and end tag (the same tag name, but
+prepended by a slash ``\texttt{/}'' symbol). These elements wrap content and other
+markups in a nested parent/child relationship, defining a tree-like
+structure. If an Element has no content, an alternative abbreviated syntax
+can be used to represent the begin/end as a single tag. The
+``\texttt{emptypage}'' Element is an example of such syntax.
+
+Another kind of markup is the \textit{Attribute}. Attributes are name/value
+pairs defined in the context of an Element. An example of this markup is the
+``\texttt{ISBN}'' entry for the ``\texttt{book}'' Element.
+
+Finally, a comment markup can be seen in the provided example.  Other kinds
+of markups, such as processing instruction, entity references or CDATA
+sections, will not be analyzed in this thesis.
+
+Two constraints define the correctness of an XML document:
+\begin{itemize}
+\item \textit{well-formedness}
+\item \textit{validity}
+\end{itemize}
+
+An XML document is well-formed if it complies with the XML specification.
+Using square brakets instead of angular brakets is an example of non
+well-formedness. Improper nesting of elements such as
+\begin{verbatim}
+ <author>Mark<Title>Twain</author>Tom Sawyer</title>
+\end{verbatim}
+is another example. XML Parsers must report an error when a non well-formed
+document is provided.
+
+Validity is related to well-formed documents that comply with a logical
+meaning, related to the chosen data model. 
+For example, the document
+\begin{verbatim}
+<?xml version="1.0"?>
+<title>
+ <book>
+  Tom Sawyer
+  <author ISBN="0140390839">
+   <chapter>
+    This is the content of the first chapter.
+   </chapter>
+  </author>
+ </book>
+</title>
+\end{verbatim}
+is a well-formed document, but has poor or no meaning in the analyzed data
+model. Validity depends on the context and is defined by Document Type
+Definitions, or XML-Schemas, which will not be detailed in this thesis. Pure
+parsing cannot check for validity unless DTD or schemas are provided.
+
+Accessing XML documents can be performed through two standardized interfaces:
+
+\begin{itemize}
+\item \textit{SAX}, Simple API for XML
+\item \textit{DOM}, Document Object Model
+\end{itemize}
+
+SAX is an event-driven parser. While the document is read (from a file, or
+from a network socket) the parser calls specific callback routines (handlers) to
+process the current Element (start or stop markups), or Attribute, or
+content (TextNode). Each handler is normally defined by the developer of the
+client code, and expresses the contextual behavior related in finding a
+certain Element, or TextNode.
+
+SAX has some important advantages: first, parsing can be performed on a
+partial document. This is very important if the document is very large, or
+if the parsing must begin as soon as the first data are available. This
+can produce a more pleasant experience of responsiveness to the user if, for
+example, the document is downloaded from a slow network connection.
+
+Second, the SAX parsing has a very small memory footprint. The document does
+not need to be held in memory. Nodes can be parsed and discarded after the
+event has been dispatched to the appropriate handler. This is very important
+if the document is very large. 
+
+SAX has also disadvantages: is a readonly parser (it can only read
+documents, but cannot build and write an XML tree), is stateless, is purely
+sequential, and finally is rather difficult to use. 
+
+The other available parser is DOM. DOM is an interface to an
+{Object Oriented} description of the XML document. The main advantage of DOM
+is represented by the ability to handle the document in ways not provided by
+SAX: DOM interface directly exposes the tree data abstraction in terms of
+Nodes (\textit{flat interface}) or specialization of the Node concept, like Element,
+Attribute, Document, TextNode, and so on (\textit{specialized interface}).
+The document is parsed as a whole and a tree representation is built in
+memory. This representation can be parsed, read and altered with a random
+access approach, and finally written back to disk or to a network
+connection. DOM interface is also simpler to use than SAX. 
+
+The main drawback of DOM is the need to hold a complete representation of
+the document in memory. For this reason, DOM parsing is generally not
+applicable on partial or very large documents.
+
+Two interface levels are available, and a third is almost ratified.
+DOM Level 1 provides the basic handling of the tree. DOM Level 2 and 3
+provide additional advanced features like namespacing and events. Only a
+restricted set of Level 2 features are needed for the project.
+
+\subsection*{XML and Fortran}
+
+Calculations in scientific environments such as physics, chemistry,
+astronomy and so on are still bound to the Fortran language.  Other
+high-level languages such as C, C++, Java, Python are of difficult
+deployment.  Techological problems (compatibility, library availability,
+efficiency) human factors and historical reasons (learn new abstractions and
+patterns, rewrite the legacy code) prevent a switch to other languages.
+
+Of course, this is a strong limiting factor in keeping the pace with the
+rapid evolution of network and computational resources. Using these new
+technologies often requires dedicated middleware, specifically designed to
+simplify access by wrapping low-level functionality with a high-level
+interface. XML handling is an example of the reported situation: an XML
+document is a plain text file, but its complex, extensible structure goes beyond
+its pure textual nature. SAX and DOM parsers are high-level frontends to XML
+document management, taking care of low-level issues and presenting a new
+abstraction to the programmer.
+
+The lack of a Fortran library to handle XML can be a problem when the
+deployment of new standards is needed and the handling of these standards
+must be performed by Fortran programmers, like in the case of the AbiGrid
+project. Currently available libraries for XML access in Fortran are
+``xml''\cite{xmllib-site} and {``xml-fortran''}\cite{xml-fortran-site}, 
+not DOM compliant and written in pure Fortran, and ``xmlf90''
+\cite{xmlf90-site} which supports SAX and DOM Level 1 and is written in the
+F subset of Fortran.
+
+Among the problems of these solutions are:
+
+\begin{itemize}
+\item non DOM Level 2 compliant (no namespaces support)
+\item rather difficult to use and extend
+\item read only
+\item string handling is very rigid
+\item bound to F90 compilers
+\end{itemize}
+
+The first five points are indeed critical. Deploying advanced features like
+DOM or XPath (a standardized method to access Nodes using a syntax similar
+to a filesystem path) is very difficult with a pure Fortran approach.
+Fortran has limits in strings, file handling and object management.
+
+The latter point is more controversial. Many commercial Fortran 90 compilers
+exists. Some of them are available at no cost, but this policy could change
+in the future. With the release of free Fortran 90 compilers like g95
+\cite{g95-site} and gfortran \cite{gfortran-site}, the latter point is no
+longer an issue, but was a prerequisite in the initial development of
+F77/F90xml.

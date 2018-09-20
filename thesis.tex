@@ -1,0 +1,133 @@
+\documentclass[a4paper,11pt,twoside]{book}
+\title{\textbf{Theory and applications of advanced techniques in quantum chemistry
+and their integration in a common infrastructure}}
+\author{Stefano Borini}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{threeparttable}
+\usepackage{wrapfig}
+%\usepackage{floatflt}
+\usepackage{fancyhdr}
+%\usepackage{acsarticle}
+%\usepackage[hang, bf]{caption}
+\usepackage[bf]{caption}
+%\usepackage{xymtex}
+%\usepackage{chemist}
+\usepackage{overcite}
+
+\geometry{a4paper,tmargin=28mm,bmargin=42mm,lmargin=35mm,rmargin=40mm}
+%\geometry{a4paper,tmargin=50mm,bmargin=20mm,lmargin=4cm,rmargin=4cm}
+\addtolength\evensidemargin{-7mm}
+\addtolength\oddsidemargin{7mm}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\ #1 }}
+
+\fancypagestyle{plain}{
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{0pt}
+}
+\fancyhf{}
+\fancyhead[le,ro]{\bfseries\thepage}
+\fancyhead[re]{\bfseries\leftmark}
+\fancyhead[lo]{\bfseries\rightmark}
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\footrulewidth}{0.1pt}
+\addtolength{\headheight}{0.5pt}
+\headsep=10mm
+\makeatletter
+\@addtoreset{equation}{section}
+\@addtoreset{table}{section}
+\@addtoreset{figure}{section}
+\makeatother
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{section}.\arabic{equation}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{section}.\arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{section}.\arabic{figure}}
+\linespread{1.2}
+
+\include{macros}
+
+\raggedbottom
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\begin{tabular}{c}
+{\Large \textbf{Universit\`a degli Studi di Ferrara, Italy}} \\
+{\Large \textbf{Universit\'e Paul Sabatier, Toulouse, France}} \\
+\hline
+\end{tabular}
+
+\vspace{5cm}
+{\textsc{\fontsize{17}{5mm}\selectfont \textbf{Theory and applications of advanced techniques in quantum chemistry
+and their integration in a common infrastructure}}}
+
+\vspace{45mm}
+
+{ 
+\begin{tabular}{l} \large \textbf{Coordinators/Directeurs} \\
+\large \textbf{Prof. Renzo CIMIRAGLIA} \\
+\large \textbf{Prof.  Stefano EVANGELISTI}\\
+\end{tabular} \hfill {\ } 
+ \begin{tabular}{l} \large
+\textbf{Candidate/Candidat} \\ \large \textbf{Dr. Stefano BORINI} \end{tabular} }
+
+\vspace{26mm}
+\begin{tabular}{c}
+\hline
+{\large \textbf{Year 2006}} \\
+\hline
+\end{tabular}
+
+\end{center}
+\end{titlepage}
+\newpage \pagestyle{empty}
+%\pagenumbering{Roman}
+\tableofcontents
+\cleardoublepage
+\input{00_preface/text_acknowledgements}
+\cleardoublepage
+\input{00_preface/text_preface}
+\cleardoublepage
+\input{01_introduction/text_resume}
+\cleardoublepage
+\input{01_introduction/main}
+\clearpage
+\pagestyle{empty}{\ }\\
+\clearpage
+\input{02_localization/text_resume}
+\cleardoublepage
+\input{02_localization/main}
+\clearpage
+\pagestyle{empty}{\ }\\
+\clearpage
+\input{03_nevpt/text_resume}
+\cleardoublepage
+\input{03_nevpt/main}
+\cleardoublepage
+\input{04_grid/text_resume}
+\cleardoublepage
+\input{04_grid/main}
+\clearpage
+\pagestyle{empty}{\ }\\
+\clearpage
+\addcontentsline{toc}{chapter}{Conclusions}
+\input{05_conclusions/main}
+\clearpage
+\pagestyle{fancy}
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+%\nocite{*}
+\bibliographystyle{acs}
+\bibliography{thesis}
+
+\end{document}
+
+
+

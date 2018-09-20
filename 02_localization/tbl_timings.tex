@@ -1,0 +1,28 @@
+\begin{center}
+\begin{table}[ht]
+\footnotesize
+\begin{center}
+\begin{tabular}{lcccccc}
+\hline
+				&	seward-large	&	seward-small		&	large	& small	&	CAS+S	&	total \\
+\hline
+nofrz/nocut		&	1009			&			0			&	50		&	39		&	1062	&	2160 \\
+frz-5/nocut		&	1009			&			0			&	50		&	19		&	355		&	1433 \\
+frz-5/cut-5		&	1009			&			433			&	50		&	6		&	225		&	1723 \\
+frz-3/nocut		&	1009			&			0			&	50		&	7		&	184		&	1250 \\
+frz-3/cut-3		&	1009			&			100			&	50		&	1		&	99		&	1259 \\
+frz-1/nocut		&	1009			&			0			&	50		&	2		&	43		&	1104 \\
+frz-1/cut-1		&	1009			&			8			&	50		&	0		&	18		&	1085 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\footnotesize Timings (in seconds) for evaluations performed on (7Z)-13
+ammoniotridec-7-enoate, against different freeze and cut strategies. Test
+performed on Intel dual Xeon 2.8 GHz 2 GB RAM. ``seward-large'' and ``seward-small''
+are the timings for the AO integral evaluation. ``large'' and ``small'' columns
+represents the timings needed for the creation of the transformed integrals
+which will seed the first iteration. ``CAS+S'' column reports the timings for
+the complete iterative procedure up to the convergence.}
+\label{tbl:timings}
+\end{table}
+\end{center}

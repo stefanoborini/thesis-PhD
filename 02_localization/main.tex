@@ -1,0 +1,67 @@
+\pagestyle{fancy}
+\chapter{Localization}
+\label{chp:localization}
+%\pagenumbering{arabic}
+\begin{center}
+\textit{This chapter, in particular for the computational evaluation,
+is based on the article at Ref. \citen{jcc-26-1042-2005}}
+\end{center}
+{\ }\\
+\vspace{-1mm}
+
+The need to evaluate the properties of large molecular systems using a high-level
+\textit{ab initio} approach is an interesting and challenging task for the
+quantum chemist. Many useful results have been achieved in this direction,
+thanks to refinements of theoretical approaches, together with computational
+resources increasingly more efficient and cheap.  However, the problem of
+the growth of the computational effort as a function of the system size
+still represents, in most cases, a serious bottleneck.  This can lead to a
+huge computational cost even for relatively small systems.  
+
+Many techniques have been implemented to deal with large systems, like, for
+instance, metallic complexes with organic ligands, or biologically
+interesting molecules.  For example, in the evaluation of potential energy
+surfaces of the ground state a Molecular Mechanics approach makes feasible
+calculations on large molecular systems. The price to pay, in this case, is
+to consider the system as purely classical.
+
+When a quantum mechanical evaluation is needed (description of excited states,
+bond breaking, etc.), the mixing of molecular mechanics with
+quantum mechanics is a possible strategy, like Quantum Mechanics/Molecular
+Mechanics QM/MM \cite{jcc-11-700-1990} and the ``Our own N-layered Integrated
+molecular Orbital and molecular Mechanics'' ONIOM method
+\cite{jpc-100-19357-1996}. For the calculation of excited states,
+Time Dependent Density Functional Theory (TDDFT) methods are also
+available, which behave well in some cases but with substantial errors in
+others, as pointed out for example in Ref. \citen{jacs-126-4007-2004}. 
+
+Performing purely \textit{ab initio} evaluations is also feasible. A
+possible approach is represented by the elimination of large molecular
+groups, replacing them by computationally cheaper mimicking entities, using
+Effective Group Potential (EGP) pseudo-potentials
+\cite{jpca-105-198-2001,jpca-105-206-2001}, for example, or simply by
+hydrogen atoms. Other available methods, like the Symmetry Adapted
+Cluster-Configuration Interaction
+(SAC-CI)\cite{jcp-68-2053-1978,cpl-59-362-1978,cpl-67-329-1979,cpl-67-334-1979}
+have been applied successfully to large biological systems
+\cite{cpl-250-437-1996}.
+
+Another possible strategy in the treatment of large molecular systems is
+given by Localized Molecular Orbitals (LMO). The use of localized orbitals in
+quantum chemistry has a long history \cite{chavet-ladiqc}.  Only in recent
+years, however, Localized Molecular Orbitals have become popular as a key
+step toward Linear Scaling \textit{ab initio} approaches, where the
+computational cost of the evaluation grows linear with respect to the
+molecular system size. Using a localized philosophy, a reduction of the
+high computational cost imposed by delocalized methods can be obtained.
+
+\input{02_localization/01_delocalization_and_localization}
+\input{02_localization/02_localization_technique}
+\input{02_localization/03_freeze_and_cut_theory}
+\input{02_localization/04_freeze_and_cut_implementation}
+\pagebreak
+\section{Evaluations}
+\input{02_localization/05_example1_ammoniotridecenoate}
+\input{02_localization/06_example2_tridequenal}
+\input{02_localization/07_example3_acetone_water}
+\input{02_localization/08_conclusions}

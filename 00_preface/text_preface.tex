@@ -1,0 +1,71 @@
+{\Huge \textbf{Preface}}
+\vspace{6mm}
+
+
+This Ph.D. thesis does not target a single technique: two quantum chemistry
+techniques are studied separately and then analyzed in order to combine them
+into a common infrastructure.
+
+The main problem in applicability of \textit{ab initio} methods to medium
+and large molecular systems is the very steep increase of the computational
+cost in terms of time, memory and disk space, with respect to the size of
+the molecule. Many different techniques have been developed to deal with
+this problem, ranging from improving algorithms to adding levels of
+approximation. In many cases changing the theoretical approach has
+proved successful, like in Density Functional Theory methods, but
+leading to other new interesting problems and limitations.
+
+Since long time, the best approach to deal with this complexity has been 
+the well known \textit{Divide et Impera}: splitting a very large problem in smaller,
+more manageable problems. Along with this strategy goes the ``right tool for
+the job'' philosophy, leading to a number of techniques created to provide
+appropriate tools at different levels of theory, each one with its own
+strenghts and weaknesses, collaborating together to deal with the problem in
+synergic way.
+
+The first technique presented in this work is the Freeze-and-Cut
+localized optimization, developed and implemented at Paul Sabatier
+University in Toulouse. The main advantage of this technique is to
+provide a purely \textit{ab initio} evaluation on medium and large molecular
+systems, achieving at the same time saving of computational cost and
+partitioning of a large system in subsystems.
+
+The second technique here presented is the n-Electron Valence state
+Perturbation Theory (NEVPT), a perturbative treatment developed at Ferrara
+University in partnership with Paul Sabatier University in Toulouse. The main advantage of this
+technique is the very accurate evaluation of spectroscopical properties of
+the studied chemical systems. Unfortunately NEVPT can be applied only to
+small molecular systems, being limited by the feasibility of Complete Active
+Space (CAS) evaluations.
+
+Combining these two theories allows the computational chemist to perform a
+first low-level analysis with Freeze-and-Cut on the less critical parts of
+the molecule under study, and to perform a CASSCF plus NEVPT evaluation on the chemically interesting
+part, where a more detailed and high-level treatment is needed.  This
+objective presents both theoretical and implementative hurdles.  Refinements
+in the NEVPT theory have been introduced, driven by the need to deal with
+the localized orbitals approach provided by Freeze-and-Cut. New and
+improved standards for file formats and information exchange have been
+developed to satisfy the future needs of a common infrastructure, where the
+potentiality of the methods can be further combined, used, and improved by
+other research laboratories.
+
+This Ph.D. thesis is organized as follows: 
+\begin{enumerate}
+\item The First chapter addresses the basic knowledge needed for the
+subsequent chapters
+\item The Second chapter is devoted to localization techniques,
+focusing on theory and software implementation. A deep insight in the
+\mbox{Freeze-and-Cut} technique will follows, along with obtained results
+\item The Third chapter presents NEVPT theory and applications on
+various carbonyl-based molecules. Also, various implementations of this
+theory will be discussed, such as Quasi-Degenerate and Non-Canonical
+approaches, needed in order to work with a localized set of orbitals
+\item The Fourth chapter presents aspects and problems related to
+integration in a common grid infrastructure, a more manageable file format
+and a glance ahead toward the future of quantum chemistry computing.
+Particular focus will be granted to F77/F90xml, a C/Fortran binding library to
+parse the XML file format with Fortran, and Q5Cost, a purely Fortran 95
+library to read and write a common file format with an intention-revealing
+interface on the \textit{ab initio} quantum chemistry domain.
+\end{enumerate}

@@ -1,0 +1,923 @@
+%\documentclass[global,twocolumn,footinfo]{svjour}
+\documentclass[global,referee]{svjour}
+\usepackage[dvips]{graphics}
+\usepackage{epsfig}
+%\usepackage{times}
+%
+% Macro definitions
+%
+\newcommand{\cit}[1]{\csname b@#1\endcsname}
+\newcommand{\bbra}[1]{\left<#1\right|}
+\newcommand{\kket}[1]{\left|#1\right>}
+\newcommand{\bracket}[3]{\left<#1\left|#2\right|#3\right>}
+\newcommand{\scal}[2]{\left<#1\left|\right.#2\right>}
+\newcommand{\elm}[3]{\left< #1 \left| #2 \right| #3 \right>}
+\newcommand{\hami}{\hat{\cal H}}
+\newcommand{\ungap}{\!}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\feq}{\end{equation}}
+\newcommand{\nto}[1]{$\!#1\!$}
+\newcommand{\nyto}[1]{$\!n_y\!\!\rightarrow\!\! #1$}
+\newcommand{\pipis}{$\!\pi\!\!\rightarrow\!\! \pi^*$}
+\newcommand{\sipis}{$\!\sigma\!\!\rightarrow\!\! \pi^*$}
+\newcommand{\psim}{\Psi_m}
+\newcommand{\psimz}{\Psi_m^{(0)}}
+\newcommand{\pertu}{\Psi_{l,\mu}^{(k)}}
+\newcommand{\pertus}{S_l^{(k)}}
+\newcommand{\pertusp}[2]{S_{#1}^{({#2})}}
+\newcommand{\pertup}[2]{\Psi_{#1}^{({#2})}}
+\newcommand{\pertusb}{\bar{S}_l^{(k)}}
+\newcommand{\psilmk}{\Psi_{l,\mu}^{(k)}}
+\newcommand{\pertue}[2]{E_{#1}^{({#2})}}
+\newcommand{\elmk}{E_{l,\mu}^{(k)}}
+\newcommand{\E}[1]{E_{#1}}
+\newcommand{\crea}[1]{a_{#1}^{+}}
+\newcommand{\dist}[1]{a_{#1}^{\phantom{+}}}
+\newcommand{\heff}[1]{h_{#1}^{\mathrm{eff}}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\emp}[1]{E_m^{(#1)}}
+%
+% End of macro definitions
+%
+\setlength{\voffset}{.1in}
+\journalname{Theor Chem Acc}
+\renewcommand{\abstractname}{Abstract.}
+
+\setlength{\textwidth}{16.5cm}
+\setlength{\textheight}{24cm}
+\begin{document}
+ 
+\title{An application of second-order n-electron valence state perturbation
+theory (NEVPT2) to the calculation of excited states.}
+
+ 
+\author{Celestino Angeli, Stefano Borini, Renzo Cimiraglia}
+
+\institute{
+Dipartimento di Chimica, Universit\`a di Ferrara, \\
+Via Borsari 46, 
+I-44100 Ferrara, Italy} 
+
+\titlerunning{An application of second-order ...}
+\authorrunning{Angeli et al.}
+
+\date{Received:  .... / Accepted: .....}
+\mail{R. Cimiraglia}
+\dedication{Dedicated to Jacopo Tomasi, mentor and friend}
+\maketitle
+
+
+\begin{abstract}
+$n$--electron valence state perturbation theory (NEVPT) is a form of
+multireference perturbation theory (MRPT) where all the zero--order
+wave functions are of multireference nature, being generated as
+eigenfunctions of a two--electron model Hamiltonian. The absence of
+intruder states makes NEVPT an interesting choice for the calculation
+of electronically excited states. Test calculations have been
+performed on several valence and Rydberg transitions for the
+formaldehyde and acetone molecules; the results are in good accordance
+with the best calculations and with the existing experimental data.
+\end{abstract}
+\keywords{Multireference CI -- Perturbation CI -- NEV-PT -- Excited states}
+{\smallskip}
+{\smallskip}
+%\strich
+
+\section{Introduction\label{sect1}}
+Most molecules in their ground state near the equilibrium geometry
+have a closed shell nature and can be successfully described by a
+single Slater determinant at the Hartree--Fock level of theory. A good
+portion of the correlation energy can then be effectively gained at a
+low computational cost by applying M\o{}ller--Plesset perturbation
+theory \cite{Moller34}, usually at the second order (MP2). In a great deal
+of chemically interesting circumstances, though, the description based
+on a single reference determinant becomes defective, as, for instance,
+in molecular geometries far from equilibrium during the course of a
+chemical reaction or in excited electronic states. In such cases it is
+essential to provide a zero--order description where all the
+determinants (configurations) that play an important r\^ole in the
+electronic wave function be explicitly taken into
+account. Multireference perturbation theory (MRPT), where the zero
+order wave-function is variationally built upon a configuration
+interaction (CI) involving the most important determinants is a
+natural extension of the single--determinant M\o{}ller--Plesset PT. We
+shall not review here the more than thirty year old history of MRPT,
+confining ourselves to recalling that the most successful treatments
+are based on a zero--order reference of CAS--SCF type (Complete Active
+Space Self--Consistent Field) \cite{Ander90,Ander92}, where the
+first--order perturbation correction to the wave function is built in
+terms of contracted excitations applied to the zero--order
+wave function \cite{Werner82}. The CASPT2 technique of Roos and collaborators stands
+out as a particularly efficient method for the treatment of
+correlation energy in a multireference--based description of molecular
+systems. Recently a variant of CAS--based MRPT, called n--electron
+valence state perturbation theory (NEVPT), has been
+proposed \cite{nev1,nev2,nev3} where particular care has been addressed
+to complying with some important formal requirements among which we
+quote: a)~strict separability (size consistence), ensuring that the
+energy of a system made of non--interacting parts be equal to the sum
+of the energies of the isolated parts calculated with the same method,
+b)~absence of ``intruder states'', requiring that the energies of the
+zero--order wave functions belonging to the outer space be well
+separated from the energy of the reference state, thus averting
+divergences in the perturbation summation. The latter requirement 
+assumes particular relevance in the treatment of electronically
+excited states, where the appearance of intruders can most easily
+manifest itself. 
+
+This paper is addressed to the description of electronically excited
+states with the NEVPT at the second order (NEVPT2)
+technique in a couple of test molecules, formaldehyde and acetone.
+The principal aim of this work is not to solve the still open questions of the interpretation of the
+electronic spectra of the molecules studied but, rather, to verify 
+the ability of NEVPT2 to provide a viable means of calculation of excited states.
+The rest of
+the paper is organized as follows: in Sect. \ref{sect2} a brief summary of
+the NEVPT2 method will be provided; Sect. \ref{sect3}  will be
+dedicated to the description of various electronic transitions in the
+formaldehyde and acetone molecules; Sect. \ref{sect4} will
+contain concluding remarks.
+
+
+\section{Summary of the NEVPT2 method\label{sect2}}
+NEVPT2 has been formulated in different variants, according to the
+type of zero--order Hamiltonian adopted and to the degree of
+contraction employed in the definition of the zero--order
+wave functions, referred to as the ``perturbers'' in the following. In
+all the NEVPT variants the perturbers exhibit a multireference nature
+and are obtained as eigenfunctions of a two--electron model
+Hamiltonian. The state of interest $\psim$ is approximated at the zero
+order by a CAS--CI wave function $\psimz$ (usually CAS--SCF) obtained
+by diagonalizing the Hamiltonian matrix built on a given CAS
+space. The spatial orbitals utilized are subdivided into the three
+usual CAS classes: core, with occupation numbers always equal to two,
+active, with all possible occupations (0,1,2) and virtual, with
+occupation always zero in all the determinants of the CAS. The
+zero--order wave functions other than the variational $\psimz$ (the
+perturbers) also belong to CAS--CI spaces characterized by well
+defined occupation patterns of the inactive (core + virtual)
+orbitals. A generic perturber is designated as $\pertu$ and the
+CAS--CI space to which it belongs as $\pertus$ where $k$ is the number
+of electrons promoted to (if positive) or removed (if negative) from
+the active space ($-2\le k\le 2$), $l$ denotes the fixed occupation
+pattern of the inactive orbitals and $\mu$ enumerates the various
+perturbers in $\pertus$. The number of types of CAS--CI spaces which
+play a r\^ole in second--order perturbation theory is restricted to
+eight: there are two possible types with $k=0$ according to whether
+two or one core electrons are transferred to the virtual orbital
+space; for $k=+1$ ($-1$) two types are also possible, the first
+implying a transfer from two core electrons to one virtual orbital and
+to the active space (from one core electron and one active space
+electron to two virtual orbitals), the second involving the passage of
+only one electron to (from) the active space; lastly, the case $k=+2$
+($-2$) generates only one type of space with two electrons passing
+from the core to the active space (from the active to the virtual
+space). The different variants of NEVPT2 are defined according to the
+number of perturbers that are chosen from the $\pertus$ spaces. In the
+``strongly contracted'' approach only one function is chosen, by
+projecting the action of the electronic Hamiltonian to the reference
+function onto the $\pertus$ space: $  \pertup{l}{k} =
+P_{\pertus}H\psimz$, whereas in the ``partially contracted'' approach
+the $ \psilmk$ perturbers belong to the subspace $\pertusb$ of
+$\pertus$ generated by the double excitation operators which map
+$\psimz$ onto $\pertus$. The energies of the perturbers are evaluated
+through the use of a model Hamiltonian, $H^D$, by the following
+prescription: 
+\begin{itemize}
+\item[a)]for the strongly contracted approach 
+  \begin{displaymath}
+  \pertue{l}{k} =
+  \frac{\bracket{\pertup{l}{k}}{H^D}{\pertup{l}{k}}}
+  {\scal{\pertup{l}{k}}{\pertup{l}{k}}};
+  \end{displaymath}
+\item[b)]for the partially
+  contracted variant the perturbers and their energies are provided by
+  the diagonalization of the $H^D$ operator in the $\pertusb$
+  subspaces:
+  \begin{displaymath}
+   P_{\pertusb}H^DP_{\pertusb} \psilmk = \elmk\psilmk.
+  \end{displaymath}
+\end{itemize}
+
+From the computational point of view, a particularly convenient choice
+of the model Hamiltonian is provided by Dyall's operator \cite{Dyall95},
+\begin{equation}
+  \label{eq:dyall}
+  H^D = H_i + H_v
+\end{equation}
+\begin{equation}
+  \label{eq:dyall2}
+H_i = \sum_{i}^{core}\epsilon_{i}\E{ii} +
+\sum_{r}^{virt}\epsilon_{r}\E{rr} +C
+\end{equation}
+\begin{equation}
+  \label{eq:dyall3}
+  H_v = \sum_{ab}^{act}\heff{ab}\E{ab} +\half\sum_{abcd}^{act}
+  \scal{ab}{cd} (\E{ac}\E{bd}-\delta_{bc}\E{ad})
+\end{equation}
+where  $\epsilon_i$ and $\epsilon_r$ are suitable orbital energies \cite{Angeli2000},
+$\E{xy} = \crea{x\alpha}\dist{y\alpha} +
+\crea{x\beta}\dist{y\beta}$ is the spin--traced excitation
+operator \cite{Mcweeny},  $ \heff{ab}$ is a modified one--electron
+matrix taking into account the interaction with the core electrons
+$\heff{ab} = h_{ab} + \sum_{j}^{core}( 2\scal{aj}{bj} -
+  \scal{aj}{jb})$ and $C$ is a constant ensuring the equivalence of
+  $H^D$ with $H$ within the CAS space.
+
+The form of the operator $H^D$ in Eqs.~(\ref{eq:dyall}--\ref{eq:dyall3}) only ensures
+that the resulting first order perturbation correction to the
+wave function is invariant under unitary transformations of orbitals
+belonging to the active space. It is an easy task to extend the $H^D$
+definition so that invariance be guaranteed under unitary
+transformations within each of the three orbital classes (core,
+active, virtual) by modifying the inactive one--electron component
+$H_i$ into the following:
+\begin{equation}
+  \label{eq:dyall4}
+H_i = \sum_{i,j}^{core}f_{ij}\E{ij} +
+\sum_{r,s}^{virt}f_{rs}\E{rs} +C
+\end{equation}
+with 
+\begin{eqnarray}
+  \label{eq:dyall5}
+  f_{ij} &=& - \bracket{\dist{i}\psimz}{H}{\dist{j}\psimz}
+  +\delta_{ij}\emp{0}\\
+  \label{eq:dyall6}
+  f_{rs} &=& \bracket{\crea{r}\psimz}{H}{\crea{s}\psimz} -\delta_{rs}\emp{0}
+\end{eqnarray}
+Diagonalization of the two $\mathbf{f}$ matrices leads then to the
+adoption of so called canonical core and virtual orbitals, a practice that we
+shall tacitly assume in the calculations of the next sections.
+
+As has been shown in Ref. \cite{nev3}, all the relevant quantities
+which are necessary for the second order correction to the energy,
+i.e. the interaction of the reference $\psimz$ function with the
+perturbers and the energy denominators, can be easily calculated with
+the help of auxiliary quantities which need the knowledge of the
+zero--order density matrices of particle rank not higher than four,
+with indices only spanning the active orbital space. In the case of
+the partially contracted approach, the use of Dyall's Hamiltonian is
+particularly beneficial because each of the eight typologies of
+$\pertusb$ subspaces only necessitates one diagonalization which is
+then valid for all the various $\pertusb$ instances. Thus the
+partially contracted approach, albeit involving many more perturber functions
+than the strongly contracted case, only needs a small computational
+overhead when compared with the strongly contracted case. The two
+forms of NEVPT2, though, show very similar results in the
+second--order correction to the energy, as has been shown in
+Ref. \cite{nev3}, demonstrating that the strongly contracted approach
+is built on an effective averaging process.
+
+A final remark concerns the issue of the occurrence of possible small
+denominators (intruder states) in the perturbation summation: the most
+critical case can present itself in the $\pertusp{r}{-1}$ spaces,
+which involve the passage of one electron from the active space to a
+virtual orbital ($r$), accompanied by an excitation within the active
+space. In such case the energy denominators can be expressed as a
+difference between the energy of a virtual orbital ($\epsilon_r$) and
+the one associated to a ionization potential in the valence shell. If
+the virtual orbital is very diffuse, as happens when introducing
+Rydberg orbitals in the basis set, the energy $\epsilon_r$ is close to
+zero and the energy denominator reduces to the valence ionization
+which is anyway never zero. So NEVPT2 should be applicable to the
+study of valence excited states the energies of which are well
+separated from the first ionization potential.
+
+
+
+\section{Applications\label{sect3}}
+
+\subsection{Formaldehyde}
+\label{formsec}
+
+The vertical spectrum of the formaldehyde molecule was computed at the ground state 
+experimental geometry \cite{Nelson65} ($R$(CO)=1.208 \AA, $R$(CH)=1.116 \AA\ 
+and $\theta$(HCH)=116.5 degree). The molecule belongs to the C$_{\rm 2v}$ point group symmetry and
+lies in the $yz$ plane with the C and O atoms on the $z$ axis.  The atomic natural orbitals (ANO) basis set
+of Widmark and coworkers \cite{Widma90} has been used with two different contraction schemes:
+the smaller (indicated with ANO(S)) is C,O [$4s3p1d$]/H[$2s1p$] and the larger (ANO(L)) is 
+C,O [$6s5p3d2f$]/H[$4s3p2d$]. 
+These valence basis sets have been augmented with diffuse functions in order to properly describe
+the diffuse orbitals involved in the Rydberg states. These basis functions are obtained by contraction
+of a set of $8s8p8d$ gaussian primitives whose exponents are generated using the procedure proposed by 
+Kaufmann {\it et al} \cite{Kaufm89}. The contraction coefficients are computed following the procedure
+developed by  Roos {\it et al} \cite{Roos95} and two contraction schemes are considered: 
+[$1s1p1d$], (Ryd(S)) and [$3s3p3d$], (Ryd(L)).
+In order to directly compare our
+results with the CASPT2 and the Size-Consistent Self-Consistent CI 
+((SC)$^2$-CI) calculations of Merch\'an {\it et al} \cite{Merch95} and 
+of Pit\-arch-Ruiz {\it et al} \cite{Ruiz03}, respectively,  we have used in the calculations the 
+combinations ANO(S)-Ryd(S) and ANO(L)-Ryd(L).
+
+The molecular orbitals are obtained from average CAS-SCF calculations which involve the lowest states
+of a given symmetry. The active spaces, together with the number and the nature of the states 
+considered in the average procedure are reported in Table \ref{Tabforact} and are taken from 
+Ref. \cite{Merch95}.
+The number of orbitals for each irreducible representation was chosen by the authors
+so that all the states of interest could be correctly described.
+In some cases the active space was enlarged in order to minimize the effect
+of the intruder states problem in the CASPT2 calculations. 
+Given that our perturbation treatment is not affected by the intruder states problem, 
+in our calculations a reduction of the active space should be possible but the 
+comparison of our results 
+with those of Refs. \cite{Merch95} and \cite{Ruiz03} would be in this case less clear.
+
+
+
+
+The energies of the states are computed in a state specific multireference perturbation scheme.
+The zero order description of each state is obtained from a CAS-CI calculation using
+the average CAS--SCF active orbitals. The inactive orbitals have been transformed 
+in order to diagonalize the state specific Fock matrices defined in Eqs. (\ref{eq:dyall5})
+and (\ref{eq:dyall6}).
+A second order correction to the energy is computed using the strongly 
+contracted (SC) and partially contracted (PC) variants of the NEV-PT method. All orbitals and electrons 
+are included in the perturbation treatment. The excitation energies are computed with respect 
+to the same ground state energy which is evaluated as the second order correction to the
+energy with the reference energy and wave function obtained from a state specific 
+CAS--SCF calculation with four electrons in two $b_1$ ($\pi$ + $\pi^*$) and two $b_2$
+($n_y$ + virtual) orbitals.
+This approach for the calculation of the excitation energies differs from the
+one used in the CASPT2  \cite{Merch95} calculation, where a 
+different ground state energy was used for each irreducible representation.
+The vertical excitation energies obtained in our calculations are 
+reported in Table \ref{Tabforeery}
+for the Rydberg states and in Table \ref{Tabforeeval} for the valence states, together with 
+the results of previous theoretical calculations and with some experimental results.
+
+
+
+
+
+In Tables \ref{Tabforeemaes1} and  \ref{Tabforeemaeb1} we show the comparison between our results and
+those of Pitarch-Ruiz {\it et al} \cite{Ruiz03}, which can be considered a good reference since they 
+involve the whole single plus double excitations space on top of a CAS at a variational level with a size 
+consistence correction. We remark that the mean absolute error (MAE) of our results is always 
+small with the worst case being represented by the SC-NEVPT in the ANO(L) + Ryd(L) basis (0.15 eV).
+The small errors appearing in Tables \ref{Tabforeemaes1} and  \ref{Tabforeemaeb1} bear out the
+reliability of NEVPT2 which can yield results of good accuracy, comparable with much more refined calculations, but at a much
+lesser computational cost.
+
+For the case of the smaller basis (ANO(S) + Ryd(S)) the CASPT2 results are also available 
+\cite{Merch95} and have been reported in Table \ref{Tabforeemaes1} for comparison.
+It can be remarked that NEVPT2 and CASPT2 appear to be of the same quality, with the former showing in
+all cases a small squared norm of the wave function perturbation correction (see Tables 
+\ref{Tabforeery} and \ref{Tabforeeval}) thus getting over the intruder state problem.
+
+As to the comparison with the experimental data, beyond a satisfactory general agreement with our
+theoretical results we can make the following observations:
+\begin{itemize}
+\item[$\bullet$] in accordance with most theoretical calculations our vertical 2 $^1$A$_1$  and 1 $^1$B$_2$
+Rydberg transitions appear in inverted order with respect to experimental adiabatic transitions
+\cite{Robin85}: a more stringent comparison would require the calculation of adiabatic transition
+with due allowance for the zero point energy correction;
+\item[$\bullet$] the calculation of the $^1$A$_1$ Rydberg states with the larger basis set introduces one more
+Rydberg state ($n_y\rightarrow\pi^*$) below the valence $\pi\rightarrow\pi^*$; such state has been ignored
+in the average CAS--SCF since we were 
+interested in transitions involving Rydberg orbitals not exceeding
+the quantum number $n=3$;
+\item[$\bullet$] mixing between Rydberg and valence character may occur in both the $^1$A$_1$ and $^1$B$_1$
+transitions \cite{Merch95,Hachey95}. For a correct treatment of such states a quasi--degenerate treatment
+would be required \cite{Durand87,Finley98}. We count to introduce such corrections in NEVPT2 in the near future.
+\end{itemize}
+
+
+
+
+\subsection{Acetone}
+\label{acetsec}
+
+The computational strategy used for acetone closely follows the one applied to formaldehyde.
+The vertical spectrum has been computed at the ground state 
+experimental geometry \cite{Nelson65}. The molecule belongs to the C$_{\rm 2v}$ point group symmetry 
+with the OCCC skeleton in the $yz$ plane (C and O atoms on the $z$ axis and with an orientation of the CH$_3$ 
+groups that place the two H atoms lying in the $yz$ plane as far as possible). 
+For acetone, we only consider the C,O[$4s3p1d$]/H[$2s1p$] contraction of the ANO basis set
+of Widmark and coworkers \cite{Widma90}.
+%\clearpage
+
+
+
+The Rydberg states are described using a set of $8s8p8d$ diffuse functions \cite{Kaufm89}
+contracted to [$1s1p1d$] following the procedure described in Ref. \cite{Roos95}.
+
+
+As in formaldehyde, average CAS-SCF calculations provide the molecular orbitals: 
+the active spaces and the number and the nature of the states 
+considered in the average procedure are reported in Table \ref{Tabaceact}
+and are taken from Ref. \cite{Merch96}.
+With respect to formaldehyde, the active space has been 
+modified adding the two CO $\sigma$ and $\sigma^*$ orbitals and the two CO $\sigma$ electrons, except
+for the A$_1$ symmetry where three virtual orbitals (one of $b_1$ and two of $b_2$ symmetry)
+have been removed. In Ref. \cite{Merch96} the  CO $\sigma$ and $\sigma^*$ orbitals have been
+added to the active space in order to correctly describe the adiabatic electronic transitions 
+for the valence states, in which an elongation of the CO bond is observed 
+due to the promotion of an electron to the $\pi^*$ orbital.
+
+Given that we present here only results on the vertical transitions, also in the case
+of acetone a reduction of the active space used in Ref. \cite{Merch96} would have been 
+possible, but we have chosen to maintain the same active space in order to have a
+meaningful comparison with the CASPT2 data.
+
+The energies of the states are computed following the strategy outlined for formaldehyde
+and the transition energies are reported in Table \ref{Tabaceeery} 
+for the Rydberg states and in Table
+\ref{Tabaceeeval} for the valence states, 
+together with the results of other theoretical calculations and with some experimental results.
+
+
+We note that our PC-NEVPT2 results compare very well with the CASPT2 ones.
+We also remark that in two of the valence transitions (4 $^1$A$_1$, $\pi\rightarrow\pi^*$ and
+1 $^1$A$_2$, $n_y\rightarrow\pi^*$) the difference between strongly and partially contracted 
+NEVPT appears to be unusually sizable (0.59 eV and 0.20 eV, respectively); 
+we think that this is symptom for the zero order wave function to necessitate significant improvement.
+
+
+
+\section{Concluding remarks\label{sect4}}
+Among the formal requirements satisfied by NEVPT (see section
+\ref{sect2}), the absence of intruder states appears particularly
+interesting for the application to the calculation of electronically
+excited states. The results shown in the preceding section for the
+vertical transitions of formaldehyde and acetone are of good quality
+and exhibit good agreement with the best calculations so far performed
+as well as with the existing experimental data. Our
+calculations have been carried out starting from rather modest size
+CAS--SCF wave functions. The computational overhead involved by the
+two forms of NEVPT (strongly and partially contracted) amounts to only
+a small fraction of the CAS--SCF calculation for such small active
+orbital spaces and this favorable situation is not expected to
+drastically change when passing on to larger molecules, provided that
+the active space can be kept within manageable dimensions ($\le$ 10,
+say).
+
+No evidence of divergences or misbehaviours in the perturbation
+summation has been found in the calculation of the Rydberg states,
+which are particularly prone to exhibiting the appearance of intruder
+states. We are confident that NEVPT2 can be successfully adopted as a
+standard tool for the exploration of electronically excited states of
+medium--size molecules.
+
+
+
+
+
+%\section*{Acknowledgment}
+
+
+\begin{thebibliography}{References}
+%
+%TCA bibliography style
+%
+\newcommand{\uau}[2]{#2 #1 }
+\newcommand{\au}[2]{#2 #1, }
+\newcommand{\lau}[2]{#2 #1 }
+\newcommand{\jo}[4]{(#4) #1 #2: #3}
+%
+
+\bibitem{Moller34}
+\au{C}{M\o ller}  \lau{MS}{Plesset}
+\jo{Phys Rev}{46}{618}{1934}
+
+\bibitem{Ander90}
+\au{K}{Andersson} \au{P}{Malmqvist} \au{BO}{Roos} \au{AJ}{Sadlej} \lau{K}{Wolinski}
+\jo{J Phys Chem}{94}{5483}{1990}
+
+\bibitem{Ander92}
+\au{K}{Andersson} \au{P}{Malmqvist} \au{BO}{Roos}
+\jo{J Chem Phys}{96}{1218}{1992}
+
+\bibitem{Werner82}
+\au{H-J}{Werner} \lau{EA}{Reinsh}
+\jo{J Chem Phys}{76}{3144}{1982}
+
+\bibitem{nev1}
+\au{C}{Angeli} \au{R}{Cimiraglia} \au{S}{Evangelisti} \au{T}{Leininger} \lau{JP}{Malrieu}
+\jo{J Chem Phys}{114}{10252}{2001}
+
+\bibitem{nev2}
+\au{C}{Angeli} \au{R}{Cimiraglia} \lau{JP}{Malrieu}
+\jo{Chem Phys Lett}{350}{297}{2001}
+
+\bibitem{nev3}
+\au{C}{Angeli} \au{R}{Cimiraglia} \lau{JP}{Malrieu}
+\jo{J Chem Phys}{117}{9138}{2002}
+
+\bibitem{Dyall95}
+\uau{K G}{Dyall}
+\jo{J Chem Phys}{102}{4909}{1995}
+
+\bibitem{Angeli2000}
+\au{C}{Angeli} \au{R}{Cimiraglia} \lau{JP}{Malrieu}
+\jo{Chem Phys Lett}{317}{472}{2000}
+
+\bibitem{Mcweeny}
+\uau{R}{McWeeny} ``Methods of Molecular Quantum Mechanics'', Academic
+Press, London, 1989.
+
+\bibitem{Nelson65}
+\au{R}{Nelson} \lau{L}{Pierce}
+\jo{J Mol Spectr}{18}{344}{1965}
+
+\bibitem{Widma90}
+\au{P-O}{Widmark} \au{P-A}{Malmqvist} \lau{BO}{Roos}
+\jo{Theor Chim Acta}{77}{291}{1990}
+
+\bibitem{Kaufm89}
+\au{K}{Kaufmann} \au{W}{Baumeister} \lau{M}{Jungen}
+\jo{J Phys B: At Mol Opt Phys}{22}{2223}{1989}
+
+\bibitem{Roos95}
+\au{BO}{Roos} \au{MP}{F\"ulsher} \au{P\AA}{Malmqvist}
+\au{M}{Merch\'an} \lau{L}{Serrano-Andr\'es}
+in: Langhoff S R (Ed.), {\it Quantum Mechanical Eletronic Structure
+Calculation with Chemical Accuracy}, p. 357-438, Kluwer Academic Publishers, the Netherlands,
+1995.
+
+\bibitem{Merch95}
+\au{M}{Merch\'an} \lau{BO}{Roos}
+\jo{Theor Chem Acc}{92}{227}{1995}
+
+\bibitem{Ruiz03}
+\au{J}{Pitarch-Ruiz} \au{J}{S\'anchez-Mar\'\i n} \au{A}{S\'anchez de Mer\'as} \lau{D}{Maynau}
+\jo{Mol Phys}{101}{483}{2003}
+
+\bibitem{Paris96}
+\au{O}{Parisel} \lau{Y}{Ellinger}
+\jo{Chem Phys}{205}{323}{1996}
+
+\bibitem{Hachey95}
+\au{MR Hachey} \au{PJ}{Bruna} \lau{F}{Grein}
+\jo{J Phys Chem}{99}{8050}{1995}
+
+\bibitem{Muller01}
+\au{T}{M\"uller} \lau{H}{Lischka}
+\jo{Theor Chem Acc}{106}{369}{2001}
+
+\bibitem{gwalt95}
+\au{SR}{Gwaltney} \lau{RJ}{Bartlett}
+\jo{Chem Phys Lett}{241}{26}{1995}
+
+\bibitem{Wiberg02}
+\au{KB}{Wiberg} \au{AE}{de Oliveira} \lau{G}{Trucks}
+\jo{J Phys Chem A}{106}{4192}{2002}
+
+\bibitem{Robin85}
+\uau{MB}{Robin}
+in: {\it Higher excited states of polyatomic molecules}, Vol. 3, p. 256, Academic Press
+New York, 1985.
+
+\bibitem{Taylor82}
+\au{S}{Taylor} \au{DG}{Wilden} \lau{J}{Corner}
+\jo{Chem Phys}{70}{291}{1982}
+
+\bibitem{Brint85}
+\au{P}{Brint} \au{J-P}{Connerade} \au{C}{Mayhew} \lau{K}{Sommer}
+\jo{J Chem Soc Faraday Trans 2}{81}{1643}{1985}
+
+\bibitem{Suto86}
+\au{M}{Suto} \au{X}{Wang} \lau{LC}{Lee}
+\jo{J Chem Phys}{85}{4228}{1986}
+
+\bibitem{Walzl87}
+\au{KN}{Walzl} \au{CF}{Koerting} \lau{A}{Kuppermann}
+\jo{J Chem Phys}{87}{3797}{1987}
+
+\bibitem{Durand87}
+\au{P}{Durand} \lau{JP}{Malrieu}
+\jo{Adv Chem Phys}{67}{1}{1987}
+
+\bibitem{Finley98}
+\au{J}{Finley} \au{PA}{Malmqvist} \au{BO}{Roos} \lau{L}{Serrano-Andr\'es}
+\jo{Chem Phys Lett}{288}{299}{1998}
+
+\bibitem{Merch96}
+\au{M}{Merch\'an} \au{B}{Roos} \au{R}{McDiarmid} \lau{X}{Xing}
+\jo{J Chem Phys}{104}{1791}{1996}
+
+\bibitem{Philis93}
+\au{JG}{Philis} \lau{L}{Goodman}
+\jo{J Chem Phys}{98}{3795}{1993}
+
+\bibitem{Mcdia88}
+\au{R}{McDiarmid} \lau{A}{Sablji\'c}
+\jo{J Chem Phys}{89}{6086}{1988}
+
+\end{thebibliography}
+\newpage
+\begin{table}[b]
+\caption{Active spaces and number of states used in the average CAS-SCF calculations
+for the formaldehyde molecule (in all cases 4 active electrons)}
+\label{Tabforact}       
+\begin{tabular}{clc}
+\hline\noalign{\smallskip}
+\# MOs$^a$ & Symmetry and nature of states    & \# states$^b$ \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+    (0340)   & $^1$A$_1$ (GS;$n_y\!\rightarrow\!3p_y$,$3d_{yz}$;$\pi\!\rightarrow\!\pi^*$) & 4 \\
+    (2200)   & $^1$B$_1$ ($\sigma\!\rightarrow\!\pi^*$) & 1\\
+    (0211)   & $^1$B$_1$ ($n_y\!\rightarrow\! 3d_{xy}$) & 1 \\
+    (4210)   & $^1$B$_2$ ($n_y\!\rightarrow\!3s$,$3p_z$,$3d_{x^2\!-\!y^2}$,$3d_{z^2}$) & 4 \\
+    (0410)   & $^1$A$_2$ ($n_y\!\rightarrow\! \pi^*$, $3p_x$, $3d_{xz}$) & 3 \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$ number of molecular orbitals in the active space for 
+the four irreducible representations ($a_1$,$b_1$,$b_2$,$a_2$)\\
+$^b$ number of states used in the average procedure
+% Or use
+\end{table}
+
+%\begin{minipage}{\textwidth}
+\begin{table*}[h]
+\caption{Vertical excitation energies (eV) for the Rydberg states of
+the formaldehyde molecule.
+The numbers in parenthesis are the squared norms of the first order corrections to
+the wave function. The
+squared norm for the ground state is 0.075 (NEV-PT SC$^b$), 0.076 (NEV-PT PC$^b$), 
+0.091 (NEV-PT SC$^c$) and 0.097 (NEV-PT PC$^c$).}
+\label{Tabforeery}
+\begin{tabular}{lccccccccc}
+\hline\noalign{\smallskip}
+Method &2 A$_1$ & 3 A$_1$ & 1 B$_2$ & 2 B$_2$ & 3 B$_2$ & 4 B$_2$ & 2 A$_2$ & 3 A$_2$ &  2 B$_1$ \\
+ &(\nto{3p_y}) & (\nto{3d_{yz}}) & (\nto{3s}) & (\nto{3p_z}) & 
+(\nto{3d_{x^2\!-\!y^2}}) & (\nto{3d_{z2}}) & (\nto{3p_x}) &
+(\nto{3d_{xz}}) & (\nto{3d_{xy}})     \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+%CAS--SCF$^{a,b}$  &   7.72 & 8.83  & 7.02  & 7.80  & 8.73  & 8.86  & 8.49  & 9.43  & 8.81 \\
+CAS--SCF$^{a,b}$  &   8.07 & 9.18  & 7.37  & 8.15  & 9.08  & 9.21  & 8.84  & 9.78  & 9.16 \\
+%CAS--SCF$^{a,c}$  &   7.66 & 8.75  & 6.91  & 7.70  & 8.62  & 8.75  & 8.43  & 9.34  & 8.75 \\
+CAS--SCF$^{a,c}$  &   8.04 & 9.12  & 7.29  & 8.08  & 8.99  & 9.12  & 8.81  & 9.72  & 9.12 \\
+%SC-NEVPT$^{a,b}$&   8.30 & 9.45  & 7.31  & 8.14  & 9.16  & 9.33  & 8.36  & 9.37  & 9.29 \\
+SC-NEVPT$^{a,b}$&   8.27 & 9.42  & 7.28  & 8.11  & 9.13  & 9.30  & 8.33  & 9.34  & 9.26 \\
+                & (0.077)&(0.076)&(0.092)&(0.090)&(0.083)&(0.082)&(0.080)&(0.079)&(0.079)\\
+%SC-NEVPT$^{a,c}$&   8.46 & 9.64  & 7.40  & 8.24  & 9.24  & 9.44  & 8.53  & 9.55  & 9.46 \\
+SC-NEVPT$^{a,c}$&   8.39 & 9.56  & 7.32  & 8.16  & 9.17  & 9.37  & 8.46  & 9.48  & 9.39 \\
+                & (0.084)&(0.083)&(0.090)&(0.090)&(0.087)&(0.086)&(0.099)&(0.097)&(0.086)\\
+%PC-NEVPT$^{a,b}$&   8.28 & 9.43  & 7.37  & 8.20  & 9.22  & 9.39  & 8.41  & 9.42  & 9.35 \\
+PC-NEVPT$^{a,b}$&   8.20 & 9.34  & 7.28  & 8.12  & 9.14  & 9.31  & 8.33  & 9.34  & 9.27 \\
+                & (0.084)&(0.084)&(0.095)&(0.093)&(0.085)&(0.084)&(0.082)&(0.081)&(0.081)\\
+%PC-NEVPT$^{a,c}$&   8.44 & 9.61  & 7.45  & 8.29  & 9.30  & 9.51  & 8.58  & 9.61  & 9.52 \\
+PC-NEVPT$^{a,c}$&   8.31 & 9.49  & 7.33  & 8.17  & 9.17  & 9.38  & 8.45  & 9.48  & 9.39 \\
+                & (0.092)&(0.090)&(0.092)&(0.092)&(0.089)&(0.088)&(0.103)&(0.100)&(0.087)\\
+CASPT2 \cite{Merch95}
+                &   8.12 & 9.24  & 7.30  & 8.09  & 9.13  & 9.31  & 8.32  & 9.31  & 9.23 \\
+MC/BMP \cite{Paris96}
+                &   7.95 & 9.11  & 6.90  & 7.77  & 8.95  & 9.11  & 8.46  & 8.82  & 9.06 \\
+(SC)$^2$ CAS+SD$^b$ \cite{Ruiz03}
+                &   8.14 & 9.26  & 7.17  & 7.96  & 9.00  & 9.19  & 8.30  & 9.28  & 9.12 \\
+(SC)$^2$ MR+SD$^c$ \cite{Ruiz03}
+                &   8.27 & 9.31  & 7.12  & 7.95  & 8.96  & 9.18  & 8.36  & 9.34  & 9.36 \\
+CCR(3)$^b$ \cite{Ruiz03}
+               &    8.01 & 9.16  & 7.11  & 7.91  & 8.99  & 9.21  & 8.25  & 9.26  & 9.12 \\
+CCR(3)$^c$ \cite{Ruiz03}
+               &    8.14 & 9.27  & 7.16  & 7.99  & 9.04  & 9.27  & 8.38  & 9.40  & 9.25 \\
+MRD-CI \cite{Hachey95}
+                &   8.10 & 9.25  & 7.15  & 8.05  & 9.05  & 9.25  & 8.32  & 9.34  & 9.32 \\
+MR-CISD + Q \cite{Muller01}
+                &   8.13 & 9.28  & 7.27  & 8.10  & 9.15  & 9.30  & 8.34  & 9.36  & 9.26 \\
+MR-AQCC  \cite{Muller01}
+                &   8.24 & 9.38  & 7.21  & 8.03  & 9.09  & 9.24  & 8.46  & 9.49  & 9.37 \\
+EOM-CCSD \cite{gwalt95}
+                &   7.99 &10.16  & 6.99  & 7.93  & 9.25  & 9.98  & 8.45  &10.67  & 9.84 \\
+EOM-CCSD \cite{Wiberg02}
+                &   7.98 & 9.13  & 7.04  & 7.88  & 8.94  & 9.12  & 8.21  & 9.29  &10.89 \\
+Exp \cite{Robin85}
+                &   7.97 &       & 7.11  & 8.14  & 8.88  &       & 8.37  &       &      \\
+Exp \cite{Taylor82}
+                &        &       &       &       &       &       &       &       & 9.22 \\
+Exp \cite{Brint85,Suto86}
+                &        &       & 7.09  &       &       &       &       &       &      \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$  This work\\
+$^b$  ANO basis set with contraction [$4s3p1d$/$2s1p$] + $1s1p1d$, ANO(S)+Ryd(S)\\
+$^c$  ANO basis set with contraction [$6s5p3d2f$/$4s3p2d$] + $3s3p3d$, ANO(L)+Ryd(L)
+\end{table*}
+
+\clearpage
+\newpage
+
+\begin{table}[h]
+\caption{Vertical excitation energies (eV) for the valence states of
+the formaldehyde molecule.
+The numbers in parenthesis are the squared norms of the first order corrections 
+to the wave function. The
+squared norm for the ground state is 0.075 (NEV-PT SC$^b$), 0.076 (NEV-PT PC$^b$), 
+0.091 (NEV-PT SC$^c$) and 0.097 (NEV-PT PC$^c$).}
+\label{Tabforeeval}
+\begin{tabular}{lccc}
+\hline\noalign{\smallskip}
+Method &4 A$_1$ & 1 A$_2$ & 1 B$_1$ \\
+ & (\pipis) & ($n_y\rightarrow\pi^*$) & (\sipis) \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+%CAS--SCF$^{a,b}$          & 10.24  & 4.94  & 9.54  \\ Rispessto al GS mediato
+CAS--SCF$^{a,b}$          & 10.59  & 5.28  & 9.89  \\
+%CAS--SCF$^{a,c}$          & 10.10  & 4.89  & 9.45  \\ Rispessto al GS mediato
+CAS--SCF$^{a,c}$          & 10.47  & 5.27  & 9.82  \\
+%SC-NEVPT$^{a,b}$        & 10.12  & 4.07  & 9.56  \\ Rispessto al GS mediato
+SC-NEVPT$^{a,b}$        & 10.09  & 4.04  & 9.53  \\
+                        & (0.087)&(0.105)&(0.081)\\
+%SC-NEVPT$^{a,c}$        & 10.04  & 4.00  & 9.44  \\ Rispessto al GS mediato
+SC-NEVPT$^{a,c}$        &  9.97  & 3.93  & 9.37  \\
+                        & (0.095)&(0.113)&(0.091)\\
+%PC-NEVPT$^{a,b}$        & 10.02  & 4.11  & 9.53  \\ Rispessto al GS mediato
+PC-NEVPT$^{a,b}$        &  9.94  & 4.03  & 9.45  \\
+                        & (0.100)&(0.109)&(0.088)\\
+%PC-NEVPT$^{a,c}$        &  9.93  & 4.04  & 9.41  \\ Rispessto al GS mediato
+PC-NEVPT$^{a,c}$        &  9.80  & 3.91  & 9.28  \\
+                        & (0.112)&(0.118)&(0.097)\\
+CASPT2 \cite{Merch95}   &  9.77  & 3.91  & 9.09  \\
+MC/BMP \cite{Paris96}
+                        & 10.37  & 3.83  &13.69  \\ 
+(SC)$^2$ CAS+SD$^b$ \cite{Ruiz03}
+                        &  9.89  & 4.15  & 9.35  \\
+(SC)$^2$ MR+SD$^c$ \cite{Ruiz03}
+                        &  9.74  & 4.04  & 9.33  \\
+CCR(3)$^b$ \cite{Ruiz03}
+                        &  9.80  & 4.01  & 9.29  \\
+CCR(3)$^c$ \cite{Ruiz03}
+                        &  9.64  & 3.97  & 9.25  \\
+MRD-CI \cite{Hachey95}
+                        &  9.60  & 4.05  & 9.35  \\
+MR-CISD + Q \cite{Muller01}
+                        &  9.80  & 4.07  & 9.40  \\
+MR-AQCC  \cite{Muller01}
+                        &  9.84  & 4.04  & 9.37  \\
+EOM-CCSD \cite{gwalt95} &  9.47  & 3.98  & 9.33  \\
+EOM-CCSD \cite{Wiberg02}&  9.37  & 4.04  & 9.43  \\
+Exp \cite{Robin85}      &        & 4.07  &       \\
+Exp \cite{Walzl87}      &        & 3.79  &       \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$  This work\\
+$^b$  ANO(S)+Ryd(S) basis (see text)\\
+$^c$  ANO(L)+Ryd(L) basis (see text)\\
+\end{table}
+\begin{table}[h]
+\caption{Energy differences (eV) between the perturbation and the (SC)$^2$ CAS+SD results 
+of Ref. \cite{Ruiz03}}
+\label{Tabforeemaes1}
+\begin{tabular}{lccc}
+\hline\noalign{\smallskip}
+         & PC-NEVPT$^a$& SC-NEVPT$^a$ & CASPT2$^b$    \\
+2 A$_1$  & $~$0.06 & $~$0.13  &    -0.02  \\
+3 A$_1$  & $~$0.08 & $~$0.16  &    -0.02  \\
+4 A$_1$  & $~$0.05 & $~$0.20  &    -0.12  \\
+1 B$_2$  & $~$0.11 & $~$0.11  &  $~$0.13  \\
+2 B$_2$  & $~$0.16 & $~$0.15  &  $~$0.13  \\
+3 B$_2$  & $~$0.14 & $~$0.13  &  $~$0.13  \\
+4 B$_2$  & $~$0.12 & $~$0.11  &  $~$0.12  \\
+1 A$_2$  &   -0.12 &   -0.11  &    -0.24  \\
+2 A$_2$  & $~$0.03 & $~$0.03  &  $~$0.02  \\
+3 A$_2$  & $~$0.06 & $~$0.06  &  $~$0.03  \\
+1 B$_1$  & $~$0.10 & $~$0.18  &    -0.26  \\
+2 B$_1$  & $~$0.15 & $~$0.14  &  $~$0.11  \\
+\noalign{\smallskip}\hline
+MAE$^c$      & $~$0.10 & $~$0.13  &  $~$0.11  \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$ This work\\
+$^b$ Ref. \cite{Merch95}\\
+$^c$ Mean Absolute Error
+\end{table}
+\begin{table}[h]
+\caption{Energy differences (eV) between the perturbation and the (SC)$^2$ MR+SD results 
+of Ref. \cite{Ruiz03}}
+\label{Tabforeemaeb1}
+\begin{tabular}{lcccc}
+\hline\noalign{\smallskip}
+         & PC-NEVPT$^a$ &  SC-NEVPT$^a$   \\
+2 A$_1$  &   0.04   &    0.12     \\
+3 A$_1$  &   0.18   &    0.25     \\
+4 A$_1$  &   0.06   &    0.23     \\
+1 B$_2$  &   0.21   &    0.20     \\
+2 B$_2$  &   0.22   &    0.21     \\
+3 B$_2$  &   0.21   &    0.21     \\
+4 B$_2$  &   0.20   &    0.19     \\
+1 A$_2$  &  -0.13   &   -0.11     \\
+2 A$_2$  &   0.09   &    0.10     \\
+3 A$_2$  &   0.14   &    0.14     \\
+1 B$_1$  &  -0.05   &    0.04     \\
+2 B$_1$  &   0.03   &    0.03     \\
+\noalign{\smallskip}\hline
+MAE$^b$      &   0.13   &    0.15    \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$ This work\\
+$^b$ Mean Absolute Error
+\end{table}
+
+\begin{table}[h]
+\caption{Active spaces and number of states used in the average CAS-SCF calculations
+for the acetone molecule (always 6 active electrons except in the case of the 
+$^1$B$_1$ ($\sigma\rightarrow\pi^*$) which is computed with 4 active electrons}
+\label{Tabaceact}       
+\begin{tabular}{clc}
+\hline\noalign{\smallskip}
+\# MOs$^a$ & Symmetry and nature of states    & \# states$^b$ \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+    (2230)   & $^1$A$_1$ (GS;$n_y\!\rightarrow\! 3p_y$,$3d_{yz}$;$\pi\!\rightarrow\!\pi^*$) & 4 \\
+    (2200)   & $^1$B$_1$ ($\sigma\!\rightarrow\!\pi^*$) & 1\\
+    (2211)   & $^1$B$_1$ ($n_y\!\rightarrow\! 3d_{xy}$) & 1 \\
+    (6210)   & $^1$B$_2$ ($n_y\!\rightarrow\! 3s$, $3p_z$, $3d_{x^2\!-\!y^2}$, $3d_{z^2}$) & 4 \\
+    (2410)   & $^1$A$_2$ ($n_y\!\rightarrow\!\pi^*$,$3p_x$,$3d_{xz}$) & 3 \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$ number of molecular orbitals in the active space for 
+the four irreducible representations ($a_1$,$b_1$,$b_2$,$a_2$)\\
+$^b$ number of states used in the average procedure
+% Or use
+\end{table}
+
+\newpage
+%\begin{minipage}{\textwidth}
+\begin{table*}[h]
+\caption{Vertical excitation energies (eV) for the Rydberg states of
+the acetone molecule}
+\label{Tabaceeery}
+\begin{tabular}{lccccccccc}
+\hline\noalign{\smallskip}
+Method &2 A$_1$ & 3 A$_1$ & 1 B$_2$ & 2 B$_2$ & 3 B$_2$ & 4 B$_2$ & 2 A$_2$ & 3 A$_2$ &  2 B$_1$ \\
+ &(\nto{3p_y}) & (\nto{3d_{yz}}) & (\nto{3s}) & (\nto{3p_z}) & 
+(\nto{3d_{x^2\!-\!y^2}}) & (\nto{3d_{z2}}) & (\nto{3p_x}) &
+(\nto{3d_{xz}}) & (\nto{3d_{xy}})     \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+%CAS--SCF$^a$  &  7.00 & 7.55   & 5.12  & 5.85  & 6.40  & 6.49  & 6.99  & 7.70  & 6.48  \\
+CAS--SCF$^a$  &  7.91  & 8.46  & 6.02  & 6.75  & 7.30  & 7.39  & 7.29  & 7.99  & 7.38  \\
+%SC-NEVPT$^a$&  7.57  & 8.20  & 6.92  & 7.85 & 8.42  & 8.54  & 7.33  & 8.09  & 8.53  \\
+SC-NEVPT$^a$&  7.40  & 8.03  & 6.75  & 7.67  & 8.25  & 8.37  & 7.48  & 8.24  & 8.36  \\
+            & (0.182)&(0.179)&(0.159)&(0.155)&(0.154)&(0.153)&(0.168)&(0.166)&(0.154)\\
+%PC-NEVPT$^a$&  7.60  & 8.24  & 7.03  & 7.97  & 8.54  & 8.67  & 7.47  & 8.24  & 8.67  \\
+PC-NEVPT$^a$&  7.27  & 7.91  & 6.71  & 7.64  & 8.22  & 8.34  & 7.39  & 8.17  & 8.35  \\
+            & (0.195)&(0.192)&(0.166)&(0.161)&(0.160)&(0.158)&(0.177)&(0.175)&(0.158)\\
+CASPT2 \cite{Merch96}
+            &  7.26  & 7.91  & 6.58 & 7.48   & 8.04  & 8.18  & 7.34  & 8.09  & 8.20  \\
+EOM-CCSD \cite{gwalt95}
+            &  7.45  & 8.23  & 6.39 & 7.51   & 7.95  & 8.48  & 7.41  & 8.44  & 8.43  \\
+EOM-CCSD \cite{Wiberg02}
+            &  7.41  & 8.02  & 6.42 & 7.39   & 7.82  & 8.10  & 7.31  & 8.04  & 8.11  \\
+Exp \cite{Merch96}
+            &        & 7.8   &      &        & 8.09  &       &       &       & 8.17  \\
+Exp \cite{Philis93}
+            &        &       & 6.35 &        &       &       &       &       &       \\
+Exp \cite{Robin85}
+            &        &       & 6.36 &        &       &       & 7.45  &       &       \\
+Exp \cite{Mcdia88}
+            &  7.41  &       &      & 7.45   &       &       & 7.36  &       &       \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$  This work\\
+The numbers in parenthesis are the squared norms of the first order
+corrections to the wave function. The squared
+norm for the ground state is 0.164 (NEV-PT SC) and 0.167 (NEV-PT PC).
+\end{table*}
+
+\clearpage
+\newpage
+\begin{table}[h]
+\caption{Vertical excitation energies (eV) for the valence states of
+the acetone molecule}
+\label{Tabaceeeval}
+\begin{tabular}{lccc}
+\hline\noalign{\smallskip}
+Method &4 A$_1$ & 1 A$_2$ & 1 B$_1$ \\
+ & (\pipis) & ($n_y\rightarrow\pi^*$) & (\sipis) \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+%CAS--SCF$^a$             & 10.70 & 4.78  & 9.48 \\
+CAS--SCF$^a$             & 11.60  & 5.57  &10.38 \\
+%SC-NEVPT$^a$           &  9.77  & 4.36  & 9.46 \\
+SC-NEVPT$^a$           &  9.60  & 4.42  & 9.29 \\
+                       & (0.204)&(0.189)&(0.182)\\
+%PC-NEVPT$^a$           &  9.33  & 4.46  & 9.55 \\
+PC-NEVPT$^a$           &  9.01  & 4.22  & 9.23 \\
+                       & (0.293)&(0.207)&(0.190)\\
+CASPT2 \cite{Merch96}  &  9.16  & 4.18  & 9.10 \\
+EOM-CC \cite{gwalt95}  &  9.15  & 4.48  & 9.30 \\
+EOM-CC \cite{Wiberg02} &  8.52  & 4.47  & 8.87 \\
+Exp \cite{Walzl87}     &        & 4.38  &      \\
+Exp \cite{Robin85}     &        & 4.43  &      \\
+\noalign{\smallskip}\hline
+\end{tabular}\\
+{\smallskip}
+
+$^a$  This work\\
+The numbers in parenthesis are the squared norms of the first order 
+corrections to the wave function. The squared
+norm for the ground state is 0.164 (NEV-PT SC) and 0.167 (NEV-PT PC).
+\end{table}
+
+
+\end{document}

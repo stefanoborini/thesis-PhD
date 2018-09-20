@@ -1,0 +1,104 @@
+\pagestyle{empty}
+\begin{center}
+{\Huge \textbf Resum\'e chapitre \ref{chp:grid} \\ Integration de reseau}
+\end{center}
+
+La puissance computationnelle et l'espace disque ont connu une incroyable
+augmentation depuis quelques ans. La vitesse d'interconnexion r\'eseau est
+aussi augment\'ee, et cet incr\'ement ouvre des nouvelles possibilit\'es pour obtenir
+puissance computationnelle et espace disque utilisant plusieurs ordinateurs
+peu employ\'e, \`a cr\'eer une m\'eta-plateforme commune: le r\'eseau \`a grid.
+Avec une r\'eseau \`a grid, il est possible obtenir
+\begin{itemize}
+\item ressources d'infrastructure physique, comme espace disque, temp de
+calcul, espace RAM, agr\'egation et archiviation des donn\'ees, utilisation
+condivise d'instrumentation.
+\item ressources logiques, comme exp\'erimentation, analyse des donn\'ees,
+mod\'elisation et simulation.
+\item ressources humaines, comme condivision des comp\'etences et communication
+\end{itemize}
+
+Le r\'esultat est un syst\`eme h\'et\'erog\`ene distribu\'e, qui donne une structure
+virtuelle \`a l'utilisateur. L'interaction avec les services est
+standardis\'ee et uniforme, sans probl\`emes d'architecture de CPU ou de
+localisation g\'eographique de l'utilisateur.
+
+Le r\'eseau \`a grid le plus connu est probablement le web. Le WWW est un
+r\'eseau pour le stockage des donn\'ees. Ces donn\'ees sont consult\'ees
+avec une interface standard, le navigateur web, avec une protocole \`a bas
+niveau, l'HTTP. Cette abstraction est suffisante pour lire et \'ecrire
+fichiers ou ex\'ecuter un script.
+
+En ce moment, trois types d'applications peuvent \^etre d\'ecrit pour le
+r\'eseau
+\begin{itemize}
+\item \textit{Applications \`a communication r\'eduite}: o\`u le probl\`eme est
+d\'ecompos\'e en morceaux presque ind\'ependant, et le calcul est
+effectu\'e sur chaque morceau. Seti@Home\cite{seti-site} ou le calculs
+m\'et\'eorologiques sont des exemples.
+\item \textit{Applications \`a pas}: o\`u la proc\'edure est d\'ecompos\'e en pas
+s\'equentiels, chacun effectu\'e dans l'environnement de le reseau \`a grid.
+Cette approche est utilis\'ee pour partager l'acc\'es \`a des instruments et
+l'\'elaboration des r\'esultats, la distribution du co\^ut d'administration
+et l'acces aux logiciels locaux.
+\item \textit{Acc\'es \`a ressources}: pour partager ressources comme
+bas des donn\'ees, instrumentation, espace de stockage.
+\end{itemize}
+
+Pour les processus de chimie quantique, de l'exp\'erience a \'et\'e faite avec la
+parall\'elisation des algorithmes avec PVM et MPI, mais les \'evaluations
+\textit{ab initio} sont principalement s\'equentiels: normalement, on a l'\'evaluation des
+integrales, l'optimisation d'un fonction d'onde, et l'application d'autres
+techniques. L'architecture de r\'ef\'erence est donc l'Applications \`a pas.
+
+Le reseau Metachem est un type de reseau d\'evelopp\'e dans le cadre d'une action
+COST de la communaut\'e europ\'eenne. L'objectif est l'int\'egration
+de logiciels de chimie quantique mis \`a disposition par plusieurs
+laboratoires europ\'eens.
+
+Pendant ce travail de th\`ese, deux probl\`emes pour l'int\'egration ont \'et\'e
+\'etudi\'e et r\'esolus. 
+Le premier probl\`eme est le d\'eveloppement d'un format de fichier commun
+pour \'echanger information binaire. 
+Le formats de fichier dej\`a d\'evelopp\'es ont \'et\'e analis\'es, et 
+leur d\'efects pour l'ex\'ecution en grid ont \'et\'e evalu\'es. Une reseau
+\`a grid n\'ecessite de consid\'erations additionnelles: le format ne doit
+pas \^etre platform-dependent, parce que le reseau peut \^etre construit
+avec ordinateurs ayant des architectures diff\'erentes.  Le format id\'eal
+pour ce travail est HDF5, mais malheureusement ce format est complexe \`a
+utiliser. Autres consid\'erations sont la simplicit\'e d'utilise de la
+biblioth\`eque d'acces, exactitude des messages d'erreur pendant l'acces et
+extensibilit\'e du format.
+
+La recherche effectu\'ee a conduit au d\'eveloppement d'un mod\`ele des
+donn\'ees qui a \'et\'e impl\'ement\'e dans la biblioth\`eque Q5Cost. Cette
+biblioth\`eque donner l'acces \`a des entit\'ees chimiques et simplifie
+l'utilisation \`a des programmateurs avec une exp\'erience chimique.
+
+Q5Cost a \'et\'e utilis\'ee pour l'integration des diff\'erents logiciels,
+et ouvre des nouvelles possibilit\'es pour le partage d'information
+quantistique et l'integration des m\'ethodes \textit{ab initio}.
+La biblioth\`eque a aussi une testsuite pour contr\^oler l'interface et
+chercher les probl\`emes dans l'implementation. 
+Le r\'esultat est une biblioth\`eque tr\`es solide et extensible.
+
+Le probl\`emes principaux qui restent \`a resoudre dans Q5Cost sont: le
+stockage des integrals n'est pas encore efficient en terms d'espace
+occup\'e, et l'implementation du mod\`ele des donn\'ees n'est pas complete,
+mais l'impl\'ementation courante est suffisante pour le premiers
+d\'eveloppements et implementations.
+
+Le deuxi\`eme probl\`eme est le management de la s\'equence d'op\'erations
+\`a effectuer et la conversion de ces instructions dans un format local pour
+chaque logiciel. Cette conversion doit \^etre effectu\'ee par un logiciel wrapper
+\`a l'entr\'ee et \`a la sortie, et donc est fortement li\'ee au logiciel
+impliqu\'e.
+La s\'equence des op\'erations sera probablement d\'ecrite avec le format
+de fichier XML, et donc une biblioth\`eque de lecture et \'ecriture de ce
+format avec le langage Fortran, F90xml, a \'et\'e d\'evelopp\'ee. Cette
+biblioth\`eque interface libgdome2 (biblioth\`eque pour le langage C) avec
+Fortran. 
+
+Des exp\'eriences pr\'eliminaires de communication des donn\'ees ont \'et\'e
+effectu\'ees, et les r\'esultats sont tr\`es encourageants.
+

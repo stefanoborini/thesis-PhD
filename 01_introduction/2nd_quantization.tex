@@ -1,0 +1,233 @@
+\section{Second quantization}
+
+\subsection*{Creation and annihilation operators}
+
+A frequently used representation for Slater determinants is by
+spinorbital occupation. An occupation vector $\ket{\mathbf{n}}$ can be defined with elements
+$n_i$ which evaluate 1 if a given spinorbital is occupied by an electron, 0
+if not occupied. Of course, the sum $\sum_{i} n_i$ evaluates the total
+number $N$ of electrons in the molecular system. 
+
+The occupation vector
+represents a particular distribution of $N$ electrons in $m$ spinorbitals
+and belongs to a so-called Fock space $F(m)$, an abstract linear vector
+space defined only by the occupation number of the spinorbitals.
+
+A particular vector of the Fock space is the vacuum state
+\beq
+\vacuum = \ket{0_{1},0_{2},0_{3},\ldots,0_{m}}
+\eeq
+and it represents the case where no spinorbital is occupied by electrons. The
+vacuum vector defines a subspace $F(0,m)$ of the Fock space, spanned by the
+single vector given above. In general the subspace $F(N,m)$ of the
+Fock space has a higher dimensionality, being defined by all those vectors
+obtained by distributing $N$ electrons in $m$ spinorbitals.
+
+For a basis of orthogonal spinorbitals, the product between two occupation
+vectors $\ket{n}$ and $\ket{k}$ is defined as
+\beq
+\integral{n}{k} = \prod_{i=1}^{m} \delta_{n_{i}, k_{i}}
+\eeq
+This product represents the overlap between Slater determinants, evaluating to
+one when the electronic distribution is the same, otherwise zero.
+
+Two operators, named creation and annihilation operators, can now be defined.
+The creation operator $\constr{i}$ is defined as 
+\beqa
+\constr{i} \ket{n_{1}, n_{2}, \ldots, 0_{i}, \ldots, n_{m}} & = &
+\Gamma\left(n\right)_i \ket{n_{1}, n_{2}, \ldots, 1_{i}, \ldots, n_{m}} \\
+\constr{i} \ket{n_{1}, n_{2}, \ldots, 1_{i}, \ldots, n_{m}} & = & 0
+\eeqa
+This operator imposes the occupation of a previously unoccupied spinorbital
+$i$ by changing its occupation number from 0 to 1. If the selected
+spinorbital $i$ is already occupied, the result is zero.  This can be
+explained knowing that a Slater determinant with the same spinorbital
+included twice is zero, due to the Pauli exclusion principle.  The
+$\Gamma\left(n\right)$ value is called \textit{phase factor} and is
+defined as
+\beq
+\Gamma\left(n\right)_i = (-1)^{\sum_{j=1}^{i-1} n_j}
+\eeq
+The effect of the phase factor is to change the sign of the resulting
+determinant if the number of occupied spinorbitals before $i$ is odd, or
+leaving it unchanged if even.
+
+The annihilation operator $\destr{i}$ removes an electron
+from an occupied spinorbital, or produces zero if the spinorbital is
+already unoccupied
+\beqa
+\destr{i} \ket{n_{1}, n_{2}, \ldots, 1_{i}, \ldots, n_{m}} & = &
+\Gamma\left(n\right)_i \ket{n_{1}, n_{2}, \ldots, 0_{i}, \ldots, n_{m}} \\
+\destr{i} \ket{n_{1}, n_{2}, \ldots, 0_{i}, \ldots, n_{m}} & = & 0
+\eeqa
+The creation operator can be proved to be the adjoint of the annihilation
+operator, and viceversa.
+
+Important considerations can be derived from these definitions:
+every vector of the Fock space can be generated from the vacuum state by
+application of an ordered product of creation operators
+\beq
+\ket{\mathbf{n}} = \prod_{i=1}^{N} \left(\constr{i}\right)^{n_{i}} \vacuum
+\eeq
+Another important fact is represented by anticommutation
+relationships between the operators. It can be demonstrated that
+\beqa
+\anticomm{\constr{i}}{\constr{j}} = & \constr{i}\constr{j} +
+\constr{j}\constr{i} & = 0 \\
+\anticomm{\destr{i}}{\destr{j}} = & \destr{i} \destr{j} + \destr{j}
+\destr{i} & = 0 \\
+\anticomm{\constr{i}}{\destr{j}} = & \constr{i} \destr{j} + \destr{j}
+\constr{i} & = \delta_{ij} 
+\eeqa
+These relationships allow the definition of an efficient algebra for
+handling determinants, operators and interactions between them.
+
+\subsection*{Operators in second quantization}
+
+First quantization operators such as the kinetic operator or the
+Hamiltonian operator can be described using the second quantization formalism. The main difference
+between first and second quantization expression resides in the different structure of the second quantization approach,
+which incorporates the effect of the spinorbital basis into the operator
+itself, and not into the Slater determinant, which holds only information
+about the occupation.
+
+Operators in second quantization are expressed as a combination of products
+of elementary creation and annihilation operators. For example, the kinetic
+operator in first quantization is written as
+\beq
+\hat{f}_{1q} = \sum_{i=1}^{N} \hat{f}(x_i)
+\eeq
+where $x_i$ represents the spatial and spin coordinates of the electron $i$,
+and the sum runs over the number of electrons. 
+To express the same operator in second quantization, we should keep in mind
+that no change in the number of electrons is performed and only one electron
+at a time is involved. Therefore, the kinetic operator in second quantization
+is represented as a linear combination of excitation operators 
+\beq
+\hat{f}_{2q} = \sum_{rs} f_{rs} \constr{r} \destr{s}
+\eeq 
+where the sum runs over all spinorbitals. The operator is invariant with
+respect to the number of electrons, since this information is contained into
+the Fock space vector. The $\constr{r} \destr{s}$ operator
+effectively moves one electron from spinorbital $s$ to spinorbital $r$.
+
+Following the rules for orthogonality and application of the operators given
+above, the application of the second quantization
+$\braket{n}{\hat{f}}{m}$ operator produces three cases
+\begin{enumerate}
+\item the $\ket{n}$ and $\ket{m}$ vectors represent the
+same occupation 
+\beq
+\braket{n}{\hat{f}}{m} = \sum_{r} n_{r} f_{rr}
+\eeq
+\item the $\ket{n}$ and $\ket{m}$ differ in a single
+occupation pair
+\beqa
+\ket{n} &=& \ket{n_1, \ldots, 1_i, \ldots, 0_j, \ldots, n_m} \\
+\ket{m} &=& \ket{n_1, \ldots, 0_i, \ldots, 1_j, \ldots, n_m} \\
+\braket{n}{\hat{f}}{m} &=& \Gamma(n_1)_j \Gamma(n_1)_i f_{ij} 
+\eeqa
+\item the $\ket{n}$ and $\ket{m}$ differ in more than one
+occupation pairs
+\beq
+\braket{n}{\hat{f}}{m} = 0 
+\eeq
+\end{enumerate}
+which reproduce the Slater rules between Slater determinants if we choose
+\beq
+f_{rs} = \int \psi_{r}^{*}(x) \hat{f}(x) \psi_{s}(x) dx
+\eeq
+Therefore, the second quantization representation of a one-electron operator
+is a linear combination of single excitation operators, where the
+coefficients are the values of the integrals given above.
+
+The same strategy can be arranged for two-electron operators. A
+two-electron operator gives non-zero matrix elements between two Slater
+determinants which differ at most for two pairs of occupation values.
+Considering again that no change in the number of electrons is performed by
+the operator, it could be expanded as a linear combination
+\beq
+\hat{g} = \frac{1}{2} \sum_{ijkl} g_{ijkl} \constr{i} \constr{j} \destr{l} \destr{k}
+\eeq
+where, as usual, the $g_{ijkl}$ elements can be calculated evaluating the
+matrix element
+\beq
+g_{ijkl} = \int \psi_i^{*}(x) \psi_k^{*}(x^{\prime}) \hat{g}(x,x^{\prime}) =
+\braket{ij}{\hat{g}}{kl}
+\psi_{j}(x) \psi_{l}(x^{\prime})
+\eeq
+From these results, a representation of the Hamiltonian operator in second
+quantization can be devised
+\beq
+\label{eqn:hamil}
+\ham = \sum_{ij} h_{ij} \constr{i} \destr{j} + \frac{1}{2} \sum_{ijkl}
+g_{ijkl} \constr{i} \constr{j} \destr{l} \destr{k} 
+\eeq
+where $h_{ij}$ is the integral of kinetic energy plus the electron-nuclear
+operators, and $g_{ijkl}$ is the electron-electron repulsion term.
+
+Summarizing, the differences between first and second quantization operators
+are: 
+\begin{itemize}
+\item In first quantization the Slater determinants depend on the orbital
+basis, and the operators are independent of this information. In second
+quantization the operators contain this information, and the Slater
+determinants are represented only as occupation vectors in the Fock space,
+without references to the basis set
+\item In first quantization, the operators depend on the number of
+electrons. In second quantization, they are independent of this parameter.
+\item First quantization operators are exact operators, while second
+quantization operators are projected operators.
+\end{itemize}
+
+\subsection*{Density matrix}
+
+As we know, the expectation value of the energy for a normalized
+wavefunction can be obtained by
+\beq
+E = \braket{\Psi}{\ham}{\Psi}
+\eeq
+As we saw in Sec. \ref{sec:variational}, we can define the wavefunction as
+a linear combination of functions, in our case Slater determinants
+\beq
+\Psi = \sum_i c_i \Phi_i
+\eeq
+If we substitute we obtain
+\beq
+E = \braket{\sum_i c_i \Phi_i}{\ham}{\sum_j c_j \Phi_j} = \sum_{ij} c_i c_j
+H_{ij}
+\eeq
+Where $H_{ij}$ is the matrix element of the Hamiltonian operator between two
+Slater determinants. We can expand further this expression keeping into
+account Eqn. \ref{eqn:hamil}
+\beq
+E = \sum_{ij} c_i c_j \left( \sum_{ab} \gamma_{ab}^{ij} h_{ab} + \frac{1}{2}
+\sum_{abcd} \Gamma_{abcd}^{ij} g_{abcd} \right)
+\eeq
+where $\gamma_{ab}^{ij} = \braket{\Phi_i}{\constr{a} \destr{b}}{\Phi_j}$ and
+$\Gamma_{abcd}^{ij} = \braket{\Phi_i}{\constr{a} \constr{b} \destr{d}
+\destr{c}}{\Phi_j}$.
+We can remove the dependency on indexes $i$ and $j$ by including the
+coefficients and defining two entities: the one-particle density matrix
+\beq
+\gamma_{ab} = \sum_{ij} c_i c_j \gamma_{ab}^{ij}
+\eeq
+and the two-particles density matrix
+\beq
+\gamma_{abcd} = \sum_{ij} c_i c_j \Gamma_{abcd}^{ij}
+\eeq
+The energy can now be written as  
+\beq
+E = \sum_{ab} \gamma_{ab} h_{ab} + \frac{1}{2} \sum_{abcd} \gamma_{abcd} g_{abcd} 
+\eeq
+
+These matrixes are central in modern quantum chemistry. An interesting
+property of the one-particle density matrix can be found in the sum of the
+diagonal elements (trace), which adds to the total number of electrons
+\beq
+\mbox{Tr}(\gamma_{ij}) = N
+\eeq
+The eigenvectors of the density matrix are called \textit{natural orbitals}.
+The corresponding eigenvalues are called \textit{occupation numbers}, and
+express the electronic occupation of the corresponding natural orbital.
+

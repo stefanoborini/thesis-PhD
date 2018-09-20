@@ -1,0 +1,94 @@
+\newpage
+\subsection{Acetone + Water}
+
+To gain better insights about the sensibility of the technique with respect
+to the basis set, another test has been performed with the acetone molecule
+surrounded by six water molecules. Two molecules are directly coordinated to
+the carbonyl oxygen, while the remaining four coordinate the first
+two molecules.
+
+\input{02_localization/fig_acetone-water-frzcut-schema.tex}
+\vspace{-5mm}
+The freeze and cut scheme focuses on a full freezing of the water molecules.
+Two cut levels have been implemented: the first level completely removes the
+water system, and the second level preserves only the two carbonyl-coordinated molecules.
+
+The active space included five orbitals (the oxygen $n_y$ lone pair, and
+carbonyl $\pi$, $\pi^{*}$, $\sigma$ and $\sigma^{*}$ orbitals) with six
+active electrons. A state average optimization involving the ground state
+and the $n \rightarrow \pi^{*}$ has been performed to evaluate this vertical
+transition energy.
+
+Two ANO-1 basis sets contractions have been used: the minimal set
+C,O[$2s1p$], H[$1s$], hereafter called Bas-A, and an extended set
+C,O[$3s2p1d$], H[$2s1p$] (Bas-B). An additional set named Bas-C is further
+enriched up to C,O[$4s3p1d$], H[$2s1p$], and has been used on a smaller
+system made up of the acetone molecule and two water molecules.
+
+
+Tab. \ref{tbl:acetone_basis} reports the values obtained. 
+The behavior of the absolute energies is as expected by previous experience:
+when the cut seam is too near to the optimizable region, a difference in
+absolute energy is obtained. 
+\input{02_localization/tbl_acetone_basis}
+The relative behavior, however, is poorly
+affected.  When a large basis set is used, the absolute energy drift is
+strongly increased. The larger Bas-B basis set produces a very steep
+variation compared to the minimal Bas-A. 
+
+\input{02_localization/fig_matrix-2.tex}
+
+An additional effect must be considered responsible of the reported
+behavior.  Further investigations, performed with the smaller system acetone
++ 2 H$_2$O, revealed a problem related to the molecular orbital hierarchical
+orthonormalization (Fig.~\ref{fig:matrix-2}). After the cut action,
+orbitals are no longer orthonormal, and the orthonormalization procedure
+aims at restoring this orthonormality. 
+
+The first class of orbitals performing the orthonormalization is the
+non-frozen zone (marked ``1'' in Fig.~\ref{fig:matrix-2}) which remains
+described in the smaller AO space. This class must be treated first, in
+order to preserve itself inside this restricted space.
+
+The second class is the frozen core orbitals class (marked ``2'' in
+Fig.~\ref{fig:matrix-2}). When this class is orthonormalized with respect to
+the first one, orthonormalization tails are produced, effectively changing
+the core orbitals. The weight and spatial distribution of these tails is
+bound to the atomic basis set used to describe the molecular system,
+therefore larger basis sets produce stronger effects.
+
+This situation is different from the previously reported phenomenon in
+7Z-13 ammoniotridec-7-enoate in the frz-3/cut-3 analysis, where hydrogen
+atoms were removed from non-frozen orbitals. In the current case, frozen
+orbitals are modified due to orthonormality needs, which impose tails toward
+nearby atoms. These tails introduce an artificial charge shift toward these
+atoms, and in particular those involved in the physical process under
+study, resulting in convergence problems or a high energy drift. The process
+sometimes makes impossible for the evaluation to converge.
+
+Molden plots have been performed on the smaller system with only two water
+molecules. The contour factor is 0.03. Fig.~\ref{fig:acetone_tails} shows a
+clear difference between the water OH bond with the Bas-C contraction and
+the Bas-A contraction.
+
+\input{02_localization/fig_acetone_tails.tex}
+\vspace{-5mm}
+The nature of this problem is independent of the frozen spacer between the
+removed zone and the non-frozen zone, but related to the frozen/non-frozen
+seam. The problem do not arise when cut is not performed, and consequently
+the resulting orbitals do not incur in orthonormalization. 
+
+At first glance, a possible solution is to keep the frozen/non-frozen seam
+as much far as possible from the region interested in the chemical
+phenomenon, leading to absolute energy drifts but prevent tails to
+act on the active space. However, this goes in the direction of incrementing
+the computational cost of the final evaluation, enlarging the non-frozen
+zone in a large basis regime.
+
+Another possible solution has been attempted working with a non-orthonormal
+basis set. Frozen orbitals are not orthonormalized with respect to the
+non-frozen ones, and the results obtained (Tab.~\ref{tbl:acetone_basis}
+non-ortho) show a cleaner behavior. However, it must be pointed out that this
+procedure is not strictly formal under the assumptions made for the current
+theoretical deployment, and the convergence is very slow. An improvement in
+the theoretical asset is needed to formally work around this problem.

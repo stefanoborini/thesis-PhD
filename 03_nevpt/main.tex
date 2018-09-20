@@ -1,0 +1,127 @@
+\pagestyle{fancy}
+\chapter{NEVPT}
+\label{chp:nevpt}
+%\pagenumbering{arabic}
+
+Multireference perturbation theories are important tools for the
+evaluation of the correlation energy in small and medium sized molecules.
+The main advantage of a perturbative approach is the reduced computational
+cost when compared to a completely variational treatment, still providing a
+good level of accuracy.  First attempts in deploying theoretical approaches
+for MRPT are quite old\cite{rmp-39-771-1967,jcp-58-5745-1973} but these
+approaches began to be mainstream only recently.
+
+The goal of multireference perturbation theories is the creation of a quick
+and accurate tool resembling the single-determinant based M{\o}ller-Plesset
+(MP) approach\cite{pr-46-618-1934}, extended to a multireference context:
+when the molecular system under study is well described by a
+single-reference treatment, second-order M{\o}ller-Plesset perturbation
+theory gives more than 90\% of the correlation energy. The zero-order
+Hamiltonian is defined as the $n$ particles Fock operator 
+\beq
+\ham_0 = \sumonen{i} \fock(i)
+\eeq
+which leads to the wavefunction correction
+\beq
+\Psi_n^{(1)} = - \sum_{k \neq n} \ket{\Psi_k^{(0)}}
+\frac{\braket{\Psi_k^{(0)}}{\perturb}{\Psi_n^{(0)}}}{E_k^{(0)} -
+E_n^{(0)}}
+\eeq
+and to the well known second-order M{\o}ller-Plesset correction for the energy
+\beq
+E_0^{(2)} = - \sum_{i,j}^{\mbox{\tiny occ}} \sum_{r,s}^{\mbox{\tiny virt}} \frac{\left|
+\interact{rs}{ij}\right|^{2}}{\epsilon_r + \epsilon_s - \epsilon_i -
+\epsilon_j }
+\eeq
+where $\epsilon$ are the orbital energies associated to each orbital
+
+Unfortunately, with a multireference zero-order wavefunction the application
+of a perturbative approach is more difficult, due to the complex definition
+of a zero-order Hamiltonian.  When a choice has been made, various kind of
+problems arise, preventing the deployment of an easy-to-use perturbative
+scheme for multireference wavefunctions. 
+
+These problems can be accounted as the following:
+\begin{itemize}
+\item \textbf{lack of size consistency} (strict separability), which
+requires the energy of two non-interacting systems AB to be equal to the sum
+of the energies of A and B treated independently (E$_{AB} = $E$_A + $E$_B$)
+\item ``\textbf{intruder states}'', when the perturbers happen to have very similar
+energies to the zero-order wavefunction, leading to divergent behavior due
+to the nearly zero denominator in the perturbation theory equations.
+The M{\o}ller-Plesset treatment is not affected by this problem, since the
+perturbers are the doubly excited determinants $\Phi_{ij}^{rs}$, and the
+corresponding energies are $E_0 + \epsilon_r + \epsilon_s - \epsilon_i -
+\epsilon_j$, well distinct from $E_0$.
+\item \textbf{different levels of accuracy for ground and excited states}, making the
+evaluation of transition energy more complex.
+\item \textbf{no spin purity}, leading for example to a mix between singlet and triplet
+wavefunctions. This introduces additional complexity for spectroscopical
+evaluations, and spin-based property evaluations.
+\item \textbf{efficiency}. The perturbative treatment is required to be fast and with
+reduced disk space and memory footprints.
+\end{itemize}
+
+\subsection*{Classification of perturbative methods}
+
+Multireference perturbation theories can be classified in two categories:
+``\textit{perturb then diagonalize}'', where an effective Hamiltonian is built
+and then diagonalized \cite{rmp-39-771-1967,jpa-18-809-1985}, and
+``\textit{diagonalize then perturb}'', where the perturbative treatment is
+applied to a variationally optimized wavefunction. 
+
+To the latter category belong for example CIPSI techniques, started by
+Huron \textit{et al.}\cite{jcp-58-5745-1973} in Paris and subsequently
+developed in Pisa\cite{jcc-8-39-1987} and Ferrara
+\cite{ijqc-60-167-1996,tca-98-57-1997,tca-98-117-1997,tca-105-259-2001}.
+CIPSI uses single determinants as perturbers, using a baricentric
+M{\o}ller-Plesset or a diagonal bielectronic
+(Epstein-Nesbet\cite{pr-28-695-1926,prsl-230-312-1955}) zero-order
+Hamiltonian. Although numerically efficient
+\cite{ijqc-60-167-1996,tca-98-57-1997,tca-98-117-1997,jcp-83-1746-1985}, it lacks some formal
+requirement, like strict separability. Other analogous methods
+\cite{jcp-90-3647-1997,cpl-190-374-1992,jcp-94-5021-1991,cpl-183-443-1991, cpl-222-615-1994}
+suffer from similar problems.
+
+Another ``\textit{diagonalize then perturb}'' method is the CASPT2
+approach\cite{jpc-94-5483-1990,jcp-96-1218-1992}. It makes use of contracted
+perturbers obtained from a CASCI under the action of excitation operators,
+and a one-electron zero-order Hamiltonian. Due to its efficiency, CASPT2 is
+applicabile to large CAS spaces, providing good results for ground and
+excited states at a reasonable computational cost. Integration into
+the \textit{ab initio} suite \molcas makes CASPT2 one of the most used post
+Hartree-Fock treatments.  The main problem of the method is its sensibility
+to intruder states, leading to incorrect or divergent behavior. 
+
+$n$-Electron Valence Perturbation Theory (NEVPT) approach
+\cite{jcp-114-10252-2001,jcp-117-9138-2002,cpl-350-297-2001} is a
+``\textit{diagonalize then perturb}'' method developed and implemented in
+Ferrara and Toulouse. The method formally addresses both strict separability
+and intruder states problems, and also comes as a natural extension to
+M{\o}ller-Plesset. In fact, second-order NEVPT (NEVPT2) formally reproduces
+the M{\o}ller-Plesset equations when applied to a single-reference
+wavefunction.
+
+In the development of NEVPT two levels of approximations have been
+considered:
+\begin{itemize}
+\item the degree of contraction of the perturber space, and therefore, of
+the perturber wavefunctions
+\item the choice of the zero-order Hamiltonian
+\end{itemize}
+
+%nevpt single state
+\input{03_nevpt/text_nevpt_singlestate_theory}
+%formaldeide, acetaldeide e acetone con lara + vibrazionale
+\input{03_nevpt/text_carbonyl_valence_excited_states}
+%generazione dei rydberg
+\input{03_nevpt/text_rydberg_procedure}
+%experimental: rydberg della formaldeide e dell'acetone
+\input{03_nevpt/text_formaldehyde_acetone_rydberg}
+%estensione all'analisi caso qd
+\input{03_nevpt/text_nevpt_qdpt_theory}
+%procedura sperimentale qdpt
+\input{03_nevpt/text_qdpt_procedure}
+%non canonical
+\input{03_nevpt/text_noncanonical}
+

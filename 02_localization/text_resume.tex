@@ -1,0 +1,99 @@
+\pagestyle{empty}
+\begin{center}
+{\Huge \textbf Resum\'e chapitre \ref{chp:localization} \\ Localisation }
+\end{center}
+{\ }\\
+\vspace{-1mm}
+
+En g\'en\'eral, la d\'elocalisation des orbitales mol\'eculaires n'est pas un
+requisite physique. La description d\'elocalis\'ee des orbitales est
+importante pour la connexion directe avec l'\'energie de ionisation definie
+par le th\'eor\`eme de Koopmans. Elle donne aussi une bonne explication des
+syst\`emes \`a haute d\'elocalisation, par exemple les syst\`emes
+conjugu\'es ou le mol\'ecules aromatiques.
+
+Si le syst\`eme se comporte comme un ensemble de liaisons localis\'ees, une
+description d\'elocalis\'ee est plus complexe. Par exemple, une approche
+localis\'ee explique naturellement les similarit\'es entre les liaisons C-H du
+m\'ethane et de l'\'ethane. Une description d\'elocalis\'ee est plus complexe.
+
+La d\'elocalisation est souvent une consequence des proc\'edures
+math\'ematiques utilis\'ees pour l'optimisation des orbitales. Si on change
+l'approche math\'ematique, on peut obtenir des orbitales optimis\'ees et
+localis\'ees, qui donnent une representation plus facile pour le chimiste.
+Cette approche peut \^etre aussi utilis\'ee pour r\'eduire le co\^ut
+computationnel des m\'ethodes \textit{ab initio}.
+
+l'\'evaluation de la corr\'elation statique et dynamique est centrale pour
+obtenir l'\'energie d'un syst\`eme mol\'eculaire avec un haut niveau de pr\'ecision.
+La corr\'elation \'electronique est un ph\'enom\`ene local, li\'ee \`a la distribution
+spatiale des \'electrons. Une approche d\'elocalis\'ee oblige des \'evaluations tr\`es
+ch\`eres, parce que l'effet physique de la corr\'elation est distribu\'e sur un
+nombre tr\`es \'elev\'e d'integrales.
+
+En utilisant une description locale, les interactions entre orbitales
+eloign\'ees est presque negligible, et peut \^etre \'elimin\'ee. Les effets corr\'elatifs
+sont concentr\'es sur un petit ensemble d'int\'egrals tr\`es importantes.
+La localit\'e des orbitales mol\'eculaires est reconnue importante pour le Linear
+Scaling, c'est \`a dire obtenir un algorithme d'\'evaluation avec co\^ut
+computationnel lin\'eaire avec la dimension du syst\`eme mol\'eculaire. 
+
+Des syst\`emes de Linear Scaling sont d\'ej\`a impl\'ement\'es pour les m\'ethodes
+single r\'ef\'erence, mais pour l'\'evaluation des \'etats excit\'ees, de
+rupture de liaison, de syst\`emes magn\'etiques ou de transfert de charge,
+l'approximation single r\'ef\'erence n'est pas suffisante, et une approche
+multir\'ef\'erence doit \^etre utilis\'ee.  Le Linear Scaling pour les m\'ethodes
+multireference n'existe pas encore, mais la localisation des orbitales est
+le premier pas pour l'obtention d'une telle m\'ethode.
+
+La localisation des orbitales peut aider aussi \`a contr\^oler la nature de
+l'espace actif sur des calculs Complete Active Space (CAS), et une reduction
+de la dimension de cet espace peut \^etre obtenue.
+
+Une m\'ethode de localisation a \'et\'e d\'evelopp\'ee \`a Toulouse. Cette m\'ethode 
+est \textit{a priori}, parce que la localisation est gard\'ee \`a partir d'un
+set d'orbitales localis\'ees qui sont optimis\'ees \`a niveau Complete
+Active Space Self Consistent Field (CASSCF). Au contraire, les m\'ethodes
+\textit{a posteriori} travaillent avec des orbitales d\'elocalis\'ees qui
+sont localis\'ees apr\`es optimisation. 
+
+Apr\`es localisation, les orbitales pas int\'eress\'ees au ph\'enom\`ene
+chimique \'etiud\'e peuvent \^etre gel\'ees \`a un niveau de th\'eorie plus bas,
+dans notre cas Self Consistent Field (SCF), pour r\'eduire le poids
+computationnel, mais cette m\'ethode change assez peu le travail
+n\'ecessaire pour la transformation des integrales bielectroniques, qui a une
+complexit\'e O( $N_{\mbox{\tiny AO}}^4 N_{\mbox{\tiny MO}}$ ) avec
+$N_{\mbox{\tiny AO}}$ nombre d'orbitales atomiques (AO) et
+$N_{\mbox{\tiny MO}}$ nombre d'orbitales mol\'eculaires. Si on g\`ele des
+orbitales mol\'eculaires, l'effet est limit\'e au facteur $N_{\mbox{\tiny
+MO}}$.  R\'eduire le nombre d'orbitales atomiques et donc le facteur
+$N_{\mbox{\tiny AO}}^4$ est central pour utiliser des m\'ethodes \textit{ab
+initio} sur grands syst\`emes mol\'eculaires. 
+
+Une strat\'egie possible est l'effacement de la partie de mol\'ecule
+pas n\'ecessaire pour la description des orbitales pas gel\'ees. Ces
+orbitales sont project\'ees sur un sous-ensemble de la bas atomique
+original, et une optimisation CASSCF peut \^etre r\'ealis\'ee sur un nombre
+d'atomes r\'eduit avec un poids computational mineur, mais l'effet des
+orbitales gel\'ees ser\`a gard\'e pendant l'optimisation.
+
+La technique, appell\'ee Freeze-and-Cut, a \'et\'e utilis\'ee sur deux
+syst\`emes mod\`ele. Le premi\`er test est relative au (7Z)-13
+ammoniotridec-7-enoate, un aminoacide express\'ement construit pour
+\'evaluer la r\'eponse de la m\'ethode \`a l'interaction de charge.
+L'interconversion cis-trans autour d'un double liaison a \'et\'e \'etudi\'ee
+avec un espace actif minimal de deux \'electrons dans deux orbitales. 
+
+Le deuxi\`eme test a \'et\'e appliqu\'e \`a la mol\'ecule de tridequenal,
+pour \'evaluer la coh\'erence de la m\'ethode sur l'estimation de
+l'\'energie d'interconversion cisoid-transoid du groupe ald\'ehydique.
+
+Une troisi\`eme \'evaluation a \'et\'e effectu\'e sur l'etat excit\'e $n \rightarrow
+\pi^{*}$ de la molecule d'acetone avec 6 molecules d'eau. Dans ce cas, la
+dimensionalit\'e plus grande de la bas atomique a d\'emontr\'e une
+sensibilit\'e de la m\'ethode Freeze-and-Cut \`a des bases diffuses. Une solution
+peut \^etre l'utilise d'orbitales non-orthogonaux entre le groupe gel\'e et
+non-gel\'e. Cette solution donne des r\'esultats plus corrects, mais la
+procedure courant doit \^etre adapt\'ee avec l'assumption de non
+orthogonalit\'e, et donc autres d\'eveloppements theoretiques sont
+n\'ecessaires.

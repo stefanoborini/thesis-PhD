@@ -1,0 +1,192 @@
+\section{Evaluation: Rydberg states}
+
+\begin{center}
+\textit{This section is based on the article at Ref. \citen{tca-111-352-2004}.}
+\end{center}
+{\ }\\
+\vspace{-1mm}
+
+This section focuses on the description of vertical transitions to valence and
+Rydberg excited states with Single-State NEVPT on formaldehyde and acetone.
+It aims at completing the detailed description of the excited states of
+carbonyl. In the presented evaluation a state-average CASSCF has been
+performed. This is different from the previous analysis, where a single state
+CASSCF approach was used.
+
+\subsection{Formaldehyde}
+
+The vertical spectrum of the formaldehyde molecule was computed at the
+ground state experimental geometry\cite{jms-18-344-1965} (R$_{\mbox{\tiny CO}}$=1.208 \AA,
+R$_{\mbox{\tiny CH}}$=1.116 \AA\ and $\theta_{\mbox{\tiny
+HCH}}$=116.5$^{\circ}$). As in the previous evaluation, the molecule belongs
+to the C$_{2v}$ point group symmetry and lies in the $yz$ plane with the
+C and O atoms on the $z$ axis.  The
+ANO-1 basis set\cite{tca-77-291-1990} has been used with two different
+contraction schemes: the smaller (indicated with ANO(S)) is C,O
+[$4s3p1d$]/H[$2s1p$] and the larger (ANO(L)) is C,O
+[$6s5p3d2f$]/H[$4s3p2d$].  These valence basis sets have been augmented with
+diffuse functions using the procedure described in the previous section, in
+order to properly describe the diffuse orbitals involved in the Rydberg
+states. These basis functions have been obtained by contraction of a
+set of $8s8p8d$ gaussian primitives. Two contraction schemes are considered:
+[$1s1p1d$], (Ryd(S)) and [$3s3p3d$], (Ryd(L)).  For a direct comparison
+between NEVPT, CASPT2\cite{tca-92-227-1995} and Size-Consistent
+Self-Consistent CI ((SC)$^2$-CI)\cite{mp-101-483-2003}, we used in the
+calculations the combinations ANO(S)-Ryd(S) and ANO(L)-Ryd(L).
+
+The molecular orbitals are obtained from average CASSCF calculations which
+involve the lowest states of a given symmetry. The active spaces, together
+with the number and the nature of the states considered in the average
+procedure are reported in Tab. \ref{tbl:form_act} and are taken from Ref.
+\citen{tca-92-227-1995}.
+
+\input{03_nevpt/tbl_form_act}
+
+The number of orbitals for each irreducible representation
+was chosen by the authors so that all the states of interest could be
+correctly described. In some cases the active space was enlarged in order
+to minimize the effect of the intruder states problem in the CASPT2
+calculations.  Given that NEVPT is not affected by the intruder states
+problem, in this evaluation a reduction of the active space should be
+possible but the comparison of our results with those of Refs.
+\citen{tca-92-227-1995} and \citen{mp-101-483-2003} would be in this case less
+clear.
+
+The energies of the states are computed in a state specific multireference
+perturbation scheme.  The zero-order description of each state is obtained
+from a CASCI calculation using the average CASSCF active orbitals. The
+inactive orbitals have been canonized to diagonalize the state-specific Fock
+matrixes.
+
+A second-order correction to the energy is computed using the NEVPT2 Strongly
+Contracted and Partially Contracted variants. All orbitals and
+electrons are included in the perturbative treatment. The excitation
+energies are computed with respect to the same ground state energy, which is
+evaluated as the second order correction to the energy with the reference
+energy and wavefunction obtained from a state-specific CASSCF calculation
+with four electrons in two $b_1$ ($\pi$ + $\pi^*$) and two $b_2$ ($n_y$ +
+virtual) orbitals. This approach for the calculation of the excitation
+energies differs from the one used in the CASPT2 calculation, where a
+different ground state energy was used for each irreducible representation.
+
+\input{03_nevpt/tbl_form_exc_ryd}
+
+The vertical excitation energies obtained in our calculations are reported
+in Tab. \ref{tbl:form_exc_ryd} for the Rydberg states and in Tab.
+\ref{tbl:form_exc_val} for the valence states, together with the previous
+theoretical and experimental results.
+
+In Tab. \ref{tbl:form_comparison_1} we show the comparison between our
+results and those of Pitarch-Ruiz {\it et al} \cite{mp-101-483-2003}, which
+can be considered a good reference since they involve the whole single plus
+double excitations space on top of a CAS at a variational level with a
+size-consistence correction. We remark that the mean absolute error (MAE) of
+our results is always small with the worst case being represented by the
+Strongly Contracted NEVPT2 in the ANO(L) + Ryd(L) basis (0.15 eV).  The small
+errors appearing in Tab.~\ref{tbl:form_comparison_1} bear out the
+reliability of NEVPT2 which can yield results of good accuracy, comparable
+with much more refined calculations, but at a reduced computational cost.
+
+For the case of the smaller basis (ANO(S) + Ryd(S)) the CASPT2 results are
+also available. NEVPT2 and CASPT2 appear to be of the same quality, with the
+former showing in all cases a small squared norm of the wavefunction
+perturbation correction thus getting over the intruder states problem.
+
+As to the comparison with the experimental data, beyond a satisfactory
+general agreement with our theoretical results we can make the following
+observations.
+
+\input{03_nevpt/tbl_form_exc_val}
+
+First, in accordance with most theoretical calculations our vertical
+2~$^1$A$_1$  and 1~$^1$B$_2$ Rydberg transitions appear in inverted order
+with respect to experimental adiabatic transitions \cite{robin-hespm}: a
+more stringent comparison would require the calculation of adiabatic
+transition with due allowance for the zero point energy correction
+
+Second, the calculation of the $^1$A$_1$ Rydberg states with the larger basis
+set introduces one more Rydberg state ($n_y\rightarrow\pi^*$) below the
+valence $\pi\rightarrow\pi^*$. Such state has been ignored in the average
+CASSCF since we were interested in transitions involving Rydberg orbitals
+not exceeding the quantum number $n=3$
+
+Finally, mixing between Rydberg and valence character may occur in both the
+$^1$A$_1$ and $^1$B$_1$ transitions \cite{tca-92-227-1995,jpc-99-8050-1995}.
+For a correct treatment of such states a quasi-degenerate treatment
+is required \cite{acp-67-1-1987,cpl-288-299-1998}.
+
+\input{03_nevpt/tbl_form_comparison_1}
+
+\subsection{Acetone}
+
+The computational strategy used for acetone closely follows the one applied
+to formaldehyde. The vertical spectrum has been computed at the ground
+state experimental geometry \cite{jms-18-344-1965}. The molecule belongs to
+the C$_{2v}$ point group symmetry with the OCCC skeleton in the $yz$
+plane (C and O atoms on the $z$ axis and with an orientation of the CH$_3$ 
+groups that place the two H atoms lying in the $yz$ plane as far as
+possible). For acetone, we only consider the C,O[$4s3p1d$]/H[$2s1p$]
+contraction of the ANO basis set. The Rydberg states are described using a
+set of $8s8p8d$ diffuse functions contracted to $1s1p1d$. 
+
+As in formaldehyde, average CASSCF calculations provide the molecular
+orbitals: the active spaces and the number and the nature of the states
+considered in the average procedure are reported in Tab. \ref{tbl:aceto_act}
+and are taken from Ref. \citen{jcp-104-1791-1996}. 
+
+With respect to formaldehyde, the active space has been modified adding the
+two CO $\sigma$ and $\sigma^*$ orbitals and the two CO $\sigma$ electrons,
+except for the A$_1$ symmetry where three virtual orbitals (one of $b_1$ and
+two of $b_2$ symmetry) have been removed. In Ref. \citen{jcp-104-1791-1996}
+the CO $\sigma$ and $\sigma^*$ orbitals have been added to the active space
+to correctly describe the adiabatic electronic transitions for the
+valence states, in which an elongation of the CO bond is observed.
+% due to the
+% promotion of an electron to the $\pi^{*}$ orbital.
+
+Given that we present here only results on the vertical transitions, also in
+the case of acetone a reduction of the active space used in Ref.
+\citen{jcp-104-1791-1996} would have been possible, but we have chosen to
+maintain the same active space in order to have a meaningful comparison with
+the CASPT2 data.
+
+\input{03_nevpt/tbl_aceto_act}
+
+The energies of the states are computed following the strategy outlined for
+formaldehyde and the transition energies are reported in Tab.
+\ref{tbl:aceto_exc_ryd} for the Rydberg states and in Tab.
+\ref{tbl:aceto_exc_val} for the valence states, together with the results of
+other theoretical calculations and with some experimental results.
+
+We note that our Partially Contracted NEVPT2 results compare very well with
+the CASPT2 ones.  We also remark that in two of the valence transitions
+(4~$^1$A$_1$, $\pi\rightarrow\pi^*$ and 1~$^1$A$_2$, $n_y\rightarrow\pi^*$)
+the difference between Strongly and Partially Contracted NEVPT2 appears to be
+unusually sizable (0.59 eV and 0.20 eV, respectively). We think that this is
+symptom for the zero-order wavefunction to necessitate significant
+improvement.
+
+\input{03_nevpt/tbl_aceto_exc_ryd}
+\input{03_nevpt/tbl_aceto_exc_val}
+
+
+\subsection*{Final remarks}
+
+Among the formal requirements satisfied by NEVPT2, the absence of intruder
+states appears particularly interesting for the application to the
+calculation of electronically excited states. The results shown in the
+precedent section for the vertical transitions of formaldehyde and acetone
+are of good quality and exhibit good agreements with the best calculations so
+far performed as well as with the existing experimental data. 
+
+Our calculations have been carried out starting from rather modest size
+CASSCF wavefunctions. The computational overhead involved by the two forms
+of NEVPT2 (Strongly and Partially Contracted) amounts to only a small
+fraction of the CASSCF calculation for such small active orbital spaces and
+this favorable situation is not expected to drastically change when passing
+on to larger molecules, provided that the active space can be kept within
+manageable dimensions.
+
+No evidence of divergences or misbehaviors in the perturbation summation
+has been found in the calculation of the Rydberg states, which are
+particularly prone to exhibiting the appearance of intruder states. 

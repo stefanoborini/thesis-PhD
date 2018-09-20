@@ -1,0 +1,108 @@
+\section{Antisymmetry}
+
+A natural law imposes that fermionic particles like electrons must be
+described by a wavefunction which is antisymmetric with respect to the
+exchange of two particles. For a simple two-electron wavefunction the
+relationship
+\beq
+\Psi(2,1) = - \Psi(1,2)
+\eeq
+must be satisfied.
+
+It is always possible to express a polyelectronic wavefunction as a
+combination of products of one-electron spinorbitals.
+If $\Psi(1,2,\ldots,N)$ is a N-electrons
+wavefunction, the spatial position of particles $(2,\ldots,N)$ can be
+fixed. The resulting function can be expanded on a single-particle
+basis set $\left\{ \psi_i \right\} $
+\beq
+\Psi(1,\underbrace{2,\ldots,N}_{\mbox{fixed}}) = \sumidx{i} c_i(2,\ldots,N) \psi_i(1)
+\eeq
+where the $c_i$ coefficients hold the dependency against the fixed
+particles, therefore being functions themselves. The procedure can 
+be repeated for $c_i(2,\ldots,N)$, fixing $(3,\ldots,N)$ and expanding the
+function on the same basis set
+\beq
+c_i(2,\underbrace{3,\ldots,N}_{\mbox{fixed}}) = \sumidx{j}
+c^{\prime}_{ij}(3,\ldots,N) \psi_j(2)
+\eeq
+Repeating for the coordinates of $N$ particles, we obtain
+\beq
+\label{eqn:antisym_1}
+\Psi(1,2,\ldots,N) = \sumidx{i,j,k,\ldots,l} c_{ijk\ldots l} \psii(1)
+\psij(2) \psik(3) \ldots \psi_l(N)
+\eeq
+where $c_{ijk\ldots l}$ is a purely numeric factor. Applying Eqn.
+\ref{eqn:antisym_1} to a two-particles case, we obtain
+\beqa
+\Psi(1,2) &=& \sumidx{i,j} c_{ij} \psii(1) \psij(2) \nonumber \\
+          &=& c_{11} \psi_1(1) \psi_1(2) + c_{12} \psi_1(1) \psi_2(2) + c_{21} \psi_2(1) \psi_1(2) \nonumber \\
+	  &&  + c_{22} \psi_2(1) \psi_2(2) + \ldots
+\eeqa
+Describing a system with the electrons swapped
+\beqa
+\Psi(2,1) &=& c_{11} \psi_1(2) \psi_1(1) + c_{12} \psi_1(2) \psi_2(1) + c_{21} \psi_2(2) \psi_1(1) \nonumber \\
+	  &&  + c_{22} \psi_2(2) \psi_2(1) + \ldots
+\eeqa
+in order to satisfy the antisymmetry rule the following conditions must hold
+\beqa
+c_{ii} &=& - c_{ii} \rightarrow c_{ii} = 0 \nonumber \\
+c_{ij} &=& - c_{ji} \nonumber
+\eeqa
+Therefore, the sum can be reduced to
+\beqa
+\Psi(1,2) &=& c_{12} \left( \psi_1(1) \psi_2(2) - \psi_2(1) \psi_1(2) \right) \nonumber \\
+	  && + c_{13} \left( \psi_1(1) \psi_3(2) - \psi_3(1) \psi_1(2) \right) + \ldots \nonumber \\
+	  &=& \sumidx{i<j} c_{ij} \left( \psi_i(1) \psi_j(2) - \psi_j(1) \psi_i(2) \right) \nonumber \\
+	  &\rightarrow& \sumidx{i<j} c_{ij} \detsl{\psii \psij}
+\eeqa
+where
+\beq
+\detsl{\psii \psij} = 2^{-\frac{1}{2}} \left|
+\begin{array}{cc}
+\psii(1) & \psij(1) \\
+\psii(2) & \psij(2) \\
+\end{array}
+\right|
+\eeq
+is the normalized \textit{Slater determinant}. 
+The presented scheme can be generalized for a $N$ electron case
+\beqa
+\Psi(1,2,\ldots,N) &=& \sumidx{i_1 < i_2 < \ldots < i_N }
+c_{i_1,i_2,\ldots,i_N} \detsl{\psi_{{i}_1} \psi_{{i}_2} \ldots \psi_{{i}_N}} \\
+&=& \sumidx{I} c_I \Phi_I
+\eeqa
+where 
+\beqa
+\detsl{\psi_{{i}_1} \psi_{{i}_2} \ldots \psi_{{i}_N}} &=&
+(N!)^{-\frac{1}{2}} \left|
+\begin{array}{cccc}
+\psi_{{i}_1}(1) & \psi_{{i}_2}(1) & \ldots & \psi_{{i}_N}(1) \\
+\psi_{{i}_1}(2) & \psi_{{i}_2}(2) & \ldots & \psi_{{i}_N}(2) \\
+\vdots          &  \vdots         & \ddots &  \vdots          \\
+\psi_{{i}_1}(N) & \psi_{{i}_2}(N) & \ldots & \psi_{{i}_N}(N) \\
+\end{array}
+\right|
+\eeqa
+
+The wavefunction can be expressed as a linear combination of Slater
+determinants, each one describing a possible electronic distribution.
+Slater determinants satisfy by construction the
+antisymmetry requisite: exchanging two particles is expressed as a column
+swap, which changes the sign of the resulting determinant.
+Another interesting property, Pauli's rule, is a direct consequence of the
+antisymmetry requisite: if two particles are forced to occupy the same
+one-electron function, the representative determinant is 
+\beqa
+\detsl{\psi_{{i}_1} \psi_{{i}_1} \ldots \psi_{{i}_N}} =
+(N!)^{-\frac{1}{2}}
+\left|
+\begin{array}{cccc}
+\psi_{{i}_1} (1) & \psi_{{i}_1} (1) & \ldots & \psi_{{i}_N} (1) \\
+\psi_{{i}_1} (2) & \psi_{{i}_1} (2) & \ldots & \psi_{{i}_N} (2) \\
+\vdots           &   \vdots         & \ddots &  \vdots          \\
+\psi_{{i}_1} (N) & \psi_{{i}_1} (N) & \ldots & \psi_{{i}_N} (N) \\
+\end{array}
+\right|
+\eeqa
+which evaluates as zero (two columns are equal).

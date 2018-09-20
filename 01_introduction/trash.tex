@@ -1,0 +1,214 @@
+Possiamo anche definire un operatore spin traced
+\beq
+E_{ij} = \left( \constr{i\alpha}\destr{j\alpha} +
+\constr{i\beta}\destr{j\beta} \right)
+\eeq
+che si riferisce agli orbitali molecolari spaziali,
+indipendentemente dal fattore di spin.
+
+Valgono le propriet\`a
+\begin{itemize}
+\item $ \left[ E_{ij}, E_{kl} \right] = E_{il}\delta_{jk} -
+E_{kj}\delta_{il} $
+\item $ E^{+}_{ij} = E_{ji} $
+\end{itemize}
+
+\subsection{Trasformazione di base}
+
+Al fine di rendere minima l'energia, occorre effettuare una trasformazione 
+sia sui coefficienti della nostra funzione MC, sia sulla base spinorbitalica 
+su cui costruiamo i vari determinanti.
+
+Le trasformazioni della base spinorbitalica possono essere viste come rotazioni in uno spazio
+orbitalico, attuate da un operatore opportuno. Dal momento che la
+rotazione non cambia la dimensionalit\`a della base, il risultato
+appartiene ancora allo spazio delle funzioni spinorbitaliche di
+partenza, e come tale \`e esprimibile come una opportuna combinazione
+lineare dei vettori della base iniziale
+$$
+\mbox{\boldmath $\varphi$}^{\prime} = \mbox{\boldmath $\varphi$}\mathbf{U}
+$$
+dove {\boldmath $\varphi$} \`e un vettore riga contenente gli spinorbitali di
+partenza, {\boldmath $\varphi^{\prime}$} \`e la base ottenuta dalla trasformazione e
+$\mathbf{U}$ \`e una matrice unitaria che attua la trasformazione stessa.
+
+Dal momento che viene attuata una trasformazione sulla base, anche gli
+operatori di creazione e distruzione andranno incontro ad una trasformazione.
+\`E possibile esprimere tale trasformazione attraverso
+la relazione
+\beq
+\constr{i}{}^\prime = e^{\left(-\hat{T}\right)} \constr{i}
+e^{\left(\hat{T}\right)}
+\eeq
+e analogamente per il distruttore. L'operatore $\hat{T}$ \`e
+antihermitiano, che pu\`o essere espanso, come operatore
+monoelettronico, nella forma
+\beq
+\hat{T}=\sumidx{i,j}T_{ij}\constr{i}\destr{j}
+\eeq
+dove i coefficienti $T_{ij}$ definiscono una matrice $\mathbf{T}$ antihermitiana (ovvero
+\mbox{$\mathbf{T}^{+} = - \mathbf{T}$})
+
+Si dimostra che \`e possibile trasformare un generico determinante di 
+Slater applicando l'operatore $e^{-\hat{T}}$:
+\beqas
+% 
+\ket{m'}= a{'}_i^+ a{'}_j^+ \ldots\vacuum & = &
+e^{\left(-\hat{T}\right)} \constr{i} e^{\left(\hat{T}\right)}
+e^{\left(-\hat{T}\right)}\constr{j} e^{\left(\hat{T}\right)}\ldots\vacuum
+\\
+% 
+& = & e^{\left(-\hat{T}\right)}\constr{i} \constr{j}\ldots\vacuum \\
+%
+& = & e^{\left(-\hat{T}\right)}\ket{m}
+\eeqas
+
+Dal momento che la trasformazione attuata sugli orbitali
+avviene esclusivamente sulla parte spaziale, la matrice di
+trasformazione $\mathbf{T}$ \`e partizionata in 4 sottomatrici
+\beq
+\mathbf{T} = \left(
+\begin{array}{cc}
+\mathbf{T}_{\alpha\alpha} & \mathbf{T}_{\alpha\beta} \\
+\mathbf{T}_{\beta\alpha} & \mathbf{T}_{\beta\beta}
+\end{array}
+\right)
+\eeq
+
+Se, in seguito al cambiamento di base, non si effettua mescolamento tra
+orbitali con occupazione $\alpha$ e orbitali con occupazione $\beta$, i
+termini delle sottomatrici fuori  diagonale $\mathbf{T}_{\alpha\beta}$ e
+$\mathbf{T}_{\beta\alpha}$ sono nulli. Inoltre, dato che le trasformazioni
+sono le stesse per lo stesso set spaziale, $\mathbf{T}_{\alpha\alpha} = \mathbf{T}_{\beta\beta}$.
+Con queste relazioni, l'operatore $\hat{T}$ risulta
+\beqa
+%
+\hat{T} & = & \sumidx{i,j} \left( T_{ij}^{\alpha\alpha} \constr{i\alpha}
+\destr{j\alpha} 
++ T_{ij}^{\alpha\beta} \constr{i\alpha} \destr{j\beta}
++ T_{ij}^{\beta\alpha} \constr{i\beta} \destr{j\alpha}
++ T_{ij}^{\beta\beta} \constr{i\beta} \destr{j\beta} \right) \nonumber \\
+%
+& = & \sumidx{i,j} T_{ij} \left( \constr{i\alpha} \destr{j\alpha} +
+\constr{i\beta} \destr{j\beta} \right) \nonumber \\
+%
+& = & \sumidx{i,j} T_{ij}E_{ij}
+\eeqa
+supponendo la matrice antihermitiana $\mathbf{T}$ reale, si avr\`a $T_{ij} = -T_{ji}$ e
+quindi
+\beq
+\hat{T} = \sumidx{i>j} T_{ij}\left(E_{ij} - E_{ji}\right) 
+= \sumidx{i>j} T_{ij} E_{ij}^-
+\eeq
+dove con l'ultimo termine si esprime una scrittura abbreviata.
+
+
+\subsection{Ottimizzazione dei parametri e degli orbitali}
+
+L'ottimizzazione dei parametri e degli orbitali passa attraverso l'uso
+di operatori unitari. \`E gi\`a stato presentato l'operatore $\hat{T}$, 
+che attua una rotazione dello spazio orbitalico. Analogamente,
+\`e possibile definire un operatore unitario $\hat{S}$ che attua una
+trasformazione sui coefficienti della combinazione lineare.
+
+L'energia dello stato MC $\ket{0}$ sar\`a quindi definita
+\beq
+E(\mathbf{T},\mathbf{S}) =
+\braket{0}{e^{\left(-\hat{S}\right)}e^{\left(-\hat{T}\right)}\ham e^{\left(\hat{T}\right)}e^{\left(\hat{S}\right)}}{0}
+\eeq
+Espandendo con l'identit\`a di Glauber\footnote{Ricordiamo l'identit\`a di Glauber 
+\beqas
+e^{\hat{A}}\hat{B}e^{-\hat{A}} & = & \hat{B} + \left[ \hat{A} , \hat{B}
+\right] + \frac{1}{2!} \left[ \hat{A} , \left[ \hat{A} , \hat{B} \right]
+\right] + \frac{1}{3!} \left[ \hat{A} , \left[ \hat{A} , \left[ \hat{A} ,
+\hat{B} \right] \right] \right] + \ldots
+\eeqas
+} tale espressione, si ottiene
+\beqas
+E(\mathbf{T},\mathbf{S}) & = & \left\langle 0 \left| \ham + \left[\ham,\hat{T}\right] 
++ \left[\ham,\hat{S}\right] 
++ \half \left[ \left[ \ham,\hat{T}\right],\hat{T}\right] \right. \right. \\
+& & \left. \left. + \half \left[ \left[ \ham,\hat{S}\right],\hat{S}\right]
++ \left[ \left[ \ham,\hat{T}\right],\hat{S}\right]
++ \ldots \right| 0 \right\rangle
+\eeqas
+
+Il primo termine rende conto dell'energia di ordine zero
+$E(\mathbf{0},\mathbf{0})$. Il successivo pu\`o essere sviluppato
+\beqas
+\braket{0}{\left[\ham,\hat{T}\right]}{0} & = & \sumidx{i,j} T_{ij}
+\braket{0}{\left[\ham,E_{ij}\right]}{0} \\
+%
+& = & \sumidx{i,j} T_{ij} g_{ij}^{(o)}
+\eeqas
+dove abbiamo posto
+\beq
+g_{ij}^{(o)} = \braket{0}{\left[\ham,E_{ij}\right]}{0}
+\eeq
+Il simbolo $(o)$ indica che la trasformazione \`e a carico degli
+orbitali.
+
+Ora \`e necessario ottenere l'operatore per la trasformazione a
+carico dei coefficienti. Sia innanzitutto definito l'operatore di rotazione
+sui coefficienti $\hat{S}$ come
+\beq
+\hat{S} = \sumidx{K\neq0} S_{K0} \left(\ket{K}\bra{0} - \ket{0}\bra{K}
+\right)
+\eeq
+dove $\ket{K}$ sono generici stati, espansi sulla medesima base
+spinorbitalica, tali da essere ortogonali tra loro.
+
+Svolgendo opportunamente il commutatore
+\beq
+\braket{0}{\left[\ham,\hat{S}\right]}{0} =
+\sumidx{K\neq0}S_{K0} \left( \braket{0}{\ham}{K} + \braket{K}{\ham}{0}
+\right)
+\eeq
+che con autofunzioni reali, per hermitianit\`a, conduce ad ottenere
+\beq
+g_K^{(c)} = 2 \braket{0}{\ham}{K}
+\eeq
+vettore che esprime la derivata prima effettuata su una
+variazione dei coefficienti della funzione MC.
+
+\`E possibile procedere in modo analogo ricavando la matrice
+\textit{hessiana}, responsabile della trasformazione al secondo ordine.
+Si otterranno 3 contributi: un contributo (oo) di trasformazione sugli 
+orbitali, un contributo (cc) di trasformazione sui coefficienti e 
+un contributo (co) = (oc) di variazione accoppiata orbitali-coefficienti.
+
+Ora, riprendendo e riadattando
+\beqas
+\mathbf{g} + \mathbf{Hp} = \mathbf{0} \\
+\mathbf{Hp} = - \mathbf{g}
+\eeqas
+si pu\`o scrivere, in definitiva
+\beq
+\left(
+\begin{array}{cc}
+\half \mathbf{H}^{(cc)} & \half \mathbf{H}^{(co)} \\
+\left( \half \mathbf{H}^{(co)} \right)^+ & \half \mathbf{H}^{(oo)} \\
+\end{array}
+\right) 
+\left(
+\begin{array}{c}
+\mathbf{S} \\
+\mathbf{T} \\
+\end{array}
+\right) = -
+\left(
+\begin{array}{c}
+\half \mathbf{g}^{c} \\
+\half \mathbf{g}^{o} \\
+\end{array}
+\right)
+\eeq
+
+Il metodo Newton-Raphson prevede la risoluzione iterativa di questo
+sistema o analoghi (al fine di semplificare il metodo computazionale),
+tuttavia richiede che il vettore di guess per il processo iterativo
+sia sufficientemente vicino al minimo locale verso cui si vuole convergere. In
+caso contrario, il metodo pu\`o convergere molto lentamente o addirittura
+divergere. Sono quindi necessarie procedure per identificare una zona
+di minimo, in cui definire in modo approssimativo un vettore di guess.
+

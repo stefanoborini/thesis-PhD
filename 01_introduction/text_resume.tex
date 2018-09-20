@@ -1,0 +1,111 @@
+\pagestyle{empty}
+\begin{center}
+{\Huge \textbf Resum\'e chapitre \ref{chp:introduction} \\ Introduction}
+\end{center}
+\vspace{10mm}
+
+Ce premier chapitre concerne les notions de base pour les d\'eveloppements
+suivants. 
+
+La premi\`ere section parle du th\'eor\`eme variational. Ce th\'eor\`eme dit
+que si $\epsilon$
+\beq
+\epsilon =
+\frac{\braket{\tilde{\Psi}}{\ham}{\tilde{\Psi}}}{\integral{\tilde{\Psi}}{\tilde{\Psi}}}
+\nonumber
+\eeq
+est l'\'energie associ\'ee \`a une fonction d'onde approch\'ee
+$\tilde{\Psi}$, et $E_0$ est l'\'energie valeur propre de l'\'etat
+fondamental $\Psi_0$, $E_0$ est une limite inf\'erieure pour $\epsilon$.
+Pour un \'etat fondamental non d\'eg\'en\'er\'ee, chaque fonction d'onde
+diff\`erente de la fonction d'onde $\Psi_0$ donne une \'energie plus haute
+que l'\'energie $E_0$.
+
+La deuxi\`eme section parle du d\'eveloppement perturbatif de
+Rayleigh-Schr{\o}dinger dans le cas g\'en\'eral. Ce d\'eveloppement 
+obtient l'\'energie avec la correction d'une fonction d'onde bien connue, la
+fonction d'onde al'ordre z\'ero en perturbation. Cette fonction est obtenue
+comme solution d'un Hamiltonien mod\`ele $\ham_{0} = \ham - \hat{V}$
+\beq
+\ham_{0} \Psi_n^{(0)} = E_n^{(0)} \Psi_n^{(0)} \quad n=0,1,2,\ldots
+\nonumber
+\eeq
+pour donner la correction \`a l'\'energie au deuxi\`eme ordre
+\beq
+E_n^{(2)} = \sum_{k} \frac{\left|
+\braket{\Psi_n^{(0)}}{\hat{V}}{\Psi_k^{(0)}}
+\right|^2}{E_n^{(0)} - E_k^{(0)}}
+\nonumber
+\eeq
+La th\'eorie perturbative M{\o}ller-Plesset au deuxi\`eme ordre (MP2) est le
+d\'eveloppement plus connu de cette approche.
+
+En suite, on parler\`a de l'importante n\'ecessit\'e pour la fonction d'onde
+d'\^etre antisym\'etrique pour l'echange d'un couple d'\'electrons. Par
+exemple, dans le cas d'une fonction d'onde \`a deux electrons, on aura
+\beq
+\Psi(2,1) = - \Psi(1,2) \nonumber
+\eeq
+Cette loi naturelle est absolument fondamentale pour la validit\'e physique
+d'une fonction d'onde. 
+
+Une nouvelle entit\'e, le d\'eterminant de Slater $\Phi$, a
+\'et\'e rationalis\'ee pour travailler avec une fonction d'onde
+antisym\'etrique par construction.  Les d\'eterminants de Slater
+repr\'esentent l'occupation des orbitales mono\'electroniques, et ils peuvent
+\^etre utilis\'es pour d\'ecrire la fonction d'onde vrai avec une
+combinaison lin\'eaire des tous les d\'eterminants de Slater qui peuvent
+\^etre cr\'e\'es avec un certain nombre d'orbitales monoelectroniques et
+d'\'electrons.  Si la combinaison lin\'eaire comprend tous les
+d\'eterminants de Slater, une fonction d'onde Full-CI a \'et\'e cr\'e\'ee
+\beq
+\Psi = \sumidx{I} c_I \Phi_I
+\nonumber
+\eeq
+qui d\'ecrit le mieux r\'esultat quel'on peut obtenir avec une base
+d'orbitales monoelectroniques. Le co\^ut computationnel n\'ecessaire pour
+travailler avec une fonction d'onde Full-CI est tr\`es \'elev\'e, et donc
+des approximations doivent \^etre appliqu\'ees.
+
+Une premi\`ere approximation est le choix d'un seul d\'eterminant de Slater,
+$\Psi = \Phi_0$, et on utilise une proc\'edure d'optimisation qui va am\'eliorer les
+orbitales monoelectroniques de $\Phi_0$.  Cette approche, bien connue sous
+le nom de technique Hartree-Fock (HF) ou Self Consistent Field (SCF), marche
+bien seulement dans les cas des mol\'ecules \`a la g\'eom\'etrie
+d'\'equilibre avec une couche ferm\'e d'\'electrons. 
+
+Si on veut travailler avec des \'etats excit\'es, ou des distorsions de
+g\'eom\'etrie, l'approximation d'Hartree-Fock est insuffisante, et plusieurs
+d\'eterminants de Slater doivent \^etre consid\'er\'es dans l'expansion lineaire.
+Dans ce cas, une fonction multir\'ef\'erence est d\'evelopp\'ee. La limite est
+l'expansion Full-CI, mais des m\'ethodes alternatives de s\'election des
+d\'eterminants de Slater existent pour r\'eduire le co\^ut computationnel et avoir
+particulier propri\'et\'e sur la fonction finale. 
+
+Par exemple, la s\'election Complete Active Space (CAS) partage les
+orbitales dans trois groupes: core, actif et virtuelles. Les orbitales core
+sont toujour occup\'ees en toutes les d\'eterminants de Slater
+s\'electionn\'es, les orbitales virtuelles sont toujour vides, et les
+orbitales actifs ont toutes les occupations possibles pour un certain nombre
+d'\'electrons actifs dans les orbitales actifs. 
+
+Une alg\`ebre particuli\'ere a \'et\'e d\'evelopp\'ee pour travailler avec
+les d\'eterminants de Slater, appell\'ee deuxi\`eme quantification. Les r\`egles
+principales sont pr\'esent\'ees dans cette th\`ese: deux operateurs
+particuli\'ers ont \'et\'e d\'ecrits: l'operateur de cr\'eation $\constr{i}$
+cr\'ee un \'electron dans l'orbitale $i$ du d\'eterminant de Slater, et
+l'operateur de destruction $\destr{i}$ d\'etruit un \'electron dans
+l'orbitale.
+
+Enfin, des approches d'optimisation de la fonction d'onde sont
+pr\'esent\'ees: l'approche Newton-Rhapson (NR) et l'approche Super-CI. 
+L'approche Newton-Rhapson se base sur le d\'eveloppement de Taylor de
+l'\'energie. 
+
+L'approche Super-CI, utilis\'ee dans cette th\`ese pour optimiser une
+fonction d'onde localis\'ee, se base sur le th\'eor\`eme de Brillouin pour
+les cases multir\'ef\'erence: l'interaction entre une fonction d'onde
+optimis\'ee et ses excitations mono\'electroniques via l'hamiltonien sont
+nuls. L'advantage de l'approche Super-CI est qui converge toujour \`a un
+minimum. Au contraire, l'approche Newton-Rhapson peut converger vers un
+point de selle.

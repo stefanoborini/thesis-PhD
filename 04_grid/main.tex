@@ -1,0 +1,83 @@
+\pagestyle{fancy}
+\chapter{Grid integration}
+\label{chp:grid}
+%\pagenumbering{arabic}
+
+Computational power is cheap. Storage is also cheap and networking as well.
+A well known empirical law for the increase of processing power is the Moore's law
+\cite{moore-law}, which dictates the doubling of computational speed every
+18 months. Similar laws have been envised for networking (doubling every 9
+months) and storage capacity (doubling every 12 months). For scientific
+needs, computational power and storage often are the limiting factors
+for new developments and insights. 
+
+The dramatic increase of networking performances opens new possibilities to
+obtain computational power and storage from unused or underutilized
+resources.  This deploys the fundation of a new paradigm for distributed
+computing: grid metasystems.  Using grids, it is possible to pool
+\begin{itemize}
+\item \textit{Fabric resources}, like disk space, computational power, RAM storage,
+data aggregation and archiviation, instruments
+\item \textit{Logical resources}, like experimentation, data analysis, modeling,
+simulation
+\item \textit{Human resources}, like competence sharing, administrative burden,
+communication.
+\end{itemize}
+The result is a distributed, heterogeneous metasystem, which provides a
+virtual structure to the end user.  Interaction with services is
+standardized and uniform, regardless of differences like CPU architecture
+or geographical location. In this panorama, a grid provides
+virtually infinite resources ready to use to produce a better science.
+
+The most famous example of a grid is probably the Web. The well-known WWW is
+a very simple storage grid where documents and informations are
+geographically distributed. Users can access these informations through a
+well-known interface (a web browser) which makes use of a low-level
+uniform protocol (HTTP\cite{http-site}) in order to access resources.
+The abstraction provided by the Apache webserver\cite{apache-site}
+translates the HTTP requests into fabric level access, like reading or
+writing a given file, or running a script.
+
+Consortiums like IETF\cite{ietf-site}, W3C\cite{w3c-site} and
+OASIS\cite{oasis-site} ratified standards in order to define
+guidelines from low-level issues to high-level protocols and interactions:
+TCP/IP\cite{tcp-site,ip-site}, HTTP, XML\cite{xml-site},
+SOAP\cite{soap-site}, WSDL \cite{wsdl-site}, UDDI \cite{uddi-site}, RDF
+\cite{rdf-site}, WSFL \cite{wsfl-site} are some examples of these standards.
+Toolkits, frameworks and utilities have been developed, both commercial and
+opensource to exploit the grid paradigm: Legion \cite{legion-site}, Globus
+\cite{globus-site,ogsa-site}, and Unicore \cite{unicore-site} are some examples.
+
+At the moment, a restricted set of grid applications can be devised:
+\begin{itemize}
+\item \textit{Low communication applications}: also known as ``embarassingly
+parallel'' applications. For these applications, the problem is decomposed in
+small almost independent pieces (usually called \textit{Working Units}),
+and the computation is carried over each working unit. This category is
+well represented by Seti@Home\cite{seti-site} or weather analysis
+\item \textit{Staged applications}: the procedure is decomposed in
+serialized steps, each one performed on a given site on the grid. This
+approach is useful to manage human factors, like competence sharing and
+administrative burden, license problems, use of private code, security
+reasons
+\item \textit{Resource access}: a resource from a service provider is made
+accessible by request. Classic examples could be databases, instruments,
+storage farms.
+\end{itemize}
+
+For quantum chemical processes some experience has been made, mainly with
+parallelization of various algorithms (using PVM \cite{pvm-site}, MPI \cite{mpi-site} or OpenMP
+\cite{openmp-site}). However, quantum chemistry evaluations are mainly
+serialized in nature: for \textit{ab initio} calculations, a step involving
+the evaluation of integrals is followed by other treatments, which in turn
+provide information for others and so on.  This calls for a ``Staged
+application'' architecture. This architecture is also enforced by
+administrative issues, competence sharing and license problems, and finally
+a current intrinsic complexity in the creation of multiplatform codes.
+
+\input{04_grid/text_metachem_grid.tex}
+\input{04_grid/text_q5cost_introduction.tex}
+\input{04_grid/text_q5cost_implementation.tex}
+\input{04_grid/text_f77xml_introduction.tex}
+\input{04_grid/text_f77xml_implementation.tex}
+

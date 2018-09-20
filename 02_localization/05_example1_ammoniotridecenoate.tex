@@ -1,0 +1,172 @@
+\subsection{(7Z)-13 ammoniotridec-7-enoate}
+
+The first test case presented is relative to (7Z)-13 ammoniotridec-7-enoate, an
+aminoacid zwitterion specifically designed to test the response of the
+method to charge interactions (see Fig. \ref{fig:7Z-molecule}). The rigid
+rotational behavior around the central double bond has been evaluated,
+describing the absolute CAS+Single excitations (CAS+S) energy curves without
+geometry relaxation with respect to the torsional dihedral angle. 
+
+\input{02_localization/fig_7Z-molecule}
+
+All the calculations have been performed by using ANO basis sets.
+A minimal basis set ANO-1\cite{tca-77-291-1990} with
+$2s1p$ contraction for C,N,O and $1s$ contraction for hydrogen atoms was
+used.  The interatomic distances (in $\mbox{{\AA}ngstrom}$) are
+r(C-C)=1.450, r(C=C)=1.335, r(C-H)=1.089, r(C-N)=1.440, r(N-H)=1.008,
+r(C-O)=1.400. The angles are 109.5 degrees except for the C=C group and the
+COO$^{-}$ group, where angles of 120 degrees have been used.
+The dihedral angles were adjusted to obtain the cis and trans molecular
+skeleton lying completely on the plane.
+
+The CAS space selection consists of 2 electrons in 2 orbitals (C-C $\pi$
+and $\pi^{*}$). This selection has been chosen to keep into account the
+main correlative effects due to the rotation around the central
+carbon-carbon double bond.
+
+It must be stressed that, due to geometrical proximity, the interaction
+between the charged groups affects the rotational behavior, and its
+contribution must be kept into account.  For this reason, the two terminal groups
+cannot be simply removed and replaced by hydrogen atoms.
+As a comparison example, Fig.~\ref{fig:7Z-nocharges} shows the
+behavior obtained by removing these groups and replacing them with
+hydrogens. 
+
+\input{02_localization/fig_7Z-nocharges}
+
+Using the Freeze-and-Cut technique, the evaluation performed on a
+small system reproduces the expected behavior: the freezing preserves the
+electronic contribution of the groups, and the cut allows to work with a
+reduced molecular system.
+
+\input{02_localization/fig_7Z-frzcut-schema}
+
+Different freeze and cut strategies have been chosen in order to evaluate
+the behavior of our technique with respect to these selections.
+Three freezing levels, labeled ``frz-1,'' ``frz-3'' and ``frz-5'' have been
+defined (Fig. \ref{fig:7Z-frzcut-schema}), and also a ``nofrz'' level
+where no freezing has been performed.  The $1s$ core atomic orbitals for heavy
+atoms have been frozen at SCF level regardless of the atom positions.
+
+The cut strategy follows the freezing strategy. Four cut thresholds have
+been chosen, with labels ``cut-1,'' ``cut-3,'' ``cut-5'' and ``nocut,''
+following the freezing choice, but preserving a -CH$_2$-
+spacer between the last not frozen orbital and the first cutout atom.
+
+The analysis performed at 0 (cis) and 180 (trans) degrees and their
+difference are presented in Tab. \ref{tbl:7Z-cis-trans-diff}
+
+\input{02_localization/tbl_7Z-cis-trans-diff}
+
+It can be seen that the cut technique produces energy differences between
+cis and trans that are comparable to the reference value obtained with no
+cut and freeze.
+
+A different behavior can be evaluated for the difference between the 0 degrees
+form and the 90 degrees form (Tab. \ref{tbl:7Z-diff-cis-90})
+
+\input{02_localization/tbl_7Z-diff-cis-90}
+
+The frz-1 selection presents a large deviation from the expected value. This
+arises from the fact that the SCF at 90 degrees evaluates very poorly the
+orbitals involved (directly or indirectly) in the bond breaking. 
+
+This leads to an initial bad description of the orbitals, which are frozen
+at this poor quality level. As a consequence, the optimization guess is
+affected by this initial description. By relaxing the freeze selection,
+these orbitals are allowed to improve in the subsequent iterative process,
+thus drastically reducing the incorrect behavior. In the case of frz-1
+strategy, however, the effects are too pronounced to be smoothed out.
+
+\input{02_localization/fig_7Z-frz-1}
+
+This is of particular evidence in the curve diagrams depicted in
+Fig.~\ref{fig:7Z-frz-1}: the solid line is the nofrz/nocut reference,
+obtained by interpolating points from 0 to 180 (step 10 degrees) with a
+cubic spline curve. The other curves represent the incorrect behavior of
+frz-1 with cut strategies cut-1, cut-3, cut-5 and nocut (these last two
+curves are superposed).  Each point has been generated using as a starting
+guess the converged orbitals from the previous point on the complete AO
+space (the ORTORBL matrix at convergence). Depending on the guess (70 or 110
+degrees), two different curves can be obtained, giving a spike at 90
+degrees.  This reflects the dependence on the SCF solution, which affects
+the frozen orbital framework. It is however important to note that these
+curves are still parallel to the reference curve when far from the 90
+degrees region. 
+
+As can be seen from Fig. \ref{fig:7Z-frz-3}, this incorrect behavior is
+drastically reduced by going from frz-1 to frz-3.
+
+\input{02_localization/fig_7Z-frz-3}
+
+The curves are nearly parallel to the reference, but with a strong energy
+shift between cut-3 and cut-5.
+This difference is principally due to the four non-frozen C-H bonds (marked
+with the ``a'' labels in Fig. \ref{fig:7Z-frzcut-schema}): they are
+described by hydrogen atoms (marked with the ``b'' labels)
+that have been cut out from the small system in the cut-3 analysis. This
+results in a shift in absolute energies, but does not affect the relative
+behavior.
+
+Treating the same cut-3 system, but also adding the ``b'' hydrogen atoms
+gives CAS+S energies in better accord with the frz-3/cut-5 values,
+providing nearly half of the gap between frz-3/cut-3 and frz-3/cut-5.
+%(see Tab. \ref{tbl:7Z-trend}).
+\input{02_localization/tbl_7Z-trend}
+This confirms the importance of these four hydrogens for the evaluation
+of the absolute energy, but the relative behavior is unaffected.
+The same effect arises in all the diagonal values of the absolute energy
+tables, where a similar situation happens due to the proximity of
+the cut seam to the non-frozen orbitals.
+
+The frz-3 selection has also been studied with a larger CAS space.
+This has been obtained by enriching the previous space with the C-C $\sigma$
+and $\sigma^{*}$ orbitals, thus leading to a 4 electron in 4 orbitals space.
+\input{02_localization/fig_7Z-frz-3-cas44}
+The evaluation has been performed at 90 degrees and from 0 to 180 degrees
+with a step of 20 degrees, interpolating the points with a cubic spline curve.
+
+As can be seen from Fig. \ref{fig:7Z-frz-3-cas44} the same correct
+behavior is obtained, the only difference being the shift of the energy due
+to the larger CAS space. The relative energy for the frz-3/cut-3 is, for
+example, 59.6149 kcal/mol. This value is in a very good accord with the one
+obtained using the CAS 2/2 space, 59.6173 kcal/mol.
+
+Fig. \ref{fig:7Z-frz-5} finally depicts the results for frz-5 strategy with the
+CAS 2/2 space, where frz-5/cut-5 curve lays higher in energy but still
+parallel to the reference curve, and the frz-5/nocut curve nearly superposed
+to the reference. 
+\input{02_localization/fig_7Z-frz-5}
+
+Fig.\ref{fig:7Z-orbitals} shows the optimized $\pi$ orbital for the cis
+molecule with different cut strategies at frz-1 level of freeze. The plots
+have been realized with the Molden program\cite{molden-site} with a contour
+factor of 0.002. We can note that the cut-5 strategy does not change the
+orbital in a significant way, due to the graphically negligible expression
+of the orthogonalization tail of the orbital on the removed fragments.  The
+cut-3 and cut-1 strategies show instead the confinement of the optimized
+orbital inside the group of atoms on which the projection was performed.
+The small lobes for the $\pi$ description are removed by the cut procedure,
+and the optimization preserves the locality imposed by the method.
+
+\input{02_localization/fig_7Z-orbitals}
+
+The improvements in timings are presented as an example in Tab. \ref{tbl:timings},
+applied to the (7Z)-13 ammoniotridec-7-enoate with the CAS 2/2 space.
+
+As can be seen, performing the integral evaluation on the reduced
+system is a lightweight process.
+Nocut evaluations have a value of zero for the reduced system. The integral
+evaluation on the complete system can be used in this case, saving the cost
+of a new evaluation.
+
+The remaining steps are quite fast, but the best compromise between result
+quality and time is for the frz-3/cut-3 evaluation.
+In this case a reduction of the time needed to perform the optimization is
+counterbalanced by the need of an integral evaluation on the small system,
+but the difference between the frz-3/cut-3 and the frz-3/nocut becomes
+dramatic when working on systems larger than the presented ones, which are
+the final targets of this technique.
+
+\input{02_localization/tbl_timings}
+

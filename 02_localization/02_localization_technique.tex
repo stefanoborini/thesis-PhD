@@ -1,0 +1,215 @@
+\section{Toulouse method of localization}
+\label{sec:toulouse_method}
+
+An \textit{a priori} localization method has been recently proposed by the
+working group in Toulouse, with the goal to address multireference problems. 
+The method has been applied to the description of the excited
+state of polyenes polyenals, polyendials and polyenones
+\cite{ijqc-101-325-2005,ijqc-97-688-2004,cpl-372-22-2003,mp-101-1389-2003},
+C$_{60}$ Fullerene + Sodium interaction \cite{jms_theo-681-203-2004}, nickel
+and copper chains \cite{cpl-378-503-2003} in a mixed localized/delocalized
+approach, Cu magnetic systems \cite{jpca-107-7581-2003}, Hydrogen chains
+\cite{jms_theo-621-51-2003}, and Mo-Cl complexes \cite{cpl-349-555-2001}.
+
+Briefly, this method preserves the local character of LMO, converging to a
+CASSCF wavefunction. A localized guess is obtained through the projection
+of Localized Molecular Orbitals (LMO) onto the delocalized SCF manifold.
+Then, the locality is preserved avoiding a complete diagonalization of the
+density matrix. 
+
+Three versions of the optimization algorithm are currently available: 
+a variational uncontracted \cite{jcp-116-10060-2002}, developed in Toulouse,
+a perturbative contracted \cite{jcp-117-10525-2002} and the recently deployed
+variational contracted, both developed in Ferrara.
+
+The subsequent work is based on the variational uncontracted approach. This
+approach does not converge to a rigorous CASSCF solution, because of the
+uncontracted nature of the implemented CI expansion.  However, as already
+shown in Ref. \citen{jcp-116-10060-2002}, this fact does not seem to
+have severe practical effects.
+
+\subsection*{Creation of the guess}
+
+The method starts with the creation of a set of Orthogonal Atomic Orbitals
+(OAO), obtained through a Schmidt orthogonalization and a $S^{-\frac{1}{2}}$
+normalization of the atomic basis set. ANO type \cite{tca-77-291-1990} is
+preferred, since the orbitals are described by a minimal number of coefficients.
+
+The orthonormalization is performed against a hierarchical classification of
+the orbitals: the core orbitals are orthogonalized among themselves, then
+the valence orbitals against the cores and among themselves, finally the
+remaining orbitals. The obtained OAOs are then used to build Localized
+Molecular Orbitals (LMOs) as linear combinations of OAOs, using the
+one-electron density matrix of a one-electron evaluation (Huckel or SCF):
+\beq
+R_{ij} = \braket{\Phi_{0}}{a_i^+ a_j}{\Phi_{0}}
+\eeq
+
+It is possible to define a projector for an atom K (built using the projector onto
+the $\tilde{\chi}_{l}$ OAO functions) or for a molecular fragment F (from a sum of projectors
+onto the involved atoms)
+\beqa
+P_{K} = \sum_{l \in K} \ket{\tilde{\chi}_{l}} \bra{\tilde{\chi}_{l}} \\
+P_{F} = \sum_{K \in F} P_{K}
+\eeqa
+
+The density matrix obtained by the projected wavefunction $P_{F}
+\Phi_{0}$ can be diagonalized. This step leads to a linear combination of
+OAO, representing MO's localized on the fragment. Some of these MO's
+exhibit occupation numbers which are close to two or zero, and they
+represent a localized bond between the atoms involved in the fragment. Other
+orbitals can exhibit occupation numbers close to one, and they are rejected
+since they are hybrid orbitals that are representative of an ``half-bond''
+between non considered atoms.
+
+As an example, the creation of LMO's in the carbonyl group of acetone is
+here presented.
+
+{\small
+\input{02_localization/vrb_bonds.tex}
+}
+
+As can be seen, the extracted density matrix leads to a localized set of
+orbitals. The first four, with occupation numbers close to two, are the
+C-O $\sigma$ bond, the CO $\pi$ bond, and the lone pairs $n_z$ and $n_y$.
+Two orbitals express the half $\sigma$ bonds directed toward the remaining
+carbon atoms. These bonds will be kept into account in other selections, so
+they are discarded. Finally, two orbitals with occupation number close to
+zero express the C-O $\pi^{*}$ and $\sigma^{*}$.  The resulting set of LMOs
+is not orthogonal, so a new hierarchical orthonormalization is performed.
+
+The obtained orbitals are then projected onto a delocalized SCF manifold.
+This step, like an extrinsic method of localization, provides a localized
+SCF-quality set of orbitals.
+
+\subsection*{Optimization of the guess}
+
+In the classical (non Freeze-and-Cut) localization technique, orbitals
+obtained from the last step are then optimized at CASSCF level.  Working on
+a single reference SCF wavefunction $\Phi_{0}$, the optimization
+should follow these steps:
+\begin{enumerate}
+\item define a single excitation configuration interaction
+$\Psi_{\mbox{\tiny CIS}} = \Phi_{0} + \sum_{i,r} C_{ir} a_{r}^{+} a_i \Phi_{0}$
+and obtain the $C_{ir}$ coefficients through diagonalization
+\item create the one electron density matrix $R_{ir} =
+\braket{\Psi_{\mbox{\tiny CIS}}}{a_{r}^{+} a_i}{\Psi_{\mbox{\tiny CIS}}}$ and
+block diagonalize it
+\item use the new set of orbitals to create a new $\Phi_{0}$, and iterate until
+$\Psi_{\mbox{\tiny CIS}} = \Phi_{0}$, satisfying the Brillouin theorem \cite{asi-159-1934}.
+\end{enumerate}
+
+Particular care must be applied in the density matrix diagonalization step.
+A complete diagonalization leads to delocalized natural orbitals. To prevent
+this behavior, a controlled block diagonalization is performed
+\beq
+R_{\mbox{DP}} = W^{+} R W
+\eeq
+where $R$ is the density matrix, $R_{\mbox{\tiny DP}}$ is the block diagonalized
+density matrix, and $W$ is a unitary matrix, given by
+\beq
+W = U_{\mbox{\tiny D}} U_{\mbox{\tiny P}}^{+}
+\eeq
+where $U_{\mbox{\tiny D}}$ is a matrix that fully diagonalizes $R$ and
+$U_{\mbox{\tiny P}}$ is a matrix that restores the orbital locality, mixing those
+orbitals inside the same class (occupied or virtual, in the case of
+a single reference calculation). The $U_{\mbox{\tiny P}}$ matrix is obtained
+through projection of $U_{\mbox{\tiny D}}$ onto the subspaces and a subsequent
+orthonormalization.
+
+The same working principle can be applied to multireference CAS
+wavefunctions: using a CAS space, the CI energy and wavefunction are
+invariant with respect to rotations inside each block of core, active
+and virtual orbitals. This invariance allows us to produce localized orbitals
+equivalent to the delocalized ones, and locality can be maintained
+preventing as much as possible rotations inside each of the three blocks.
+
+The requirement for convergence is to satisfy the Extended Brillouin Theorem
+\beq
+\braket{\Psi_{\mbox{\tiny CASSCF}}}{\ham \left[ a_{k}^{+} a_{l} -
+a_{l}^{+} a_{k} \right]}{\Psi_{\mbox{\tiny CASSCF}}} = 0
+\eeq
+which is always fulfilled if $k$ and $l$ refer both to core, active or
+virtual orbitals. The previous equation can threfore be decomposed in three
+equations between different classes of indexes:
+\beqa
+\braket{\Psi_{\mbox{\tiny CASSCF}}}{\ham \left[ a_{a}^{+} a_{i} -
+a_{i}^{+} a_{a} \right]}{\Psi_{\mbox{\tiny CASSCF}}} & = & 0 \\
+\braket{\Psi_{\mbox{\tiny CASSCF}}}{\ham \left[ a_{r}^{+} a_{i} -
+a_{i}^{+} a_{r} \right]}{\Psi_{\mbox{\tiny CASSCF}}} & = & 0 \\
+\braket{\Psi_{\mbox{\tiny CASSCF}}}{\ham \left[ a_{r}^{+} a_{a} -
+a_{a}^{+} a_{r} \right]}{\Psi_{\mbox{\tiny CASSCF}}} & = & 0
+\eeqa
+where $i$, $a$ and $r$ refer to core, active and virtual orbitals,
+respectively. In order to minimize the energy, the non-interaction of
+singly-excited contracted CAS wavefunctions must be reached iteratively
+using the Super-CI approach. A prototype for this approach has been
+developed in Ferrara laboratory, and has been used for the combined
+Localization-NEVPT2 evaluation, presented later in this thesis.
+
+An alternative solution, followed at Toulouse laboratories, is to consider a
+decontracted scheme, exploiting the full dimensionality defined by the space
+of determinants $S = \{\Phi_i\} \cup \{a^{+}_{r} a_{i} \Phi_i\}$ spanned by
+the CAS space and their single excitations. The procedure is not a Super-CI
+optimization and does not converge to the real CASSCF solution. However, as
+pointed out in Ref. \citen{jcp-116-10060-2002}, the resulting orbitals
+are very similar to the CASSCF ones.
+
+The third possibility is to work with a perturbartive contracted approach.
+The idea is to consider the $\Psi_{\mbox{\tiny CASCI}}$ at a given iteration as a
+zero-order description of the $\Psi_{\mbox{\tiny CAS+S}}$. We diagonalize a
+zero-order Hamiltonian inside a perturber space Q, spanned by the singly
+excited contracted functions $a_{a}^{+} a_{i} \ket{\Psi_{\mbox{\tiny CASCI}}}$,
+$a_{r}^{+} a_{i} \ket{\Psi_{\mbox{\tiny CASCI}}}$ and $a_{r}^{+} a_{a}
+\ket{\Psi_{\mbox{\tiny CASCI}}}$. From the diagonalization, we obtain perturber
+wavefunctions as linear combinations
+\beq
+\ket{\Psi_{\mu}} = \sum_{ai} c_{ai \mu} \constr{a} \destr{i}
+\ket{\Psi_{\mbox{\tiny CASCI}}} + \sum_{ri} c_{ri \mu} \constr{r} \destr{i}
+\ket{\Psi_{\mbox{\tiny CASCI}}} + \sum_{ra} c_{ra \mu} \constr{r} \destr{a}
+\ket{\Psi_{\mbox{\tiny CASCI}}}
+\eeq
+and the first-order correction to the wavefunction is
+\beq
+\ket{\Psi^{(1)}} = \sum_{\mu}
+\frac{\braket{\Psi_{\mu}}{\ham}{\Psi_{\mbox{\tiny CASCI}}}}{E_{\mbox{\tiny CASCI}}-E_{\mu}^{(0)}}
+\ket{\Psi_{\mu}}
+\eeq
+From this correction, it is possible to obtain the correction to the
+one-particle density matrix
+\beqa
+\rho_{lk}^{(1)} & = & \sum_{\mu} \left\{
+\frac{\braket{\Psi_{\mbox{\tiny CASCI}}}{a_{k}^{+} a_{l}}{\Psi_{\mu}}
+\braket{\Psi_{\mu}}{\ham}{\Psi_{\mbox{\tiny CASCI}}}}{E_{\mbox{\tiny CASCI}}-E_{\mu}^{(0)}}
++ \right. \nonumber \\
+& & \left. + \frac{\braket{\Psi_{\mbox{\tiny CASCI}}}{\ham}{\Psi_{\mu}} \braket{\Psi_{\mu}}{a_{k}^{+}
+a_{l}}{\Psi_{\mbox{\tiny CASCI}}}}{E_{\mbox{\tiny CASCI}}-E_{\mu}^{(0)}} \right\} 
+\eeqa
+When the convergence is reached, the correction vanishes.
+For the choice of the zero-order Hamiltonian, is convenient to make use of a
+particular Hamiltonian, the Dyall's Hamiltonian\cite{jcp-102-4909-1995}
+\beqa
+\ham^D &=& \ham^D_i + \ham^D_v + C \\
+\ham^D_i &=& \sumidx{i} \epsilon_i \constr{i} \destr{i} + \sumidx{r}
+\epsilon_r \constr{r} \destr{r} \\
+\ham^D_v &=& \sumidx{ab} h_{ab}^{\mbox{\tiny eff}} \constr{a} \destr{b} +
+\frac{1}{2} \sumidx{abcd} \integral{ab}{cd} \constr{a}\constr{b}
+\destr{d}\destr{c}
+\eeqa
+where labels $i,j,\ldots$, $a,b,\ldots$, $r,s,\ldots$ denote core, active and
+virtual orbitals respectively, and $ h_{ab}^{\mbox{\tiny eff}} =
+\braket{a}{h+\sumidx{i}\left( J_i - K_i \right)}{b}$.
+This Hamiltonian, which will be presented in more details in the n-Electron
+Valence state Perturbation Theory approach, leads to a simplification of the
+computational asset. The zero-order Hamiltonian is defined as the projection
+of the Dyall inside the interested spaces
+\beq
+\ham_{0} = \proj{\mbox{\tiny CAS}} \ham^D \proj{\mbox{\tiny CAS}} +
+\proj{\mbox{\tiny Q}} \ham^D \proj{\mbox{\tiny Q}}
+\eeq
+The perturbative approach is very straightforward and efficient, and
+converges to the real CASSCF wavefunction. However, divergent behaviors 
+have been reported when the zero-order wavefunction needs a strong
+correction.
+
+

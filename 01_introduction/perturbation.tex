@@ -1,0 +1,103 @@
+\section{Perturbation theory}
+
+Let $\ham$ be the true Hamiltonian and let us suppose it can be expressed in
+the form 
+\beq
+\ham = \ham_{0} + \lambda \hat{V}
+\eeq
+where $\ham_{0}$ is a model Hamiltonian, $\lambda$ is a parametric value
+expressing the intensity of the perturbative effect and $\hat{V}$ is a
+perturbative operator. 
+
+Supposing a non-degenerate case and that all eigenvalues and eigenvectors of
+the model Hamiltonian $\ham_{0}$ are known (therefore knowing its spectral
+decomposition) we have, at zero order of perturbation
+\beq
+\ham_{0} \Psi_n^{(0)} = E_n^{(0)} \Psi_n^{(0)} \quad n=0,1,2,\ldots
+\eeq
+the $\Psi_n^{(0)}$ eigenfunctions ($\ket{n}$ in shorter notation) define a
+complete basis set of wavefunctions. If no perturbative effects are present,
+the descriptive wavefunction for the state $n$ will be $\Psi_n^{(0)}$ with
+$E_n^{(0)}$ as associated energy.
+
+Imposing a perturbation, the descriptive wavefunction and the associated
+energy will change as a function of the perturbative parameter $\lambda$.
+We can perform a Taylor's expansion to obtain
+\beqa
+\Psi_n &=& \ket{n} + \lambda \Psi_n^{(1)} + \lambda^2 \Psi_n^{(2)} +
+\ldots \\
+E_n &=& E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + \ldots
+\eeqa
+We suppose that the eigenfunctions of $\ham_{0}$ are normalized
+($\integral{n}{n} = 1$) and we choose the
+normalization of $\Psi_n$  such that $\integral{n}{\Psi_n} = 1$
+(\textit{intermediate normalization}). This normalization can always be performed
+when $\ket{n}$ and $\Psi_n$ are not orthogonal, simplifying the
+treatment and leading to 
+\beq
+\integralmodif{n}{\Psi_n^{(k)}} = 0 \quad k = 1,2,3,\ldots
+\eeq
+Given the final relationship to solve
+\beq
+\ham \Psi_n = E_n \Psi_n
+\eeq
+a substitution can be performed to obtain
+\beqa
+& & \lambda^0 \left( \ham_{0} \ket{n} - E_n^{(0)} \ket{n} \right) \nonumber \\ 
+&+& \lambda^1 \left( \ham_{0} \Psi_n^{(1)} + \hat{V} \ket{n} - E_n^{(0)} \Psi_n^{(1)} - E_n^{(1)} \ket{n} \right) \nonumber \\
+&+& \lambda^2 \left( \ham_{0}\Psi_n^{(2)} + \hat{V}\Psi_n^{(1)} - E_n^{(0)} \Psi_n^{(2)} - E_n^{(1)} \Psi_n^{(1)} - E_n^{(2)} \ket{n} \right) \nonumber \\
+&+& \ldots = 0 \label{eqn:perturb_1}
+\eeqa
+In order to satisfy \ref{eqn:perturb_1}, terms inside parentheses must be zero
+\beqa
+\ham_{0} \ket{n} &=& E_n^{(0)} \ket{n} \\
+\label{eqn:perturb_1_2}
+\left( \ham_{0} - E_n^{(0)} \right) \Psi_n^{(1)} &=& \left( E_n^{(1)} -
+\hat{V} \right) \ket{n} \\
+\left( \ham_{0} - E_n^{(0)} \right) \Psi_n^{(2)} &=& \! E_n^{(2)} \ket{n} \! + \left( E_n^{(1)} - \hat{V} \right) \Psi_n^{(1)} \\
+& \vdots & \nonumber
+\eeqa
+which also lead to
+\beqa
+E_n^{(0)} &=& \braket{n}{\ham_{0}}{n} \\ 
+E_n^{(1)} &=& \braket{n}{\hat{V}}{n} \\
+\label{eqn:perturb_vbgh}
+E_n^{(2)} &=& \braket{n}{\hat{V}}{\Psi_n^{(1)}} 
+\eeqa
+
+We can find the first-order correction to the wavefunction by expressing the
+$\Psi_n^{(1)}$ on the complete basis set defined by the solutions of the zero-order
+Hamiltonian 
+\beq
+\label{eqn:perturb_2}
+\Psi_n^{(1)} = \sumidx{k}c_k^{(1)} \ket{k}
+\eeq
+It is clear that, since the eigenfunctions of $\ham_{0}$ are orthonormal,
+we can write
+\beq
+\integralmodif{k}{\Psi_n^{(1)}} = c_k^{(1)}
+\eeq
+and then
+\beqa
+\Psi_n^{(1)} = \sumidx{k}c_k^{(1)} \ket{k} \\
+\label{eqn:perturb_bbb}
+\Psi_n^{(1)} = \sum_{k} \ket{k} \integralmodif{k}{\Psi_n^{(1)}}
+\eeqa
+We can now multiply \ref{eqn:perturb_1_2} by $\bra{k}$ 
+\beq
+\label{eqn:perturb_xyb}
+\left( E_n^{(0)} - E_k^{(0)} \right) \integralmodif{k}{\Psi_n^{(1)}} =
+\braket{k}{\hat{V}}{n} \\
+\eeq
+and combining \ref{eqn:perturb_bbb} with \ref{eqn:perturb_vbgh}
+\beq
+E_n^{(2)} = \braket{n}{\hat{V}}{\Psi_n^{(1)}} = \sum_{k}
+\braket{n}{\hat{V}}{k} \integralmodif{k}{\Psi_n^{(1)}}
+\eeq
+combining with \ref{eqn:perturb_xyb} leads to the second-order correction to
+the energy
+\beq
+E_n^{(2)} = \sum_{k} \frac{\left| \braket{n}{\hat{V}}{k}
+\right|^2}{E_n^{(0)} - E_k^{(0)}}
+\eeq
+

@@ -1,0 +1,37 @@
+\section{Conclusions}
+
+The Freeze-and-Cut technique has proved its usefulness in optimizing local
+orbitals at CASSCF or quasi-CASSCF level. It combines the freeze of the
+molecular orbitals that are not relevant for the phenomenon under study, and
+the cut of those atoms that are not needed to describe the optimized
+orbitals.
+
+Different levels of theory can be used for the molecular framework and the
+physically interesting region of the system.  The presented test cases
+demonstrate the ability of the method to give essentially the same results
+as a localized CASSCF calculation on the complete system, with a
+significant reduction of the computational cost.
+
+Two problems must be kept into account in order to obtain reliable CASSCF
+energies: the first problem involves the tails of the unfrozen orbitals,
+which can have a significant delocalization on the nearest neighbor atoms.
+The projection of the unfrozen orbitals into a restricted set of atoms has
+the effect of rising the absolute energy, but the relative energies seems to
+be poorly affected. 
+
+The second problem is relative to the methodological need to reorthonormalize
+the frozen orbitals set after the cut is performed. This can introduce artificial
+tails which can create instability when occurring near the active
+orbitals. Both effects depend on the atomic basis set spatial distribution.
+
+To face these problems, a general strategy can be devised:
+\begin{itemize}
+\item reduce the cut out of the unfrozen orbitals, setting the cut seam
+far from the unfrozen region. Atoms which are geometrically very distant
+from the unfrozen set can be usually cut out safely
+\item reduce the influence of the frozen orbitals orthonormalization tails 
+on the chemically active region (usually, the active orbitals).  To minimize
+this effect, a sufficient spacer of unfrozen orbitals should be kept.
+\end{itemize}
+Further evaluations are however needed to gain detailed comprehension of
+this strategy.

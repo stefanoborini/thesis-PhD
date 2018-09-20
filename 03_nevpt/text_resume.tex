@@ -1,0 +1,99 @@
+\pagestyle{empty}
+\begin{center}
+{\Huge \textbf Resum\'e chapitre \ref{chp:nevpt} \\ NEVPT }
+\end{center}
+
+Les th\'eories perturbatives multir\'ef\'erence sont des instruments importants
+pour l'\'evaluation de l'\'energie de corr\'elation sur mol\'ecules petites et
+moyennes. L'avantage de l'approche perturbative est la r\'eduction du co\^ut
+computationnel: \`a parit\'e de qualit\'e des r\'esultats, une approche
+variationnelle est plus lourde. Seulement en temps r\'ecents les approches
+perturbatives multireference sont utilis\'ees intensivement dans la recherche
+en chimie quantique.
+
+L'objectif des th\'eories perturbatives multir\'ef\'erence est la cr\'eation
+d'une approche vite et propre, correspondante \`a l'approche \`a single
+d\'eterminant M{\o}ller-Plesset (MP). Quand on travaille sur des syst\`emes
+bien d\'ecrits avec un seul d\'eterminant, la th\'eorie M{\o}ller-Plesset au
+deuxi\`eme ordre donne plus de 90 \% de l'\'energie de corr\'elation.
+
+Quand le syst\`eme \'etudi\'e n\'ecessite d'une approche multir\'ef\'erence, et donc la
+fonction d'onde d'ordre z\'ero est multir\'ef\'erence, le d\'eveloppement d'une
+th\'eorie perturbative est plus complexe. Le probl\`eme est la d\'efinition
+d'un Hamiltonien d'ordre z\'ero appropri\'e. Si ce choix n'est pas bon, on
+obtient une th\'eorie perturbative que
+\begin{itemize}
+\item \textbf{n'est pas size consistent}: l'\'energie de deux syst\`emes
+qui n'interagissent pas entre eux, AB, doit \^etre \'egale al'\'energie
+qui on obtient en faisant le calcul sur chacune et en faisant l'addition
+(E$_{AB} = $E$_A + $E$_B$)
+\item \textbf{\`a des \'etats intrus}, quand les fonctions perturbatives
+ont des \'energies presque \'egales \`a l'\'energie de la fonction d'ordre z\'ero.
+Ce probl\`eme donne lieu \`a un comportement divergent.
+\end{itemize}
+
+La th\'eorie n-Electron Valence state Perturbation Theory est une
+th\'eorie perturbative multir\'ef\'erence qui travaille sur une fonction d'onde de
+type Complete Active Space (CAS). Elle a \'et\'e d\'evelopp\'ee \`a Ferrara en collaboration avec l'universit\'e
+Paul Sabatier de Toulouse.  La m\'ethode adresse \`a la fois le probl\`eme
+de size consistency et le probl\`eme des \'etats intrus, et donne l'approche
+M{\o}ller-Plesset si on effectue le calcul sur une fonction d'onde \`a un
+seul d\'eterminant.
+
+Le d\'eveloppement theoretique utilise un Hamiltonien bielectronique,
+l'Hamiltonien de Dyall, qui donne une th\'eorie propre et efficiente. Les
+fonctions perturbatives sont de nature multir\'ef\'erencielle, et peuvent
+\^etre classifi\'ee dans huit classes d'excitation, selon le sch\'ema de
+promotion des electrons. 
+
+La th\'eorie a deux niveaux de pr\'ecision, ``Strongly Contracted'' et ``Partially
+Contracted'', selon la contraction de l'espace perturbatif.
+La Strongly Contracted NEVPT utilise un espace monodimensionnel pour chaque
+classe, et la Partially Contracted utilise un espace \`a dimensionalit\'e
+plus haute, mais plus petite que l'espace complet des determinants
+excit\'es.  L'approche Strongly Contracted donne des r\'esultats de bonne
+qualit\'e si compar\'ee avec la Partially Contracted. Une diff\'erence entre
+eux est normalement un sympt\^ome d'une mauvaise d\'escription \`a
+l'ordre-zero.
+
+Dans cette th\`ese, diff\`erent types de NEVPT ont \'et\'e d\'evelopp\'e
+et utilis\'e:
+\begin{itemize}
+\item Single State NEVPT, qui fait la correction perturbative \`a un seul
+\'etat \'electronique
+\item Quasi Degenerate NEVPT, qui fait cette correction \`a un
+ensemble d'\'etats \'electroniques simultan\'ement.  Cette approche
+consid\`ere les interactions entre les fonctions d'onde apr\`es la
+perturbation, et permit le m\'elange de ce fonctions.
+\item Non Canonical NEVPT, est une extension de l'approche single \'etat qui
+travaille avec des orbitales qui ne sont pas canoniques (elles ne diagonalisent
+pas la matrice de Fock g\'en\'eralis\'ee). Cette approche est tr\`es utile
+pour l'integration entre Localisation et NEVPT, parce que les resultats sont
+invariables pour le m\'elange des orbitales de core et virtuelles, et donc
+il permit l'utilisation directe avec un ensemble d'orbitales localis\'ees.
+\end{itemize}
+
+L'approche Single-State a \'et\'e utilis\'ee pour effectuer des calculs sur les
+mol\'ecules de formaldehyde, acetaldehyde et ac\'etone. Tous ces mol\'ecules ont
+un groupe carbonyle, et diff\'erents strat\'egies ont \'et\'e appliqu\'ees pour avoir
+une compr\'ehension directe des \'etats excit\'es de ce groupe fondamental. En
+particulier, on a effectu\'e l'\'evaluation de l'\'energi\'e des \'etats
+excit\'es de valence, soit adiabatiques que verticales, et des \'etats
+Rydberg. Pour les \'etats adiabatiques, on a aussi \'evalu\'e l'\'energie
+de point z\'ero (ZPE) vibrationnel, les g\'eom\'etries et le comportement
+vibrationnel des \'etats excit\'es de valence.
+
+Avec l'approche Quasi-Degenerate on a \'etudi\'e la courbe de potentiel du
+ground state, deux \'etats rydberg et du $\pi \rightarrow \pi^{*}$ contre le
+stretching C-O, dans la mol\'ecule de formaldehyde. Le courbes obtenues \`a niveau
+CASSCF ont des croisements \'evit\'es, et l'application de la NEVPT
+Quasi-Degenerate donne des courbes plut\^ot diff\`erentes sur la position e la
+forme des ces croisements.  Les r\'esultats de la th\'eorie QD-NEVPT peuvent
+\^etre amelior\'ees avec une procedure iterative, qui peut \^etre une bonne
+solution \`a des probl\'emes dans les r\'esultats obtenus.
+
+Enfin, une \'evaluation pr\'eliminaire a \'et\'e effectu\'e avec la NEVPT
+Non-Canonique sur un syst\`eme localis\'e. Les valeurs obtenues d\'emontrent la validit\'e
+de cette approche, qui sera fondamentale pour l'int\'egration directe de la
+th\'eorie de localisation des orbitals mol\'eculaires et la th\'eorie NEVPT.
+

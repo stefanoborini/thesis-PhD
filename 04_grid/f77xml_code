@@ -1,0 +1,147 @@
+\section{F90xml Examples}
+
+This example program perform a parsing and a printout of the XML document,
+in a recursive walkthrough of the tree
+The main routine is as follows
+
+\begin{verbatim}
+program bench
+    use f90xml
+    implicit none
+
+    integer :: domImpl,doc,rootElem
+    integer :: error
+    integer :: void
+    character(len=128) :: filename = "test-document2.xml"
+
+    call f90xml_di_mkref(domImpl,error)
+	if (domImpl == NullCode) then
+		print *, "Unable to obtain DOMImplementation"
+		stop
+	endif
+    
+    call f90xml_di_createDocFromURI (doc, domImpl, filename, 0, error);
+    if (doc == NullCode) then
+        print *, "DOMImplementation.createDocFromURI returned NullCode"
+        stop
+    endif
+
+    call f90xml_doc_documentElement(rootElem,doc,error)
+    call traversal (elem)
+
+    call f90xml_el_unref(void,rootElem,error)
+    call f90xml_doc_unref(void,doc,error)
+    call f90xml_di_unref(void,domimpl,error)
+
+end program bench
+\end{verbatim}
+
+all the actual parsing is performed in the recursive routine traversal
+
+\begin{verbatim}
+recursive subroutine traversal (elem)
+    use f90xml
+    implicit none
+    integer,intent(in) :: elem
+
+    integer :: child, temp
+    integer :: type
+    integer :: string
+    integer :: error
+    character(len=1024) :: fortranString
+    logical :: isAtEnd
+	integer :: offset
+
+
+    fortranString=""
+    call f90xml_el_firstChild(child,el,error);
+    do
+        if (child == NullCode) exit
+
+        call f90xml_n_nodeType (type, child, error)
+        select case (type)
+        case (F90XML_ELEMENT_NODE)
+            call printElHead (child);
+            call traversal (child);
+            call printElFoot (child);
+        case (F90XML_TEXT_NODE)
+            call f90xml_t_data (string,child, error);
+            offset = 0
+            do
+                call f90xml_str_toFortran(isAtEnd,string,fortranString,offset,error)
+                print *, trim(fortranString)
+                if (isAtEnd == .TRUE.) exit
+                offset = offset + 1024
+            enddo
+            call f90xml_str_unref(string,error)
+        end select
+
+        call f90xml_n_nextSibling (temp,child, error)
+        call f90xml_n_unref(child, error)
+        child = temp;
+    enddo
+end subroutine traversal
+\end{verbatim}
+
+
+
+\begin{verbatim}
+subroutine printElHead(el)
+    use f90xml
+    implicit none
+    integer, intent(in) :: el
+
+    logical :: bool
+    integer :: len
+    integer :: string,attrs, attr
+    integer :: error
+    integer :: i
+    character(len=1024) :: completeTag
+    character(len=128) :: fortranString
+
+    call f90xml_el_tagName (string, el, error);
+    call f90xml_str_toFortran(bool,string,fortranString,0,error)
+    completeTag=""
+    completeTag=trim(completeTag)//"<"//trim(fortranString)
+
+    call f90xml_el_hasAttributes (bool, el, error)
+
+    if (bool) then
+        call f90xml_el_attributes (attrs, el, error)
+        call f90xml_nnm_length (len, attrs, error)
+        do i=0,len-1
+            call f90xml_nnm_item (attr, attrs, i, error)
+            call f90xml_a_name (string, attr, error)
+            call f90xml_str_toFortran(bool,string,fortranString,0,error)
+            completeTag=trim(completeTag)//" "//trim(fortranString)//'='
+
+            call f90xml_a_value (string,attr,error)
+            call f90xml_str_toFortran(bool,string,fortranString,0,error)
+            completeTag=trim(completeTag)//""""//trim(fortranString)//""""
+        enddo
+    endif
+    completeTag=trim(completeTag)//">"
+    print *, trim(completeTag)
+end subroutine
+\end{verbatim}
+
+
+\begin{verbatim}
+subroutine printElFoot(el)
+    use f90xml
+    implicit none
+    integer, intent(in) :: el
+
+    integer :: string
+    integer :: error
+    logical :: bool
+    character(len=128) :: fortranString
+    
+    call f90xml_el_tagName (string, el, error);
+    call f90xml_str_toFortran(bool,string,fortranString,0,error)
+    print *, "</"//trim(fortranString)//">"
+
+end subroutine printElFoot
+\end{verbatim}
+
+

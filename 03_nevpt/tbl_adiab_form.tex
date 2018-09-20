@@ -1,0 +1,48 @@
+\begin{center}
+\begin{threeparttable}
+\footnotesize 
+\begin{tabular*}{\textwidth}{l@{\hspace*{1mm}}ccccc}
+\hline
+Method & \snpi & \tnpi & $S_2$  & \tpipi & \tspi \\
+\hline
+CASSCF (CAS(A)) \tnote{a}      & 3.63 (3.56)& 3.36 (3.30)& 7.90 (7.82)& 4.36 (4.29) &  7.77 (7.71) \\
+NEVPT2 SC (CAS(A)) \tnote{a}      & 3.52 (3.46)& 3.17 (3.10)& 7.67 (7.59)& 4.38 (4.31) &  7.28 (7.22) \\
+NEVPT2 PC (CAS(A)) \tnote{a}      & 3.54 (3.47)& 3.17 (3.10)& 7.66 (7.58)& 4.41 (4.34) &  7.28 (7.21) \\
+CASSCF (CAS(C)) \tnote{a}      & 3.92 (3.82)& 3.64 (3.54)& 8.25 (8.15)& 4.75 (4.67) &  7.89 (7.79) \\
+NEVPT2 SC (CAS(C)) \tnote{a}      & 3.57 (3.48)& 3.21 (3.11)& 7.65 (7.55)& 4.48 (4.40) &  7.20 (7.10) \\
+NEVPT2 PC (CAS(C)) \tnote{a}      & 3.57 (3.48)& 3.18 (3.08)& 7.62 (7.52)& 4.49 (4.42) &  7.17 (7.07) \\
+CASSCF(10e/9o) \cite{jcp-105-5927-1996}   & 3.71 (3.80)&            &              &            &             \\
+CIS \cite{jpc-97-4293-1993} &     4.54   &    3.63    &    8.65    &    3.64     &             \\
+MRD-CI\cite{jpc-99-16576-1995} &            &    3.22    &            &    4.43     &    7.15     \\
+MR-CISD+Q \cite{mp-100-1647-2002} &     3.42   &            &            &             &             \\
+CASPT2 \cite{tca-92-227-1995} &     3.37   &            &    7.43    &             &             \\
+MRD-CI \cite{jpc-99-8050-1995} &     3.64   &            &    7.95    &             &             \\
+EOM-CCSD \cite{jpca-106-4192-2002} &     3.70   &            &    8.43    &             &             \\
+CCSD(T)\tnote{b}&            & 3.17 (3.08)&            &             &             \\
+MR-AQCC\tnote{c}&     3.60   &            &    7.45    &             &             \\
+MR-CISD+Q\tnote{c} &     3.63   &            &    7.56    &             &             \\
+Experimental           & 3.50\tnote{d}
+                                    & 3.12\tnote{d}
+				                 &            & 4.70\tnote{e},4.83\tnote{f}
+						                            &             \\
+\hline
+\end{tabular*}
+\caption{\footnotesize Adiabatic transition energies (eV) (all states computed at the CASSCF equilibrium
+geometry) for the \npi, \pipi\ and \spi\   singlet and triplet excited
+states of formaldehyde.  The values in parentheses are the ZPE corrected
+values.  
+\label{tbl:adiab_form}}
+\begin{tablenotes}
+\footnotesize
+\item[a] This work.
+\item[b] CCSD(T) value using the TZ2P(f,d) basis, Ref. \citen{jcp-108-5281-1998}.
+\item[c] Extrapolated to basis set limit using cc-pVXZ basis sets (X=D, T and Q), indicated with
+TQ in Ref. \citen{jcp-114-746-2001}.
+\item[d] Optical spectroscopy results from Ref. \citen{arpc-34-31-1983,tcc-150-167-1989}.
+\item[e] Estimated in Ref. \citen{jpc-99-16576-1995} from a polynomial fit of the electron-impact data for the 
+$\nu_2$ progression in Ref. \citen{cp-70-291-1982}.
+\item[f] Lowest observed peak in the $\nu_2$ progression assigned to $\nu^\prime=1$
+in Ref. \citen{cp-70-291-1982}.
+\end{tablenotes}
+\end{threeparttable}
+\end{center}

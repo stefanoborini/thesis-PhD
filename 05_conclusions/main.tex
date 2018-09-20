@@ -1,0 +1,204 @@
+\thispagestyle{empty}
+{ \Huge \textbf{Conclusions} } 
+\vspace{1mm} \\
+
+This work surveyed two innovative techniques dedicated to the
+\textit{ab initio} study of molecular systems.
+
+The localization technique makes use of an optimization procedure that
+preserves the locality of a starting guess.  An extension of this technique,
+named Freeze-and-Cut, allows the reduction of the computational cost by
+performing a neglection of those parts of the molecular system not involved
+in the phenomenon under study. The localized molecular orbitals are
+frozen at a lower level of theory (SCF in this case) to keep into account
+their effect. The remaining orbitals are projected onto a subset of the
+original basis set, allowing a reduced AO/MO two-electron integrals
+transformation. 
+
+The method proved its efficiency on two molecular system: the aminoacid
+zwitterion (7Z)-13 ammoniotridec-7-enoate, specifically designed to
+test the response of the method to charge interactions, and the highly
+conjugated C$_{13}$ polyenal.  A third test on the acetone plus 6 H$_2$O was
+attempted to evaluate excited states. In this case, a higher dimensionality
+of the basis set is needed to produce effective results, but this attempt
+reported a sensivity of the Freeze-and-Cut method to diffuse basis sets. 
+
+A possible solution to this problem is the use of non-orthogonal orbitals between the frozen
+and non-frozen sets, and although it seems to produce stable results, the
+current procedure have to be reconsidered with the assumption of
+non-orthogonality. Further developments are needed to face this
+improvement.
+
+The second technique studied during this Ph.D. is the n-Electron Valence
+state Perturbation Theory (NEVPT). NEVPT is a multireference perturbation
+theory applicable to CAS wavefunctions. It is based on a two-electron
+Hamiltonian, the Dyall Hamiltonian, which provides a straightforward and
+efficient development for both theoretical and computational implementation.
+The perturber wavefunctions are multireference in nature, and belongs to
+eight excitation classes, depending on the promotion scheme of the
+electrons. 
+
+NEVPT is available in two accuracy levels, depending on the degree of
+contraction of the perturber space: the Strongly Contracted NEVPT uses a
+monodimensional space for each class, while the Partially Contracted uses a
+space of higher dimensionality but smaller than the complete space. The
+Strongly Contracted approach produces results of good accuracy when compared
+to the Partially Contracted, and a difference between the two approaches has
+been noted as a symptom of a poor zero-order wavefunction.
+
+NEVPT is available as a Single-State approach, where the perturbation is
+applied to a specified electronic state, and also as a Quasi-Degenerate
+approach, where the perturbation effects are applied simultaneously to a set
+of states. The Quasi-Degenerate approach keeps into account the
+interactions between wavefunctions after the perturbative corrections,
+allowing mixing of the states.
+
+Finally, a variation of NEVPT named Non-Canonical has been deployed to
+obtain invariability for intraclass orbital rotation for core and virtual
+orbitals. This approach removes the need to perform the evaluation on
+canonical orbitals, allowing the direct application of NEVPT on a set of
+localized orbitals.
+
+The various aspects of NEVPT has been applied to a large set of cases, all
+involving the carbonyl system. Every performed evaluation highlighted the
+strengths of this method, in particular its computational efficiency, its
+accuracy and the absence of intruder states.  In the Quasi-Degenerate NEVPT
+further developments can be applied to open the possibility toward an
+iterative treatment. An attempt has been successfully made to deploy an
+integrated Localized+NEVPT Non-Canonical evaluation. This will open the
+possibility to perform highly accurate evaluations on large molecular
+systems.
+
+Finally, a collaboration with the CINECA supercomputing center lead to
+accurate insights in the problems related to the deployment of a grid
+infrastructure for quantum chemistry evaluations. Two problems have been
+recognized as rather central in the first phase of the project: the need of
+a library for parsing XML with the Fortran language, and a common file
+format for large binary data.
+
+The first problem has been addressed with the development of the F90xml library.
+This library provides a DOM compliant interface to the Fortran environment,
+acting as a wrapper of the gdome2 library.
+
+The second problem involved an accurate analysis of previous common formats
+in the field, keeping into account a very large set of new requisites, such
+as platform independence, ease of use, debugging accuracy, and
+extensibility.  This research lead to the deployment of a data model which
+has been implemented in the high-level library Q5Cost. This library proved
+its effectiveness allowing various codes to share informations, thus opening
+new possibilities in the integration of methods and the development of a
+grid metasystem. The library also comes with a proficient testsuite, aimed
+at stressing the interface for unexpected error conditions. The result is a
+very accurate, extensible and solid library. 
+
+The main drawbacks of this library can be found in the followings: the
+envisioned data model at the moment is not completely implemented in the
+interface, and the data storage for integrals can be made more efficient in
+terms of space occupation. In any case, the current implementation is
+optimal for a first-time experimentation in a new panorama for the
+computational quantum chemistry, and the detailed informations about the
+indexes of the stored integrals can be removed, providing files of reduced
+size.
+
+\clearpage
+\thispagestyle{empty}
+{ \Huge \textbf{Conclusions} } 
+\vspace{1mm} \\
+\thispagestyle{empty}
+
+Ce travail a regard\'e deux nouvelles techniques pour l'\'etude \textit{ab
+initio} des syst\`emes mol\'eculaires. La technique de localisation utilise
+une procedure d'optimisation qui preserve la localit\'e d'un groupe
+d'orbitales de guess localis\'ee. Une extension de cette technique, la
+technique Freeze-and-Cut, permet la r\'eduction du co\^ut computationnel
+apr\`es \'elimination de la partie du syst\`eme  mol\'eculaire pas
+int\'eress\'ee au ph\'enom\`ene \'etudi\'e.
+Les orbitales localis\'ees sont gel\'ees \`a un niveau plus bas de th\'eorie
+(dans notre cas, une \'evaluation SCF) et leur effect est preserv\'e. 
+Pour r\'eduire le poids computationnel pour la transformation des integrales
+bielectroniques, les autres orbitales sont project\'ees sur un sous-ensemble
+de la bas atomique original. Cette m\'ethode a \'et\'e essay\'e sur deux
+syst\`emes mol\'eculaires: le (7Z)-13 ammoniotridec-7-enoate, un aminoacide
+construit pour \'evaluer la r\'eponse de la m\'ethode al'interaction de
+charge, et le polyenal C13.
+Une troisi\`eme \'evaluation a \'et\'e effectu\'e sur l'etat excit\'e $n \rightarrow
+\pi^{*}$ de la molecule d'acetone avec 6 molecules d'eau. Dans ce cas, la
+dimensionalit\'e plus grande de la bas atomique a d\'emontr\'e une
+sensibilit\'e de la m\'ethode Freeze-and-Cut \`a des bases diffuses. Une solution
+peut \^etre l'utilise de orbitales non-ortogonaux entre le groupe gel\'e et
+non-gel\'e. Cette solution donne des r\'esultats plus corrects, mais la
+procedure courant doit \^etre adapt\'ee avec l'assumption de non
+orthogonalit\'e, et donc autres d\'eveloppements theoretiques sont
+n\'ecessaires.
+
+La deuxi\'eme technique etudi\'ee pendant ce travail de These est la th\'eorie
+perturbative ``n-Electron Valence state Perturbation Theory'' (NEVPT). La NEVPT
+est une th\'eorie perturbative multir\'ef\'erence qui peut \^etre
+appliqu\'ee
+\`a des fonction d'onde de type CAS. Le d\'eveloppement theoretique utilise
+un Hamiltonien bielectronique, l'Hamiltonien de Dyall, qui donne une
+th\'eorie propre et efficiente. Les fonctions perturbatives sont de nature
+multir\'ef\'erencielle, et peuvent \^etre classifi\'ee dans huit classes d'excitation,
+selon le sch\'ema de promotion des electrons. La NEVPT existe dans
+deux versions, la Strongly Contracted et la Partially
+contracted, selon le niveau de contraction de l'espace perturbatif. La
+Strongly Contracted NEVPT utilise un espace monodimensionnel pour chaque
+classe, et la Partially Contracted utilise un espace \`a dimensionalit\'e plus
+haute, mais plus petite que l'espace complet des determinants excit\'es.
+L'approche Strongly Contracted donne des r\'esultats de bonne qualit\'e si
+compar\'ee avec la Partially Contracted. Une diff\'erence entre eux est
+normalement un sympt\^ome d'une mauvaise d\'escription \`a l'ordre-zero.
+
+La NEVPT est disponible comme single \'etat, o\'u la perturbation est
+appliqu\'ee \`a un particulier \'etat \'electronique. La NEVPT Quasi Degenerate
+applique l'effet perturbatif sur un ensemble d'\'etats \`a la fois. Cette
+approche consid\`ere les interactions entre les fonctions d'onde apr\`es la
+perturbation, et permit le m\'elange de ce fonctions.
+Enfin, une variation de la NEVPT appell\'ee Non Canonical a \'et\'e
+d\'evelopp\'ee pour obtenir l'invariabilit\'e des r\'esultats pour le
+m\'elange des orbitales de core et virtuelles. Cette approche \'elimine la
+n\'ecessit\'e de travailler avec des orbitales canoniques, et permit
+l'utilisation directe avec un ensemble d'orbitales localis\'ees.
+
+Les diff\'erents types de NEVPT ont \'et\'e utilis\'es sur un ensemble de
+syst\'emes concernant le group carbonyl. Toutes les \'evaluations effectu\'ees
+donnent des r\'esultats int\'eressants, et sont aussi inter\'essantes les
+propri\'et\'es de la NEVPT, comme l'efficacit\'e computationnelle et l'absence
+d'\'etats intrus.
+Les r\'esultats de la th\'eorie QD-NEVPT peuvent \^etre amelior\'ees avec une
+procedure iterative, qui peut \^etre une bonne solution \`a des
+probl\'emes dans les r\'esultats obtenus.
+L'integration de la th\'eorie NEVPT avec l'approche localis\'ee a \'et\'e
+effectu\'ee avec la NEVPT Non Canonique. Cette travail sera important pour
+effectuer des calculs sur syst\'emes mol\'eculaires de grande taille.
+
+Une collaboration avec le centre de supercalcul CINECA a \'et\'e aussi
+effectu\'ee dans le cadre d'un projet international entre diff\'erent
+instituts de recherche en chimie quantique. L'objectif est l'integration des 
+diff\'erentes m\'ethodologies \textit{ab initio} dans une r\'eseau d'ordinateurs.
+Deux probl\`emes sont prioritaires dans la phase initial du projet: la
+n\'ecessit\'e d'une bibliotheque pour la lecture du format de fichier XML avec
+le langage Fortran, et le d\'eveloppement d'un format de fichier binaire
+commun pour le stockage de donnees de grand taille.
+Pour le premier probl\`eme, la biblioth\`eque F90xml a \'et\'e
+d\'evelopp\'ee. Cette biblioth\`eque interface libgdome2 (biblioth\`eque
+pour le langage C) avec Fortran. 
+
+Pour le deuxi\`eme probl\`eme, on a analis\'e le format de fichier dej\`a
+d\'evelopp\'e et evalu\'e leur d\'efects pour l'ex\'ecution en grid, qui
+n\'ecessite de consid\'erations additionnelles, comme
+ind\'ependance de plateforme, simplicit\'e d'utilise de la biblioth\`eque 
+d'acces, exactitude des messages d'erreur et extensibilit\'e.
+La recherche effectu\'ee a conduit au d\'eveloppement d'un mod\`ele des
+donn\'ees qui a \'et\'e impl\'ement\'e dans la biblioth\`eque Q5Cost. Cette
+biblioth\`eque a \'et\'e utilis\'ee pour l'integration des diff\'erents logiciels,
+et ouvre des nouvelles possibilit\'es pour le partage d'information
+quantistique et l'integration des m\'ethodes \textit{ab initio}.
+La biblioth\`eque a aussi une testsuite pour contr\^oler l'interface et
+chercher les probl\`emes dans l'implementation. 
+Le r\'esultat est une biblioth\`eque tr\`es solide et extensible.  Le
+probl\`emes principaux qui restent \`a resoudre dans Q5Cost sont: le
+stockage des integrals n'est pas encore efficient en terms d'espace
+occup\'e, et l'implementation du mod\`ele des donn\'ees n'est pas complete,
+mais l'impl\'ementation courante est suffisante pour le premiers
+d\'eveloppements et implementations.

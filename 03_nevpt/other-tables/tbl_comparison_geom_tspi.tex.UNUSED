@@ -1,0 +1,24 @@
+\begin{table}
+\caption{Equilibrium geometries for \tspi\ state. No minima have been found on the $S_3$
+surface.
+Distances in \AA, angles in degrees.\label{tab:geoex3}}
+\begin{tabular}{|lccccc|}
+\hline
+Method                 & R$_{\rm CO}$ 
+                       & R$_{\rm CH}$\footnotemark[1]
+                       & R$_{\rm CC}$ 
+                       & $\angle$XCY\footnotemark[2]
+                       & $\theta$\footnotemark[3] \\
+\hline
+formaldehyde (CAS(A))\footnotemark[4]      & 1.499 & 1.073 &       & 129.4 & 46.9 \\
+formaldehyde (CAS(C))\footnotemark[4]      & 1.483 & 1.101 &       & 128.7 & 45.2 \\
+acetaldehyde (CAS(B))\footnotemark[4]     & 1.523 & 1.074 & 1.482 & 129.9 & 45.5 \\
+acetone (CAS(A))\footnotemark[4]     & 1.445 &       & 1.494 & 120.6 & 40.1 \\
+\hline
+\end{tabular}
+\footnotetext[1]{In acetaldehyde H is the aldehydic hydrogen.}
+\footnotetext[2]{Formaldehyde X=H,Y=H; acetaldehyde X=H,Y=C; acetone X=C,Y=C.}
+\footnotetext[3]{Out-of-plane bending angle.}
+\footnotetext[4]{This work.}
+\end{table}
+

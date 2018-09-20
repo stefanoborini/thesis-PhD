@@ -1,0 +1,144 @@
+\section{Hartree-Fock approximation and SCF method}
+
+A wavefunction can be defined in a space of Slater determinants, each one
+describing a possible electronic distribution, by creating a linear
+expansion over this basis
+\beqa
+\label{eqn:hf_1}
+\Psi(1,2,\ldots,N) &=& \sumidx{i_1 < i_2 < \ldots < i_N } c_{i_1,i_2,\ldots,i_N} \detsl{\psi_{{i}_1} \psi_{{i}_2} \ldots \psi_{{i}_N}} \\
+&=& \sumidx{I} c_I \Phi_I
+\eeqa
+This wavefunction satisfies the requisite of antisymmetry, and spans the full
+space of determinants of the Fock space defined by $N$ electrons and an
+infinite number of spinorbitals. For practical reasons in daily
+computations, the number of spinorbitals in the expansion is finite, and so
+is the expansion.
+
+In Sec. \ref{sec:variational} we reported the possibility to obtain the best
+description for the ground state of a molecular system, making use of the
+variational theorem and optimizing a given set of parameters of the wavefunction.
+Two degrees of freedom are available: the coefficients $c_I$ of the linear
+expansion (a linear optimization) and the spinorbitals $\psi_i$ (a non-linear
+optimization).
+
+One possible strategy for the optimization is to work
+with the complete space of determinants, providing the \textit{Full
+Configuration Interaction} (Full-CI) description. This approach is often
+unfeasible due to the very high number of coefficients to optimize. Although
+special algorithms have been developed to reduce the computational cost,
+Full-CI scales factorially with respect to the size of the system, and its
+applicability is limited to small molecules. 
+
+On the opposite side, a tough but effective approximation is to consider a
+single determinant to describe the system.
+The multideterminant expansion 
+\beqa
+\Psi(1,2,\ldots,N) &=& \sumidx{i_1 < i_2 < \ldots < i_N }
+c_{i_1,i_2,\ldots,i_N} \detsl{\psi_{{i}_1} \psi_{{i}_2} \ldots \psi_{{i}_N}} \\
+&=& \sumidx{I} c_I \Phi_I
+\eeqa
+is forced to
+\beqas
+c_I &=& 0  \qquad \forall I \neq 0 \\
+c_0 &=& 1
+\eeqas
+leading to 
+\beq
+\Psi(1,2,\ldots,N) = \Phi_0
+\eeq
+This approach drops any degree of freedom provided by the linear expansion,
+and focuses on the optimization of the one-electron spinorbitals.  
+
+It is possible to show that the best spinorbitals for the single determinant
+description of a molecular system are the eigenfunctions of a one-electron
+operator, named \textit{Fock operator}. The procedure goes under the name of
+\textit{Self Consistent Field}, since the Fock operator itself depends on the
+spinorbitals, and the solution is built iteratively until autoconsistency is
+reached. The \textit{Hartree-Fock} equation
+\beq
+\label{eqn:hf_2}
+\fock \psi_i = \epsilon_i \psi_i
+\eeq
+gives a set of one-electron spinorbitals which describe at best (in terms of
+energy minimization) the electronic situation represented by the single
+determinant approximation. These spinorbitals are named \textit{canonical}.
+
+The corresponding eigenvalues $\epsilon_i$ are named \textit{orbital
+energies}, and possess an intrinsic physical meaning, being an approximation
+of the energy needed for the ionization of the electron occupying the
+spinorbital $\psi_i$ (Koopmans theorem\cite{tp-1-104-1933}). Spinorbitals
+are normally ordered by their respective orbital energies, from the lowest
+one to the highest one. 
+
+On an infinite space of spinorbitals, the Hartree-Fock equation has infinite
+solutions. In a real case, the number of solutions is limited by the size of
+the atomic basis set used to describe the spinorbitals, but in any case the
+lowest total energy is obtained when the first $N$ spinorbitals (where $N$
+is the number of electrons) are occupied by electrons. These spinorbitals
+are therefore named \textit{occupied}, and the remaining empty spinorbitals
+are named \textit{virtual}.
+
+The Hartree-Fock approximation provides good results when the molecule is
+evaluated at the equilibrium geometry and electronic ground state, for
+closed-shell systems.  Hartree-Fock theory keeps into account only averaged
+interactions between electrons. The one-electron nature of the Fock operator
+aims at optimizing the interactions of each electron with an averaged charge
+cloud described by the remaining electrons, completely discarding
+instantaneous interactions.
+
+\section{Brillouin theorem}
+
+The Hartree-Fock equation gives a set of optimized spinorbitals which can be
+occupied by electrons to build the single determinant wavefunction $\Psi =
+\Phi_0$ with the lowest energy. As a vector of the Fock space, this
+wavefunction is not the only electronic distribution which can be built with
+the given set of
+spinorbitals. Each different electronic distribution can be described as an
+excitation of a given number of electrons from the occupied orbitals to the
+virtual ones.  We can now reformulate Eqn. \ref{eqn:hf_1} with a different
+grouping strategy, honoring the excitation level (referred to the $\Phi_0$)
+of each determinant
+\beqa
+\label{eqn:mr}
+\Psi &=& c_0 \ket{\Phi_0} + \sumidx{ir} c_i^r \Phi_i^r + \sumidx{ijrs}
+c_{ij}^{rs} \Phi_{ij}^{rs} + \ldots
+\eeqa
+where $r$ and $i$ denote the excitation of an electron from the
+$\psi_i$ orbital to $\psi_r$.
+
+To improve the single determinant description, one would be tempted to
+enrich the description including the singly excited contributions, and
+to perform a diagonalization of the Hamiltonian inside this subspace of
+determinants $\{ \Phi_0 ,  \Phi_i^r  \}$ defined by the Hartree-Fock
+determinant and its single excitations. This produces
+\beq
+\left(
+\begin{array}{cc}
+\braket{\Phi_0}{\ham}{\Phi_0} & \braket{\Phi_0}{\ham}{\Phi^r_i} \\
+& \\
+\braket{\Phi^r_i}{\ham}{\Phi_0} & \braket{\Phi^r_i}{\ham}{\Phi^{r^{\prime}}_{i^{\prime}}} \\
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+c_0 \\
+c^r_a \\
+\end{array}
+\right) = E_0
+\left(
+\begin{array}{c}
+c_0 \\
+c^r_a \\
+\end{array}
+\right)
+\eeq
+Brillouin's theorem \cite{asi-71-1933, asi-159-1934} guarantees that when
+spinorbitals satisfying the Hartree-Fock equation are used to build the
+determinants, all the interactions $\braket{\Phi_0}{\ham}{\Phi^r_i}$ are
+zero. Thanks to the Slater rules, this relationship can be proved to be
+equivalent to a spinorbital one
+\beq
+\braket{\psia}{\fock}{\psii} = 0
+\eeq
+Each $\fock\psii$ therefore belongs to a space which is totally orthogonal
+to the virtual space.

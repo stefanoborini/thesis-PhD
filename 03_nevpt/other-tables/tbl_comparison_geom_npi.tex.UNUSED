@@ -1,0 +1,42 @@
+\begin{table}
+\caption{Equilibrium geometries for the \snpi\ and \tnpi\ states.
+Distances in \AA, angles in degrees.\label{tab:geoex1}}
+\begin{tabular}{|lccccc|}
+\hline
+Method                 & R$_{\rm CO}$ 
+                       & R$_{\rm CH}$\footnotemark[1]
+                       & R$_{\rm CC}$ 
+                       & $\angle$XCY\footnotemark[2]
+                       & $\theta$\footnotemark[3] \\
+\hline
+\multicolumn{6}{|c|}{\snpi\ excited state}\\
+\hline
+formaldehyde (CAS(A))\footnotemark[4]     & 1.387 & 1.078 &       & 119.9 & 37.5 \\
+formaldehyde (CAS(C))\footnotemark[4]     & 1.358 & 1.109 &       & 116.8 & 37.7 \\
+acetaldehyde (CAS(B))\footnotemark[4]    & 1.383 & 1.080 & 1.501 & 120.3 & 38.4 \\
+acetone (CAS(A))\footnotemark[4]    & 1.401 &       & 1.499 & 121.3 & 39.6 \\
+\hline
+formaldehyde Exp. [\citen{jms-60-105-1980}]  & 1.323 & 1.098 &       & 118.8 & 34.0 \\
+formaldehyde Exp. [\citen{jms-94-114-1982}] & 1.323 & 1.103 &       & 118.1 & 34.0 \\
+acetaldehyde Exp. [\citen{jcp-105-2547-1996}]   &       &       &       &       & 35.7 \\
+acetaldehyde Exp. [\citen{jpc-98-1519-1994}]  &       &       &       &       & 37.8 \\
+\hline
+\multicolumn{6}{|c|}{\tnpi\ excited state}\\
+\hline
+formaldehyde (CAS(A))\footnotemark[4]     & 1.365 & 1.079 &       & 119.3 & 39.3 \\
+formaldehyde (CAS(C))\footnotemark[4]     & 1.335 & 1.112 &       & 113.9 & 43.7 \\
+acetaldehyde (CAS(B))\footnotemark[4]    & 1.360 & 1.082 & 1.506 & 119.1 & 40.2 \\
+acetone (CAS(A))\footnotemark[4]    & 1.381 &       & 1.502 & 120.4 & 40.2 \\
+\hline
+formaldehyde Exp.\footnotemark[5]        & 1.307 & 1.084 &       & 121.8 & 41.1 \\
+acetaldehyde Exp. [\citen{jcp-105-2547-1996}]   &       &       &       &       & 42.2 \\
+\hline
+\end{tabular}
+\footnotetext[1]{In acetaldehyde H is the aldehydic hydrogen.}
+\footnotetext[2]{Formaldehyde X=H,Y=H; acetaldehyde X=H,Y=C; acetone X=C,Y=C.}
+\footnotetext[3]{Out-of-plane bending angle.}
+\footnotetext[4]{This work.}
+\footnotetext[5]{References [\citen{arpc-34-31-1983}] and [\citen{tcc-150-167-1989}]
+as cited in Ref. [\citen{jpc-99-16576-1995}].}
+\end{table}
+

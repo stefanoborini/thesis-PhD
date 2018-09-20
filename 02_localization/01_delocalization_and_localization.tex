@@ -1,0 +1,131 @@
+\section{Advantages of a localized approach}
+
+In general, delocalization of molecular orbitals is not a physical
+requirement. A delocalized picture of the orbitals gained mainstream
+attention in connection with the ionization energy as expressed by the
+Koopmans theorem. Delocalization can also explain some phenomena in those
+systems that possess intrinsic physical delocalization, like for example
+polyene chains or aromatic molecules.
+
+However, when a molecule behaves like a set of localized bonds, a
+delocalized description introduces a high degree of complexity. As an
+example, a localized point of view clearly explains the similar behavior
+of C-H bonds in methane, ethane and cyclohexane. A delocalized description
+of this physical phenomenon is more difficult.
+
+Delocalization is also a frequent consequence of the mathematical procedures
+implemented for orbital optimization. Improving the mathematical asset in
+order to obtain spatially localized orbitals allows the quantum chemist to
+deal with a more practical representation of the charge distribution, and 
+also provides possible new strategies in reducing the computational cost
+for \textit{ab initio} evaluations.
+
+A reliable evaluation of the static and dynamic correlation is the main 
+limiting factor for a quantum chemical approach to medium and large
+molecular system. These contributions to the energy are critical, and their
+evaluation computationally demanding, but their nature is a local
+phenomenon, related to the spatial distribution of the electrons. A
+delocalized approach imposes very expensive evaluations: the physical effect
+of correlation is spread over a large number of integrals. Each of these
+integrals accounts for an almost unpredictable quantity to the energy, and
+their physical meaning is difficult to understand.
+
+Making use of a localized description, interactions between electrons
+populating distant, non-overlapping orbitals can be considered negligible, and
+thus candidate for being eliminated from the evaluation. As a direct
+consequence, correlative effect are now concentrated on a reduced set of
+highly important integrals. Neglecting these long-range interactions due to
+locality of the molecular orbitals is an important strategy to reduce the
+computational cost.
+
+Linear Scaling techniques are already available for SCF calculations
+\cite{rmp-71-1085-1999}, M{\o}ller-Plesset perturbative treatments (MP) at
+different orders
+\cite{jcp-110-3660-1999,pulay-gdesmp,jcc-19-1241-1998,cpl-290-143-1998,
+tca-69-357-1986,jcp-86-914-1987,ijqc-70-167-1998}
+Single and Double Configuration Interaction (SDCI) \cite{jcp-104-6286-1996},
+Single and Double
+Coupled Cluster (CCSD)\cite{jcp-104-6286-1996,jcp-111-8330-1999}
+and CCSD(T)\cite{jcp-113-9986-2000,jcp-114-661-2001}.  All the cited methods
+apply to a single reference wavefunction, and are therefore unbalanced when
+two or more determinants of nearly equal weight are critical in the
+description of the system. % FIXME ripete il concetto in alto ?
+Although multireference Linear Scaling techniques
+are still to be devised, a localized orbitals approach is recognized as an
+important requisite in achieving this objective, allowing a ``\textit{divide et
+impera}'' strategy on the molecule.
+
+It is important to note that many chemically interesting problems require
+the application of a multireference scheme in order to produce reliable
+results.  Examples of these problems are the treatment of bond breakings,
+electronically excited states, magnetic systems, and charge transfer.
+Treatment of these systems is important to gather a deep insight in
+biological catalysis, photochemical reactions, high atmosphere degradation
+of polluting compounds, technological improvements for data storage, data
+transfer and computation. 
+
+Localization of molecular orbitals can also benefit multireference
+evaluations in terms of quality and size of the active space. 
+Phenomena involving electronic excitation or bond breaking usually happen in a
+well localized region of the molecule. 
+
+Working with delocalized orbitals, the active space needed to describe these
+phenomena is normally defined by those MOs bringing the highest correlative
+effects, regardless of the spatial or physical nature. Moreover, the user
+has poor or no control of the active orbital selection. Using local
+orbitals, a well defined and physically clear active space can be chosen and
+maintained during the optimization. 
+
+Finally, a reduction of the reference space can also be obtained: a
+localized description clearly depicts which determinants are not important
+for the description of the wavefunction, because they express highly ionic
+electronic distributions where a large number of electrons are concentrated
+in a certain region of space. 
+
+\section{Existent methods of localization}
+
+In the past, localized orbitals describing the molecule were obtained
+performing an appropriate transformation of a delocalized manifold, i.e.
+applying a unitary transformation to the spatial orbitals row vector
+$\mathbf{\psi}$
+\beq
+\mathbf{\psi}_{\mbox{\tiny loc}} = \mathbf{\psi}_{\mbox{\tiny deloc}} \mathbf{U}
+\eeq
+
+Finding localized, equivalent orbitals is normally achieved choosing a
+$\mathbf{U}$ matrix which maximizes a ``localization function''.
+For example, the contribution from Edmiston and Ruedenberg
+\cite{rmp-34-457-1963} aims at minimizing the Coulomb repulsion between
+electron pairs occupying two different orbitals.  If $\phi_i$ and $\phi_j$
+are two different orbitals, then satisfying the condition
+\beq
+\sum_{i<j}^{\mbox{\tiny occ}} \braket{\phi_{i}\phi_{j}}{g}{\phi_{i}\phi_{j}} = \mbox{minimum}
+\eeq
+imposes locality of the charge distribution.  Another approach from
+Boys\cite{rmp-32-2-1960} is to maximize the distance between the centroids
+of the transformed orbitals.  Other methods, like for example those by
+Pipek\cite{jcp-90-4916-1989}, Angeli et al.\cite{cpl-233-102-1995} work
+along the same principle, and can be classified as \textit{intrinsic
+methods} of localizations.  \textit{Extrinsic methods} work equally well,
+and they are realized performing a projection of localized MO's onto a
+delocalized optimized manifold\cite{chavet-ladiqc}. 
+
+All these methods resort on \textit{a posteriori} localization techniques,
+therefore a prior evaluation of delocalized canonical MOs is needed.
+Obtaining a localized set of orbitals is also possible using \textit{a
+priori} methods, where a controlled optimization procedure is applied on a
+localized but unoptimized guess of orbitals.  The controlled procedure
+preserves the locality, rather than imposing it. Methods that address SCF
+equations already exist\cite{jcp-34-89-1961,prl-4-17-1969,gilbert-moicpb}.
+
+The main advantage of an \textit{a priori} method is the possibility to
+choose and preserve the nature of the active space during a CAS evaluations.
+This property is of particular importance in order to build a CAS space
+using the orbitals involved in the chemical or physical process under study.
+
+In all these methods, the local orbitals are expressed as an orthogonal set.
+In general this approach is computationally more efficient compared to
+Generalized Valence Bond methods\cite{jcp-57-738-1972,bobrowicz-mest}
+where a set of non-orthogonal orbitals with atomic character is
+variationally optimized.
+
